@@ -84,7 +84,7 @@ Let $A: X \rightarrow X$. Define $N_j := \mathbf{Null}(A^j)$.
 \begin{proof}
 Let $A, N_j$ be as in the statement of the problem.
   \\(a) First note, $i \ge 1 \iff i-1 \ge 0$. Let $y \in A(N_{i+1})$. Then, $ y = A(x)$, for some $x \in N_{i+1}$, and $A^i(y) = A^i(A(x)) = A^{i+1}(x) = 0$. Hence, $y \in N_i$. I.e., $A(N_{i+1}) \subset N_i$, as required.
-  \\(b) Suppose $A(N_{i+1}) \subset N_{i-1}$.
+  \\(b) Suppose $A(N_{i+1}) \subset N_{i-1}$. By $(3)(a)$, $N_i \subset N_{i+1}$. We prove $N_{i+1} \subset N_i$ $-$ Let $x \in N_{i+1}$. Then, $A(x) \in A(N_{i+1}) \subset N_{i-1}$. Thus, $0 = A^{i-1}(A(x)) = A^i(x)$. I.e., $x \in N_i$. Therefore, $N_{i+1} \subset N_i$. Ergo, $N_i = N_{i+1}$, as required.
 \end{proof}
 
 \end{document}
