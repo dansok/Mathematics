@@ -73,7 +73,7 @@ Let $A: X \rightarrow X$. Define $N_j := \mathbf{Null}(A^j)$.
 \begin{proof}
   Let $A, N_j$ be as in the statement of the problem.
   \\(a) Let $x \in N_j$. Then $A^j(x) = 0$. Then $A^{j+1}(x) = A(A^j(x)) = A(0) = 0$, since A is linear. I.e., $x \in N_{j+1}$. Thus $N_j \subset N_{j+1}$, as required.
-  \\(b) Let $N_k = N_{k+1}$. Let $x \in N_{k+2}$. Then, $0 = A^{k+2}(x) = A^{k+1}(A(x))$. I.e., $A(x) \in N_{k+1} = N_k$. Thus, $0 = A^k(A(x)) = A^{k+1}(x)$. That is, $x \in N_{k+1}$. In light of (a), we conclude that $N_{k+2} = N_{k+1}$. Now, using the same argument, $N_{k+2} = N_{k+1}$ implies $N_{k+3} = N_{k+2}$. By induction, we conclude $N_i = N_k$ for all $i > k$, as required.
+  \\(b) Let $N_k = N_{k+1}$. Let $x \in N_{k+2}$. Then, $0 = A^{k+2}(x) = A^{k+1}(A(x))$. I.e., $A(x) \in N_{k+1} = N_k$. Thus, $0 = A^k(A(x)) = A^{k+1}(x)$. That is, $x \in N_{k+1}$. I.e., $N_{k+2} \subset N_{k+1}$. By (a), $N_{k+1} \subset N_{k+2}$. Therefore, $N_{k+2} = N_{k+1}$. Now, using the same argument, $N_{k+2} = N_{k+1}$ implies $N_{k+3} = N_{k+2}$ (since $k$ is arbitrary). By induction, we conclude $N_i = N_k$ for all $i > k$, as required.
 \end{proof}
 
 \end{document}
