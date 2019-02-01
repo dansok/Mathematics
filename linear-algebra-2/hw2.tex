@@ -51,10 +51,10 @@ Dan Sokolsky
 \maketitle
 
 \begin{question}[1]
-Give a straightforward proof of Theorem 1'
+Let $\{(a_i, h_i)\}_{i \le m}$ be eigen-pairs of the matrix $A$, so that $Ah_i = a_i h_i, 0 \ne h_i \in \mathbb{R}^n$; and $\{h_i\}_{i \le m}$ is linearly independent. If $a \ne a_i$ for all $i \le m$, then the eigenvector corresponding to $a$, $h \in \mathbb{R}^n$, is linearly independent from $\{h_i\}_{i \le m}$.
 \end{question}
 \begin{proof}
-  For the sake of contradiction, suppose $h = \sum_{i \le m} c_i h_i$, while $a \ne a_i$ for any $i$. Then,
+  For the sake of contradiction, suppose $h = \sum_{i \le m} c_i h_i$, while $a \ne a_i$ for any $i \le m$. Then,
   $$\sum_{i \le m} a (c_i h_i) = a \sum_{i \le m} c_i h_i = ah = Ah = A \sum_{i \le m} c_i h_i = \sum_{i \le m} c_i (A h_i) = \sum_{i \le m} c_i (a_i h_i) = \sum_{i \le m} a_i (c_i h_i)$$ $\iff a = a_i$ for all $i \le m$, a gross contradiction to our assumption. Hence, $h$ is linearly independent from $\{h_i\}_{i \le m}$, as required.
 \end{proof}
 
@@ -75,5 +75,9 @@ Let $A: X \rightarrow X$. Define $N_j := \mathbf{Null}(A^j)$.
   \\(a) Let $x \in N_j$. Then $A^j(x) = 0$. Then $A^{j+1}(x) = A(A^j(x)) = A(0) = 0$, since A is linear. I.e., $x \in N_{j+1}$. Thus $N_j \subset N_{j+1}$, as required.
   \\(b) Let $N_k = N_{k+1}$. Let $x \in N_{k+2}$. Then, $0 = A^{k+2}(x) = A^{k+1}(A(x))$. I.e., $A(x) \in N_{k+1} = N_k$. Thus, $0 = A^k(A(x)) = A^{k+1}(x)$. That is, $x \in N_{k+1}$. I.e., $N_{k+2} \subset N_{k+1}$. By (a), $N_{k+1} \subset N_{k+2}$. Therefore, $N_{k+2} = N_{k+1}$. Now, using the same argument, $N_{k+2} = N_{k+1}$ implies $N_{k+3} = N_{k+2}$ (since $k$ is arbitrary). By induction, we conclude $N_i = N_k$ for all $i > k$, as required.
 \end{proof}
+
+\begin{question}[4]
+
+\end{question}
 
 \end{document}
