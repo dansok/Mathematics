@@ -56,5 +56,19 @@ Give a proof of the uniqueness of the decomposition $N_{pq} = N_p + N_q$ using f
 \begin{proof}
 Let $x \in N_p \cap N_q$. Then $p(A)x = q(A)x = 0$. By formula $(31)$, there exist polynomials $a, b$, such that $x = a(A)p(A)x + b(A)q(A)x = a(A) \cdot 0 + b(A) \cdot 0 = 0$. Thus, $N_p \cap N_q = \{0\}$. Therefore, the decomposition is in fact a direct sum. I.e., $N_{pq} = N_p \oplus N_q$.
 \end{proof}
+\begin{question}[2]
+Let $A$ be $n \times n$. Let $A^k = 0; A^{k-1} \ne 0$ for some $k > 0$.
+\\(a) Show the eigenvalues of $A$ are all $0$.
+\\(b) Show there exists $x \in \mathbb{C}^n$ such that $\{x, Ax, \ldots, A^{k-1}x\}$ is linearly independent.
+\\(c) Find an eigenvector of $A$ derived from $x$.
+\end{question}
+\begin{proof}
+Let $A$ be $n \times n$. Let $A^k = 0; A^{k-1} \ne 0$ for some $k > 0$.
+\\(a) $Ax = cx \implies 0 = A^k x = c^k x \iff c^k = 0 \iff c = 0$, since $x \ne 0$ as an eigenvector.
+\\ (b) Define $N_j := \mathbf{Null}(A^j)$, as before. Note, $A^m = 0$ for all $m \ge k$. Let $x$ be such that $A^{k-1}x \ne 0$. Then for all $j < k-1$, $A^j x \ne 0$ either, since $N_j \subset N_{k-1}$. Now, keeping with the convention $A^0 = I$, suppose $\sum_{i = 0}^{k-1} c_i A^i x = 0$. We show how to pick off the first term of the series iteratively, thereby showing that $c_i = 0$. To this end, consider the first term $-$
+$$0 = A^{k-1}(0) = A^{k-1}(\sum_{i = 0}^{k-1} c_i A^i x) = \sum_{i = 0}^{k-1} c_i A^{i+k-1} x = c_0 A^{k-1} x$$
+$\iff c_0 = 0$ since $A^{k-1}x \ne 0$, and $A^m = 0$ for all $m \ge k$. So we reduce the series $0 = \sum_{i = 0}^{k-1} c_i A^i x = \sum_{i = 1}^{k-1} c_i A^i x$; where we can apply the same argument to the latter, using $A^{k-2}$ this time. Continuing in this way, and applying $A^{k-1-j}$ at each step $ 0 \le j \le k-1$. We conclude $c_i = 0$ for all $ 0 \le i \le k-1$ by induction. Thus, $\{x, Ax, \ldots, A^{k-1}x\}$ is linearly independent.
+\\(c) 
+\end{proof}
 
 \end{document}
