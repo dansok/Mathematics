@@ -1,1 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% put your name here, so we know who to give credit to %%
+Dan Sokolsky
+}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hw}{%%%%%%%%%%%%%%%%%%%%
+%% and which homework assignment is it? %%%%%%%%%
+%% put the correct number below              %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+2
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge Linear Algebra II\hfill Homework \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Homework \hw\qquad\hfill}
 
+%% If you want to define a new command, you can do it like this:
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+%% If you want to use a function like ''sin'' or ''cos'', you can do it like this
+%% (we probably won't have much use for this)
+% \DeclareMathOperator{\sin}{sin}   %% just an example (it's already defined)
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+Give a proof of the uniqueness of the decomposition $N_{pq} = N_p + N_q$ using formula $(31)$ on page $70$.
+\end{question}
+\begin{proof}
+Let $x \in N_p \cap N_q$. Then $p(A)x = q(A)x = 0$. By formula $(31)$, there exist polynomials $a, b$, such that $x = a(A)p(A)x + b(A)q(A)x = a(A) \cdot 0 + b(A) \cdot 0 = 0$. Thus, $N_p \cap N_q = \{0\}$. Therefore, the decomposition is in fact a direct sum. I.e., $N_{pq} = N_p \oplus N_q$.
+\end{proof}
+
+\end{document}
