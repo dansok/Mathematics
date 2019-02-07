@@ -68,7 +68,7 @@ Let $A$ be $n \times n$. Let $A^k = 0; A^{k-1} \ne 0$ for some $k > 0$.
 \\ (b) Define $N_j := \mathbf{Null}(A^j)$, as before. Note, $A^m = 0$ for all $m \ge k$. Let $x$ be such that $A^{k-1}x \ne 0$. Then for all $j < k-1$, $A^j x \ne 0$ either, since $N_j \subset N_{k-1}$. Now, keeping with the convention $A^0 = I$, suppose $\sum_{i = 0}^{k-1} c_i A^i x = 0$. We show how to pick off the first term of the series iteratively, thereby showing that $c_i = 0$. To this end, consider the first term $-$
 $$0 = A^{k-1}(0) = A^{k-1}(\sum_{i = 0}^{k-1} c_i A^i x) = \sum_{i = 0}^{k-1} c_i A^{i+k-1} x = c_0 A^{k-1} x$$
 $\iff c_0 = 0$ since $A^{k-1}x \ne 0$, and $A^m = 0$ for all $m \ge k$. So we reduce the series $0 = \sum_{i = 0}^{k-1} c_i A^i x = \sum_{i = 1}^{k-1} c_i A^i x$; where we can apply the same argument to the latter, using $A^{k-2}$ this time. Continuing in this way, and applying $A^{k-1-j}$ at each step $ 0 \le j \le k-1$. We conclude $c_i = 0$ for all $ 0 \le i \le k-1$ by induction. Thus, $\{x, Ax, \ldots, A^{k-1}x\}$ is linearly independent.
-\\(c) 
+\\(c) $A(A^{k-1} x) = A^k x = 0$. Thus $A^{k-1} x \ne 0$ is an eigenvector of A.
 \end{proof}
 
 \end{document}
