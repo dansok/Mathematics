@@ -63,7 +63,7 @@ Given that the distinct roots of $m_A$ are the distinct eigenvalues of the $n \t
 \end{question}
 \begin{proof}
 (a) Suppose $d_j > m_j$. Then $(t - a_j)^{d_j} \nmid (t - a_j)^{m_j}$. Thus $m_A \nmid p_A$, a contradiction.
-\\(b) Suppose $m_A(t) = \prod_j(t-a_j)^{d_j}$. Define $N_j := N_{(A-a_jI)^{d_j}}$. Then $(t-a_i)^{d_i}$ and $(t-a_j)^{d_j}$ are coprime for $i \ne j$, and therefore, $\mathbb{C}^n = N_0 = N_{m_A(A)} = \bigoplus_j N_j$. Thus $0 = m_A(A) \restriction_{N_j} = (A - a_jI)^{d_j} \restriction_{N_j} \iff (A - a_jI)^{d_j} = 0 \iff d_j$ is the index of the eigenvalue $a_j$. Notice that $d_j$ is the minimal such power that satisfies our requirements.
+\\(b) Let $m_A(t) = \prod_j(t-a_j)^{d_j}$,  let $p_A(t) = \prod_j(t-a_j)^{m_j}$,  and define $N_j := N_{(A-a_jI)^{m_j}}$. Then $(t-a_i)^{m_i}$ and $(t-a_j)^{m_j}$ are coprime for $i \ne j$, and by the Spectral Theorem, $\mathbb{C}^n = N_0 = N_{p_A(A)} = \bigoplus_j N_j$. Thus $0_{n \times n} = m_A(A) \iff \forall j, \ 0 = m_A(A) \restriction_{N_j} = (A - a_jI)^{d_j} \restriction_{N_j} \iff (A - a_jI)^{d_j} = 0 \iff d_j$ is the index of the eigenvalue $a_j$, as the minimal power such that $(A - a_jI)^{d_j} = 0$, satisfying the minimality requirement of the degree of $m_A$, as the minimal polynomial.
 \end{proof}
 
 \end{document}
