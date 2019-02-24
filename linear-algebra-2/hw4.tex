@@ -57,5 +57,26 @@ Prove $\cos(\alpha -\beta) = \cos(\alpha)\cos(\beta)+\sin(\alpha)\sin(\beta)$
 Let $x, y$ be points on the unit circle with coordinates $x = (\cos\beta, sin\beta),\\ y = (\cos\alpha, \sin\alpha)$. Then $||x|| = ||y|| = 1$, and $\angle(x, y) = \alpha-\beta$. Thus, by formula (5),
 $$\cos(\alpha)\cos(\beta)+\sin(\alpha)\sin(\beta) = \langle x, y\rangle = ||x||\ ||y||\cos(\alpha-\beta) = 1 \cdot 1 \cdot \cos(\alpha-\beta) = \cos(\alpha-\beta)$$
 \end{proof}
+\begin{question}[2]
+Prove $u \times v = ||u||\ ||v|| \sin\theta$; where $\theta := \angle(u, v)$.
+\end{question}
+\begin{proof}
+$\langle u \times v, w \rangle = \det (u, v, w) = \det \begin{bmatrix} u_1 & v_1 & w_1\\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \end{bmatrix} = w_1(u_2v_3 - u_3v_2) - w_2(u_1v_3 - u_3v_1) + w_3(u_1v_2 - u_2v_1) = w_1(u_2v_3 - u_3v_2) + w_2(u_3v_1 - u_1v_3) + w_3(u_1v_2 - u_2v_1) = \Big\langle\begin{bmatrix}u_2v_3 - u_3v_2 \\ u_3v_1 - u_1v_3 \\ u_1v_2 - u_2v_1
+\end{bmatrix}, w \Big\rangle \iff u \times v = \begin{bmatrix}u_2v_3 - u_3v_2 \\ u_3v_1 - u_1v_3 \\ u_1v_2 - u_2v_1
+\end{bmatrix}$. Thus, $$||u \times v||^2 = \langle u \times v, u \times v \rangle = (u_2v_3 - u_3v_2)^2 + (u_3v_1 - u_1v_3)^2 + (u_1v_2 - u_2v_1)^2 =$$ $$u_2^2 v_1^2 + u_3^2 v_1^2 - 2 u_1 u_2 v_2 v_1 - 2 u_1 u_3 v_3 v_1 + u_1^2 v_2^2 + u_3^2 v_2^2 + u_1^2 v_3^2 + u_2^2 v_3^2 - 2 u_2 u_3 v_2 v_3\ \ (1)$$
+Additionally,
+$$(||u||\ ||v||)^2 =(u_1^2 + u_2^2 + u_3^2)(v_1^2 + v_2^2 + v_3^2) = $$ $$u_1^2 v_1^2 + u_2^2 v_1^2 + u_3^2 v_1^2 + u_1^2 v_2^2 + u_2^2 v_2^2 + u_3^2 v_2^2 + u_1^2 v_3^2 + u_2^2 v_3^2 + u_3^2 v_3^2 \ \ (2)$$
+Also,
+$$\langle u, v \rangle ^2 = (u_1v_1 + u_2v_2 + u_3v_3)^2 = u_1^2 v_1^2 + 2 u_1 u_2 v_2 v_1 + 2 u_1 u_3 v_3 v_1 + u_2^2 v_2^2 + u_3^2 v_3^2 + 2 u_2 u_3 v_2 v_3\ \ (3)$$
+and notice that (1) = (2) - (3). That is,
+$$||u \times v||^2 = (||u||\ ||v||)^2 - \langle u, v \rangle ^2 = (||u||\ ||v||)^2 - (||u||\ ||v|| \cos\theta)^2 =$$ $$||u||^2||v||^2 (1 - (\cos\theta)^2) = ||u||^2||v||^2 (\sin \theta)^2$$
+$\iff ||u \times v|| = ||u||\ ||v|| \sin \theta$
+\end{proof}
+\begin{question}[3]
+Can the standard basis $e_1 = (1, 0, \ldots, 0), e_2 = (0, 1, \ldots, 0), \ldots, e_n = (0, 0, \ldots, 1)$ be used as a basis for $\mathbb{C}^n$?
+\end{question}
+\begin{proof}
+The answer depends on the particular field, $\mathbb{F}$, the  vector space $\mathbb{C}^n$ is defined over. If $\mathbb{F} = \mathbb{C}$, then $\{e_1, \ldots, e_n\}$ does in fact form a basis for $\mathbb{C}^n$. If $\mathbb{F} \subsetneq \mathbb{C}$, say $\mathbb{F} = \mathbb{R}$, then $\{e_1, \ldots, e_n\}$ doesn't form a basis for $\mathbb{C}^n$, since it doesn't even span $\mathbb{C}^n$. E.g., $i \notin span\{e_1, \ldots, e_n\}$.
+\end{proof}
 
 \end{document}
