@@ -78,5 +78,11 @@ Can the standard basis $e_1 = (1, 0, \ldots, 0), e_2 = (0, 1, \ldots, 0), \ldots
 \begin{proof}
 The answer depends on the particular field, $\mathbb{F}$, the  vector space $\mathbb{C}^n$ is defined over. If $\mathbb{F} = \mathbb{C}$, then $\{e_1, \ldots, e_n\}$ does in fact form a basis for $\mathbb{C}^n$. If $\mathbb{F} \subsetneq \mathbb{C}$, say $\mathbb{F} = \mathbb{R}$, then $\{e_1, \ldots, e_n\}$ doesn't form a basis for $\mathbb{C}^n$, since it doesn't even span $\mathbb{C}^n$. E.g., $i \notin span\{e_1, \ldots, e_n\}$.
 \end{proof}
+\begin{question}[5]
+Let $A: X \rightarrow X$. Let $Y \subset X$ be $A-$invariant. Show $Y \cap N_A = \{0\} \implies A \restriction_Y: Y \rightarrow Y$ is invertible.
+\end{question}
+\begin{proof}
+Suppose $Y \cap N_A = \{0\}$. Then $0 \ne y \in Y \implies Ay \ne 0$. That is, $N_{A \restriction_Y} = \{0\}$. By the Rank-Nullity theorem, it follows that $A \restriction_Y$ has full rank $\iff A \restriction_Y$ is invertible.
+\end{proof}
 
 \end{document}
