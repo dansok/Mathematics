@@ -86,7 +86,7 @@ Let $K$ be an $n \times n$ upper-triangular matrix, with all zeros on the diagon
 \end{question}
 \begin{proof} $\\ $
 (a) Each $0$-column annihilates the next column. Since there are $n$ columns, $m \le n$.
-\\(b) The first column of $AJ$ are all zeros, because of the right-action of first $0-$column of $J$. For the rest of the columns, i.e., $j \ge 1$, observe --
+\\(b) The first column of $AJ$ are all zeros, due to the right-action of the first $0-$column of $J$. For the rest of the columns, i.e., $j \ge 1$, observe --
 $$(AJ)_{i,j} = \sum_{k=1}^n A_{i,k}J_{k,j} = A_{i,j-1}\cdot J_{j-1,j} = A_{i,j-1} \cdot 1 = A_{i,j-1}$$
 That is, $AJ = [0, a_1, \ldots, a_{n-1}]$.
 \\(c)Define the $P$ to be an $n \times n$ matrix defined by $P_{i,n-i+1} = 1$ and $P_{i,j} = 0$ for $j \ne n-i+1$. Then $(P^2)_{i,j} = \sum_{k=1}^n P_{i,k}P_{k,j} = P_{i,n-i+1}\cdot P_{n-j+1, j} = 1 \cdot 1 = 1 \iff n-i+1 = n-j+1 \iff i=j$; and $(P^2)_{i,j} = 0$ if $i \ne j$. I.e., $P^2 = I_n$. That is, $P = P^{-1}$. Now,
