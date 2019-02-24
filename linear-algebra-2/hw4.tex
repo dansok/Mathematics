@@ -84,8 +84,13 @@ Let $K$ be an $n \times n$ upper-triangular matrix, with all zeros on the diagon
 \\(b) Show $AJ = [0, a_1, \ldots, a_{n-1}]$.
 \\(c) Show $J \sim J^T$.
 \end{question}
-\begin{proof}
-
+\begin{proof} $\\ $
+(a) Each $0$-column annihilates the next column. Since there are $n$ columns, $m \le n$.
+\\(b) The first column of $AJ$ are all zeros, because of the right-action of first $0-$column of $J$. For the rest of the columns, i.e., $j \ge 1$, observe --
+$$(AJ)_{i,j} = \sum_{k=1}^n A_{i,k}J_{k,j} = A_{i,j-1}\cdot J_{j-1,j} = A_{i,j-1} \cdot 1 = A_{i,j-1}$$
+That is, $AJ = [0, a_1, \ldots, a_{n-1}]$.
+\\(c)Define the $P$ to be an $n \times n$ matrix defined by $P_{i,n-i+1} = 1$ and $P_{i,j} = 0$ for $j \ne n-i+1$. Then $(P^2)_{i,j} = \sum_{k=1}^n P_{i,k}P_{k,j} = P_{i,n-i+1}\cdot P_{n-j+1, j} = 1 \cdot 1 = 1 \iff n-i+1 = n-j+1 \iff i=j$; and $(P^2)_{i,j} = 0$ if $i \ne j$. I.e., $P^2 = I_n$. That is, $P = P^{-1}$. Now,
+a left-action by $P$ reverses the order of the rows of $J$, and a right-action by $P$ reverses the order of the columns of $J$. Together, $PJP^{-1} = PJP = J^T$. That is, $J \sim J^T$.
 \end{proof}
 \begin{question}[5]
 Let $A: X \rightarrow X$. Let $Y \subset X$ be $A-$invariant. Show $Y \cap N_A = \{0\} \implies A \restriction_Y: Y \rightarrow Y$ is invertible.
