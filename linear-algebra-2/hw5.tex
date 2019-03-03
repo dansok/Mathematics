@@ -145,7 +145,7 @@ J_1 & 0 & \ldots & 0\\
 0 & J_2 & \ldots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \ldots & J_k
-\end{pmatrix}$, $J_i$ are Jordan blocks. That is, $A = SJS^{-1}$ for some invertible $S$. By (a), suffices to prove $p_A(J_i) = 0$. Recall $p_A(t) = \prod_{j \le k} (t - \lambda_j)^{m_j}$, where $\lambda_j$ is the eigenvalue of the the Jordan block $J_j$. So $p_A(J_i) = \prod_{j \le k} (J_i - \lambda_j I)^{m_j} =0 $, because $(J_i - \lambda_i I)^{m_i} = 0$, since $m_i \ge d_i$, the index of the eigenvalue $\lambda_i$. This proves $p_A(J) = 0$. Now, $$(SJS^{-1})^n = (SJS^{-1}) \cdot (SJS^{-1}) \cdot \ldots \cdot (SJS^{-1}) = SJ^nS^{-1}$$ So,
+\end{pmatrix}$, $J_i$ are Jordan blocks. That is, $A = SJS^{-1}$ for some invertible $S$. By (a), suffices to prove $p_A(J_i) = 0$. Recall $p_A(t) = \prod_{j \le k} (t - \lambda_j)^{m_j}$, where $\lambda_j$ is the eigenvalue of the the Jordan block $J_j$. So $p_A(J_i) = \prod_{j \le k} (J_i - \lambda_j I)^{m_j} =0 $, because $(J_i - \lambda_i I)^{m_i} = 0$, since $m_i \ge d_i$, the index of the eigenvalue $\lambda_i$. This proves $p_A(J) = 0$. Now, $$(SJS^{-1})^n = (SJS^{-1}) \cdot (SJS^{-1}) \cdot \ldots \cdot (SJS^{-1}) = SJ^nS^{-1}$$ \\ \\So,
 $$p_A(A) = p_A(SJS^{-1}) = c_0 + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
 $$c_0 + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
 $$c_0 + c_1 SJS^{-1} +c_2 SJ^2S^{-1} + \ldots + c_n SJ^nS^{-1} =$$
