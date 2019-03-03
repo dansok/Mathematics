@@ -99,5 +99,58 @@ $$n = \dim R_0 \ge \dim R_1 \ge \dim R_2 \ge \ldots \ge \dim R_j \ge \ldots \ge 
 We claim there must exist $k$ such that $R_k = R_{k+1}$, for otherwise the inclusion in $(2)$ is always proper, and thus the dimensions of the successive $R_j$ in $(4)$ decrease indefinitely, eventually going below $0$, which is impossible since they are bounded by $0$ from below. Now a dimension argument shows $N_k = N_{k+1}$ -- Let $m = \dim N_k$. Then $\dim R_{k+1} = \dim R_k = n-m$, by Rank-Nullity. Thus $\dim N_{k+1} = n-(n-m) = m$. Since $N_k \subseteq N_{k+1}$ and the two linear spaces have the same dimension, we conclude $N_k = N_{k+1}$. As before, by induction $N_k = N_{k+l}$ for any $l > 0$. Finally, let $y \in R_k \cap N_k$. Then $y = A^k x$ for some $x$. Also, $A^k y = 0$. Putting these two together, $0 = A^k y = A^k(A^k x ) = A^{2k} x \iff \\x \in N_{2k} = N_k \iff y = A^k x = 0$. Thus $R_k \cap N_k = \{0\}$. \\We show $R_k \oplus N_k  = \mathbb{C}^n$ -- Let $X = \{v_i\}_{i\le p},\ Y = \{w_j\}_{j \le q}$ be bases for $R_k, N_k$, respectively. Then $\dim R_k + \dim N_k = p + q = n$. Suffices to prove $X \cup Y$ is linearly independent. To that end,
 suppose $\sum_{i \le p} c_i v_i + \sum_{j \le q} k_j w_j = 0$ and for the sake of contradiction suppose some of the coefficients $\{c_1, \ldots, c_p, k_1, \ldots, k_q\}$ are nonzero. Suppose WLOG $c_i \ne 0$. Then $0 \ne u = \sum_{i \le p} c_i v_i = -\sum_{j \le q} k_j w_j$. So $0 \ne u \in R_k \cap N_k$, a contradiction. Therefore $c_i, k_j = 0$ for all $i, j$, and $X \cup Y$ forms a basis for $\mathbb{C}^n$. Thus $R_k \oplus N_k = \mathbb{C}^n$.
 \end{proof}
+\begin{question}[5]
+Let $G = \begin{pmatrix}
+B & 0 \\
+0 & C
+\end{pmatrix}$. Let $p(t)$ be a polynomial
+\\(a) Express $p(G)$ in terms of $B$, $C$.
+\\(b) Use Jordan Normal Form to deduce the Cayley-Hamilton theorem.
+\end{question}
+\begin{proof}
+(a) Observe that for a block diagonal matrix, $G^2 = \begin{pmatrix}
+B & 0 \\
+0 & C
+\end{pmatrix}^2 = \begin{pmatrix}
+B^2 & 0 \\
+0 & C^2
+\end{pmatrix}$.\\By induction, $G^k = \begin{pmatrix}
+B & 0 \\
+0 & C
+\end{pmatrix}^k = \begin{pmatrix}
+B^k & 0 \\
+0 & C^k
+\end{pmatrix}$. Thus,
+$$p(G) = c_0 + c_1 G + \ldots + c^k G^k + \ldots + c_n G^n = $$
+$$c_0 + c_1\begin{pmatrix}
+B & 0 \\
+0 & C
+\end{pmatrix} + \ldots + c_k \begin{pmatrix}
+B^k & 0 \\
+0 & C^k
+\end{pmatrix} + \ldots + c_n \begin{pmatrix}
+B^n & 0 \\
+0 & C^n
+\end{pmatrix} =$$
+$$\begin{pmatrix}
+c_0 + c_1 B + \ldots + c_k B^k + \ldots + c_n B^n & 0 \\
+0 & c_0 + c_1 C + \ldots + c_k C^k + \ldots + c_n C^n 
+\end{pmatrix} =$$
+$$\begin{pmatrix}
+p(B) & 0 \\
+0 & p(C)
+\end{pmatrix}$$
+\\(b) Let A be a matrix and let $p_A(t)$ be its characteristic polynomial. A is similar to it's Jordan Normal Form, $A \sim J$, where $J = \begin{pmatrix}
+J_1 & 0 & \ldots & 0\\
+0 & J_2 & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \ldots & J_k
+\end{pmatrix}$, $J_i$ are Jordan blocks. That is, $A = SJS^{-1}$ for some invertible $S$. By (a), suffices to prove $p_A(J_i) = 0$. Recall $p_A(t) = \prod_{j \le k} (t - \lambda_j)^{m_j}$, where $\lambda_j$ is the eigenvalue of the the Jordan block $J_j$. So $p_A(J_i) = \prod_{j \le k} (J_i - \lambda_j I)^{m_j} =0 $ because $(J_i - \lambda_i I)^{m_i} = 0$, since $m_i \ge d_i$, the index of the eigenvalue $\lambda_i$. This proves $p_A(J) = 0$. Now, $$(SJS^{-1})^n = (SJS^{-1}) \cdot (SJS^{-1}) \cdot \ldots \cdot (SJS^{-1}) = SJ^nS^{-1}$$ So,
+$$p_A(A) = p_A(SJS^{-1}) = c_0 + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
+$$c_0 + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
+$$c_0 + c_1 SJS^{-1} +c_2 SJ^2S^{-1} + \ldots + c_n SJ^nS^{-1} =$$
+$$S(c_0 + c_1 J +c_2 J^2 + \ldots + c_n J^n)S^{-1} =$$
+$$S \cdot p_A(J) \cdot S^{-1} = S \cdot 0 \cdot S^{-1} = 0$$
+\end{proof}
 
 \end{document}
