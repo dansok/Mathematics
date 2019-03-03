@@ -121,8 +121,8 @@ B & 0 \\
 B^k & 0 \\
 0 & C^k
 \end{pmatrix}$. Thus,
-$$p(G) = c_0 + c_1 G + \ldots + c^k G^k + \ldots + c_n G^n = $$
-$$c_0 + c_1\begin{pmatrix}
+$$p(G) = c_0I + c_1 G + \ldots + c^k G^k + \ldots + c_n G^n = $$
+$$c_0I + c_1\begin{pmatrix}
 B & 0 \\
 0 & C
 \end{pmatrix} + \ldots + c_k \begin{pmatrix}
@@ -133,8 +133,8 @@ B^n & 0 \\
 0 & C^n
 \end{pmatrix} =$$
 $$\begin{pmatrix}
-c_0 + c_1 B + \ldots + c_k B^k + \ldots + c_n B^n & 0 \\
-0 & c_0 + c_1 C + \ldots + c_k C^k + \ldots + c_n C^n 
+c_0I + c_1 B + \ldots + c_k B^k + \ldots + c_n B^n & 0 \\
+0 & c_0I + c_1 C + \ldots + c_k C^k + \ldots + c_n C^n 
 \end{pmatrix} =$$
 $$\begin{pmatrix}
 p(B) & 0 \\
@@ -146,10 +146,10 @@ J_1 & 0 & \ldots & 0\\
 \vdots & \vdots & \ddots & \vdots\\
 0 & 0 & \ldots & J_k
 \end{pmatrix}$, $J_i$ are Jordan blocks. That is, $A = SJS^{-1}$ for some invertible $S$. By (a), suffices to prove $p_A(J_i) = 0$. Recall $p_A(t) = \prod_{j \le k} (t - \lambda_j)^{m_j}$, where $\lambda_j$ is the eigenvalue of the the Jordan block $J_j$. So $p_A(J_i) = \prod_{j \le k} (J_i - \lambda_j I)^{m_j} =0 $, because $(J_i - \lambda_i I)^{m_i} = 0$, since $m_i \ge d_i$, the index of the eigenvalue $\lambda_i$. This proves $p_A(J) = 0$. Now, $$(SJS^{-1})^n = (SJS^{-1}) \cdot (SJS^{-1}) \cdot \ldots \cdot (SJS^{-1}) = SJ^nS^{-1}$$ \\ \\So,
-$$p_A(A) = p_A(SJS^{-1}) = c_0 + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
-$$c_0 + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
-$$c_0 + c_1 SJS^{-1} +c_2 SJ^2S^{-1} + \ldots + c_n SJ^nS^{-1} =$$
-$$S(c_0 + c_1 J +c_2 J^2 + \ldots + c_n J^n)S^{-1} =$$
+$$p_A(A) = p_A(SJS^{-1}) = c_0I + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
+$$c_0I + c_1 SJS^{-1} +c_2 (SJS^{-1})^2 + \ldots + c_n (SJS^{-1})^n =$$
+$$c_0I + c_1 SJS^{-1} +c_2 SJ^2S^{-1} + \ldots + c_n SJ^nS^{-1} =$$
+$$S(c_0I + c_1 J +c_2 J^2 + \ldots + c_n J^n)S^{-1} =$$
 $$S \cdot p_A(J) \cdot S^{-1} = S \cdot 0 \cdot S^{-1} = 0$$
 \end{proof}
 
