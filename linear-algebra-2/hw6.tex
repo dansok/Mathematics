@@ -1,1 +1,71 @@
 
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% put your name here, so we know who to give credit to %%
+Dan Sokolsky
+}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hw}{%%%%%%%%%%%%%%%%%%%%
+%% and which homework assignment is it? %%%%%%%%%
+%% put the correct number below              %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+6
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge Linear Algebra II\hfill Homework \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Homework \hw\qquad\hfill}
+
+%% If you want to define a new command, you can do it like this:
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+%% If you want to use a function like ''sin'' or ''cos'', you can do it like this
+%% (we probably won't have much use for this)
+% \DeclareMathOperator{\sin}{sin}   %% just an example (it's already defined)
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+Prove there exists a unique polynomial $q$ such that $A^{-1} = q(A)$.
+\end{question}
+\begin{proof}
+Suppose $A$ is invertible. Let $m_A(t) = \sum_{i = 0}^k c_i \cdot t^i$ be the minimal polynomial of $A$. Then,
+$$m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I = 0$$
+If $c_0 = 0$, then it follows
+$$A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I) = 0\ \ \ \ \ \ \ \ \ (1)$$
+Setting $s(A) = A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I$, we have $s(A) \ne 0$, since $\deg s < \deg m_A$. By $(1)$, $A$ can be column reduced to $0_{n \times n}$, implying $A$ is not invertible, a contradiction. So $c_0 \ne 0$. Now,
+$$0 = m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I $$
+$$\iff -c_0 I = A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I) = (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A\ \ \ \ \ \ \ \ \ (2)$$
+Set $$q(A) = -\frac{1}{c_0} s(A) = -\frac{1}{c_0} (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)$$
+By $(2)$, we see that
+$$q(A) \cdot A = I = A \cdot q(A)$$
+Thus $q(A) = A^{-1}$.
+\end{proof}
+
+\end{document}
