@@ -60,7 +60,7 @@ If $c_0 = 0$, then it follows
 $$A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I) = 0\ \ \ \ \ \ \ \ \ (1)$$
 Setting $s(A) = A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I$, we have $s(A) \ne 0$, since $\deg s < \deg m_A$. By $(1)$, $A$ can be column reduced to $0_{n \times n}$, implying $A$ is not invertible, a contradiction. So $c_0 \ne 0$. Now,
 $$0 = m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I $$
-$$\iff -c_0 I = A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I) = (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A\ \ \ \ \ \ \ \ \ (2)$$
+$$\iff (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A = -c_0 I = A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)\ \ \ \ \ \ \ \ \ (2)$$
 Set $$q(A) = -\frac{1}{c_0} s(A) = -\frac{1}{c_0} (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)$$
 By $(2)$, we see that
 $$q(A) \cdot A = I = A \cdot q(A)$$
