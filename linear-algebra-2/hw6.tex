@@ -68,10 +68,28 @@ Thus $q(A) = A^{-1}$.\\
 To prove uniqueness, let $p(t)$ be another polynomial such that $p(A) = A^{-1} = q(A)$. By contradiction, suppose $q(t) - p(t) \ne 0$, and WLOG, $\deg q \ge \deg p$. \\Define $h(t) = q(t) - p(t)$ and observe $h(A) = q(A) - p(A) = A^{-1} - A^{-1} = 0$, but $\deg h \le \deg q < \deg m_A$, a contradiction. Thus $q(t)$ is unique.
 \end{proof}
 \begin{question}[2]
-Let $A$ be $n \times n$ be diagonalizable with $k$ distinct eigenvalues $\{a_j\}_{1 \le j \le k}$. Let $p(t)$ be a polynomial that interpolates $f(t) = t^{-1}$ at $a_j$ with $\deg p = k$. Show that $p = q$ where $A^{-1} = q(A)$.
+Let $A$ be $n \times n$ be diagonalizable with $k$ distinct eigenvalues $\{a_j\}_{1 \le j \le k}$. Let $p(t)$ be a polynomial that interpolates $f(t) = t^{-1}$ at $a_j$ with $\deg p = k-1$. Show that $p = q$ where $A^{-1} = q(A)$.
 \end{question}
 \begin{proof}
-First, note $f(a_j) = \frac{1}{a_j}$. So, for $f$ to be well defined, and $p$ to interpolate it at $a_j$, we must have $a_j \ne 0$. Let A be diagonalizable and let J be it's Jordan Normal Form (J is a diagonal matrix in this case). Then $A = SJS^{-1}$. Recall, $\det A^{-1} = \frac{1}{\det A}$
+First, note $f(a_j) = \frac{1}{a_j}$. So for $f$ to be well defined, and $p$ to interpolate it at $a_j$, we must have $a_j \ne 0$. Let A be diagonalizable and let J be it's Jordan Normal Form (J is a diagonal matrix in this case). Then $A = SJS^{-1}$. Now,
+$$\det J^{-1} = \frac{1}{\det J} = \prod_{j=1}^k (\frac{1}{a_j})^{m_j}$$
+$m_j$ being the multiplicity of the eigenvalue $a_j$. So the eigenvalues of $J^{-1}$ are $\{\frac{1}{a_j}\}_{1 \le j \le k}$. Now, $f(a_j) = p(a_j) = \frac{1}{a_j}$, and
+$$p(J) = \begin{pmatrix}
+p(a_1) & \cdots & 0 & \cdots & 0 \\
+\vdots & \ddots & \vdots & \ddots  & 0 \\
+0 & \cdots & p(a_j) & \cdots & 0 \\
+\vdots & \ddots & \vdots & \ddots & 0 \\
+0 & \cdots & 0 & \cdots & p(a_k)
+\end{pmatrix} = \begin{pmatrix}
+\frac{1}{a_1} & \cdots & 0 & \cdots & 0 \\
+\vdots & \ddots & \vdots & \ddots  & 0 \\
+0 & \cdots & \frac{1}{a_j} & \cdots & 0 \\
+\vdots & \ddots & \vdots & \ddots & 0 \\
+0 & \cdots & 0 & \cdots & \frac{1}{a_k}
+\end{pmatrix} = J^{-1}$$
+Since by question $(1)$, the polynomial $q$ is unique, it follows that $p(t) = q(t)$ in the case of diagonal matrices. For the general case, observe --
+$$p(A) = p(SJS^{-1}) = S\cdot p(J)\cdot S^{-1} = S\cdot q(J)\cdot S^{-1} = q(SJS^{-1}) = q(A)$$
+where we have shown that for an arbitrary polynomial $r(SAS^{-1}) = S\cdot r(J)\cdot S^{-1}$ in homework $5$. Once again, by uniqueness of the polynomial $q$, we conclude $p(t) = q(t)$ in the general case.
 \end{proof}
 
 \end{document}
