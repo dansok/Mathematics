@@ -64,7 +64,14 @@ $$\iff (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A = -c_0 I = A(A^{k-1} + c_{k-
 Set $$q(A) = -\frac{1}{c_0} s(A) = -\frac{1}{c_0} (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)$$
 By $(2)$, we see that
 $$q(A) \cdot A = I = A \cdot q(A)$$
-Thus $q(A) = A^{-1}$.
+Thus $q(A) = A^{-1}$.\\
+To prove uniqueness, let $p(t)$ be another polynomial such that $p(A) = A^{-1} = q(A)$. By contradiction, suppose $q(t) - p(t) \ne 0$, and WLOG, $\deg q \ge \deg p$. \\Define $h(t) = q(t) - p(t)$ and observe $h(A) = q(A) - p(A) = A^{-1} - A^{-1} = 0$, but $\deg h \le \deg q < \deg m_A$, a contradiction. Thus $q(t)$ is unique.
+\end{proof}
+\begin{question}[2]
+Let $A$ be $n \times n$ be diagonalizable with $k$ distinct eigenvalues $\{a_j\}_{1 \le j \le k}$. Let $p(t)$ be a polynomial that interpolates $f(t) = t^{-1}$ at $a_j$ with $\deg p = k$. Show that $p = q$ where $A^{-1} = q(A)$.
+\end{question}
+\begin{proof}
+First, note $f(a_j) = \frac{1}{a_j}$. So, for $f$ to be well defined, and $p$ to interpolate it at $a_j$, we must have $a_j \ne 0$. Let A be diagonalizable and let J be it's Jordan Normal Form (J is a diagonal matrix in this case). Then $A = SJS^{-1}$. Recall, $\det A^{-1} = \frac{1}{\det A}$
 \end{proof}
 
 \end{document}
