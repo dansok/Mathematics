@@ -57,8 +57,8 @@ Prove there exists a unique polynomial $q$ such that $A^{-1} = q(A)$.
 Suppose $A$ is invertible. Let $m_A(t) = \sum_{i = 0}^k c_i \cdot t^i$ be the minimal polynomial of $A$. Then,
 $$m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I = 0$$
 If $c_0 = 0$, then it follows
-$$A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I) = 0\ \ \ \ \ \ \ \ \ (1)$$
-Setting $s(A) = A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I$, we have $s(A) \ne 0$, since $\deg s < \deg m_A$. By $(1)$, $A$ can be column reduced to $0_{n \times n}$, implying $A$ is not invertible, a contradiction. So $c_0 \ne 0$. Now,
+$$(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A = 0\ \ \ \ \ \ \ \ \ (1)$$
+Setting $s(A) = A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I$, we have $s(A) \ne 0$, since $\deg s < \deg m_A$. By $(1)$, $A$ can be row-reduced to $0_{n \times n}$, implying $A$ is not invertible, a contradiction. So $c_0 \ne 0$. Now,
 $$0 = m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I $$
 $$\iff (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A = -c_0 I = A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)\ \ \ \ \ \ \ \ \ (2)$$
 Set $$q(A) = -\frac{1}{c_0} s(A) = -\frac{1}{c_0} (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)$$
@@ -99,6 +99,14 @@ Thus,
 $$0 = m_A(A) = (-a)^nI + \sum_{k=1}^n \binom{n}{k} \cdot A^k \cdot (-a)^{n-k}$$
 $$\iff -(-a)^nI = A \cdot \sum_{k=0}^{n-1} \binom{n}{k+1} (-a)^{n-k-1} A^k$$
 $$\iff A^{-1} = \frac{-1}{(-a)^n} \cdot \sum_{k=0}^{n-1} \binom{n}{k+1} (-a)^{n-k-1} A^k = - \sum_{k=0}^{n-1} \binom{n}{k+1}(-a)^{-k-1} A^k$$
+\end{proof}
+\begin{question}[4]
+Let $X_0 = \frac{1}{4}I$. For $k > 0$, let $X_{k+1} = X_k(2I - AX_k)$.
+\\(a) Let $\epsilon_k = ||I - AX_k||$. Show $\epsilon_{k+1} = \epsilon_k^2$
+\\(b) What can you say of $X_k$ as a polynomial of $A$?
+\end{question}
+\begin{proof}
+(a)
 \end{proof}
 
 \end{document}
