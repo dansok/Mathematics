@@ -58,7 +58,7 @@ Suppose $A$ is invertible. Let $m_A(t) = \sum_{i = 0}^k c_i \cdot t^i$ be the mi
 $$m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I = 0$$
 If $c_0 = 0$, then it follows
 $$(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A = 0\ \ \ \ \ \ \ \ \ (1)$$
-Setting $s(A) = A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I$, we have $s(A) \ne 0$, since $\deg s < \deg m_A$. By $(1)$, $A$ can be row-reduced to $0_{n \times n}$, implying $A$ is not invertible, a contradiction. So $c_0 \ne 0$. Now,
+Setting $s(A) = A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I$, we have $s(A) \ne 0$, since $\deg s < \deg m_A$. \\By $(1)$, $A$ can be reduced to $0_{n \times n}$ by nontrivial row operations, implying $A$ is not invertible, a contradiction. So $c_0 \ne 0$. Now,
 $$0 = m_A(A) = A^k + c_{k-1} A^{k-1} + \ldots + c_1 A + c_0 I $$
 $$\iff (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)A = -c_0 I = A(A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)\ \ \ \ \ \ \ \ \ (2)$$
 Set $$q(A) = -\frac{1}{c_0} s(A) = -\frac{1}{c_0} (A^{k-1} + c_{k-1}A^{k-2} + \ldots + c_1 I)$$
@@ -102,11 +102,12 @@ $$\iff A^{-1} = \frac{-1}{(-a)^n} \cdot \sum_{k=0}^{n-1} \binom{n}{k+1} (-a)^{n-
 \end{proof}
 \begin{question}[4]
 Let $X_0 = \frac{1}{4}I$. For $k > 0$, let $X_{k+1} = X_k(2I - AX_k)$.
-\\(a) Let $\epsilon_k = ||I - AX_k||$. Show $\epsilon_{k+1} = \epsilon_k^2$
+\\(a) Let $\epsilon_k = ||I - AX_k||$. Show $\epsilon_{k+1} \le \epsilon_k^2$
 \\(b) What can you say of $X_k$ as a polynomial of $A$?
 \end{question}
 \begin{proof}
-(a)
+(a) $\epsilon_{k+1} = ||I - AX_{k+1}|| = ||I - AX_k(2I-AX_k)|| = ||I - 2AX_k + (AX_k)^2|| = ||(I - AX_k)^2|| \le ||I - AX_k||^2 = \epsilon_k^2$.
+\\(b) $X_k$ grows exponentially as a polynomial of $A$, both in degree, and in the number of terms. We see That $X_0 = \frac{1}{4}I = O(I)$, $X_1 = \frac{1}{2}I - \frac{1}{16}A = O(A)$, \\$X_2 = -A^3/256 + A^2/16 - (3 A)/8 + I = O(A^3)$, \\$X_3 = -A^7/65536 + A^6/2048 - (7 A^5)/1024 + (7 A^4)/128 - (35 A^3)/128 + (7 A^2)/8 - (7 A)/4 + 2I = O(A^7)$, \\$X_4 = O(A^{15})$. In general, $X_k = O(A^{2^k-1})$, and we also see that at each step the number of terms at least doubles, yielding exponential growth in terms as well.
 \end{proof}
 
 \end{document}
