@@ -89,5 +89,16 @@ Since by question $(1)$ the polynomial $q(t)$ is unique, it follows that $p(t) =
 $$p(A) = p(SJS^{-1}) = S\cdot p(J)\cdot S^{-1} = S\cdot q(J)\cdot S^{-1} = q(SJS^{-1}) = q(A)$$
 where we have shown that for an arbitrary polynomial $r(SAS^{-1}) = S\cdot r(J)\cdot S^{-1}$ in homework $5$. Once again, by uniqueness of the polynomial $q(t)$, we conclude $p(t) = q(t)$ in the general case.
 \end{proof}
+\begin{question}[3]
+Let $A$ be a super-diagonal $n \times n$ Jordan block, $n > 3$, with eigenvalue $a \ne 0$. Give a constructive algorithm to find $A^{-1}$.
+\end{question}
+\begin{proof}
+We use the algorithm outlined in question $(1)$.
+$$m_A(t) = (t-a)^n = \sum_{k=0}^n \binom{n}{k} \cdot t^k \cdot (-a)^{n-k} = (-a)^n + \sum_{k=1}^n \binom{n}{k} \cdot t^k \cdot (-a)^{n-k}$$
+Thus,
+$$0 = m_A(A) = (-a)^nI + \sum_{k=1}^n \binom{n}{k} \cdot A^k \cdot (-a)^{n-k}$$
+$$\iff -(-a)^nI = A \cdot \sum_{k=0}^{n-1} \binom{n}{k+1} (-a)^{n-k-1} A^k$$
+$$\iff A^{-1} = \frac{-1}{(-a)^n} \cdot \sum_{k=0}^{n-1} \binom{n}{k+1} (-a)^{n-k-1} A^k = - \sum_{k=0}^{n-1} \binom{n}{k+1}(-a)^{-k-1} A^k$$
+\end{proof}
 
 \end{document}
