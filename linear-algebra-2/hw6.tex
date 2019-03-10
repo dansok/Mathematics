@@ -109,5 +109,15 @@ Let $X_0 = \frac{1}{4}I$. For $k > 0$, let $X_{k+1} = X_k(2I - AX_k)$.
 (a) $\epsilon_{k+1} = ||I - AX_{k+1}|| = ||I - AX_k(2I-AX_k)|| = ||I - 2AX_k + (AX_k)^2|| = ||(I - AX_k)^2|| \le ||I - AX_k||^2 = \epsilon_k^2$.
 \\(b) $X_k$ grows exponentially as a polynomial of $A$, both in degree, and in the number of terms. We see That $X_0 = \frac{1}{4}I = O(I)$, $X_1 = \frac{1}{2}I - \frac{1}{16}A = O(A)$, \\$X_2 = -A^3/256 + A^2/16 - (3 A)/8 + I = O(A^3)$, \\$X_3 = -A^7/65536 + A^6/2048 - (7 A^5)/1024 + (7 A^4)/128 - (35 A^3)/128 + (7 A^2)/8 - (7 A)/4 + 2I = O(A^7)$, \\$X_4 = O(A^{15})$. In general, $X_k = O(A^{2^k-1})$, and we also see that at each step the number of terms at least doubles, yielding exponential growth in terms as well.
 \end{proof}
+\begin{question}[5]
+Let $(a_0, x_0)$ be an eigen-pair of $A$. Let $x \ne 0$ be closest to $x_0$ of all the eigenvectors. Let $\delta = ||x - x_0||$
+\\(a) Solve the least squares problem $a = \arg\min_\lambda ||Ax - x
+\lambda||^2$.
+\end{question}
+\begin{proof}
+(a) We claim $a = \dfrac{x^*Ax}{x^*x}$ and proceed to verify equation $(25)$ holds, for which the solution is unique. Substituting $x$ as our matrix, and $Ax$ as our vector $p$,
+$$x^*x \cdot a = x^*x \cdot \dfrac{x^*Ax}{x^*x} = x^*Ax$$
+as required. Thus $a$ is the unique solution to equation $(25)$, and is the desired approximate eigenvalue.
+\end{proof}
 
 \end{document}
