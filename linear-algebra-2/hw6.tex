@@ -108,7 +108,7 @@ Let $X_0 = \frac{1}{4}I$. For $k > 0$, let $X_{k+1} = X_k(2I - AX_k)$.
 \begin{proof}
 (a) $$\epsilon_{k+1} = ||I - AX_{k+1}|| = ||I - AX_k(2I-AX_k)|| = ||I - 2AX_k + (AX_k)^2||$$ $$= ||(I - AX_k)^2|| \le ||I - AX_k||^2 = \epsilon_k^2$$
 I.e. $\epsilon_{k+1} = O(\epsilon_k^2)$. This suffices to prove quadratic rate of convergence.
-\\$\epsilon_{k+1} \not\ge \epsilon_k^2$ in general. Observe, $$\epsilon_0 = ||I - AX_0|| = ||I - \frac{1}{4}A||$$and$$\epsilon_1 = ||I - AX_1|| = ||I - \frac{1}{2}A + \frac{1}{16}A^2|| = ||(I - \frac{1}{4}A)^2||$$
+\\$\epsilon_{k+1} \ne \epsilon_k^2$ in general. Observe, $$\epsilon_0 = ||I - AX_0|| = ||I - \frac{1}{4}A||$$and$$\epsilon_1 = ||I - AX_1|| = ||I - \frac{1}{2}A + \frac{1}{16}A^2|| = ||(I - \frac{1}{4}A)^2||$$
 Taking $A = 4I - 4 \begin{pmatrix}
 0 & 2 \\
 1 & 3
