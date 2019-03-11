@@ -115,6 +115,9 @@ Taking $A = 4I - 4 \begin{pmatrix}
 \end{pmatrix}$, we have $B := I - \frac{1}{4}A = \begin{pmatrix}
 0 & 2 \\
 1 & 3
+\end{pmatrix}$. The matrix $A$ is invertible, with $A^{-1} = \frac{1}{16}\begin{pmatrix}
+2 & -2 \\
+-1 & -1
 \end{pmatrix}$.
 \\Thus, by Wolfram, $$\epsilon_0^2 = ||B||^2 = 7 + 3\sqrt{5} \approx 13.7082 > 13.0348 \approx \frac{9 + \sqrt{89}}{\sqrt{2}} = ||B^2|| = \epsilon_1$$
 \\(b) $X_k$ grows exponentially as a polynomial of $A$, both in degree, and in the number of terms. We see That $X_0 = \frac{1}{4}I = O(I)$, $X_1 = \frac{1}{2}I - \frac{1}{16}A = O(A)$, \\$X_2 = -A^3/256 + A^2/16 - (3 A)/8 + I = O(A^3)$, \\$X_3 = -A^7/65536 + A^6/2048 - (7 A^5)/1024 + (7 A^4)/128 - (35 A^3)/128 + (7 A^2)/8 - (7 A)/4 + 2I = O(A^7)$, \\$X_4 = O(A^{15})$. In general, $X_k = O(A^{2^k-1})$, and we also see that at each step the number of terms at least doubles, yielding exponential growth in terms as well.
