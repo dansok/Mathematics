@@ -1,1 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% put your name here, so we know who to give credit to %%
+Dan Sokolsky
+}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hw}{%%%%%%%%%%%%%%%%%%%%
+%% and which homework assignment is it? %%%%%%%%%
+%% put the correct number below              %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+7
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge Linear Algebra II\hfill Homework \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Homework \hw\qquad\hfill}
 
+%% If you want to define a new command, you can do it like this:
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+%% If you want to use a function like ''sin'' or ''cos'', you can do it like this
+%% (we probably won't have much use for this)
+% \DeclareMathOperator{\sin}{sin}   %% just an example (it's already defined)
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+(a) Let $f(x) = ||x||$. Prove $f$ is continuous with respect to $d(x,y) = ||x-y||$.
+\\(b) Let $f: \mathcal{L}(X, U) \rightarrow \mathbb{R}$ be defined by $f(A) = ||A||$. Prove $f$ is continuous with respect to $d(A, B) = ||A-B||$.
+\\(c) Prove $f$ defined in $(a)$ is continuous with respect to $d(x,y) = \max_j |x_j - y_j|$.
+\\(d) Prove $f$ defined in $(b)$ is continuous with respect to $d(A, B) = \max_{i,j} |A_{i,j}-B_{i,j}|$.
+\end{question}
+\begin{proof}
+We prove the reverse triangle inequality using the standard triangle inequality for an arbitrary norm first -- $$||y|| = ||x + (y-x)|| \le ||x|| + ||y-x|| \iff ||y|| - ||x|| \le ||y-x|| = ||x-y||$$
+Likewise, $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||x|| - ||y|| \le ||x-y||$
+\\Together, $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ||x|| - ||y||\ | \le ||x-y||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (7.1)$
+\\For the first two sections suffices to verify the standard triangle inequality applies, whence $(7.1)$ holds, and continuity follows.
+\\$\textbf{(a)}\ ||x-y|| \le \epsilon \implies |f(x)-f(y)| = |\ ||x|| - ||y||\ | \le ||x-y|| \le \epsilon$.
+\\$\textbf{(b)}$ By Theorem $(14)(ii)$ in chapter $7$, $||A + B|| \le ||A|| + ||B||$.
+\\Thus, $||A-B|| \le \epsilon \implies |f(A)-f(B)| = |\ ||A||-||B||\ | \le ||A-B|| \le \epsilon$
+\\$\textbf{(c)}$ Let $i$ be such that $|x_i - y_i| = \max_j |x_j - y_j|$. Let $k, \ell$ be such that $|x_k| = \max_j|x_j|,\\|y_\ell| = \max_j|y_j|$, and WLOG suppose $|x_k| \ge |y_\ell|$. Suppose $|x_i - y_i| = \max_j |x_j - y_j| \le \epsilon$. Then, $$|f(x)-f(y)| = |\ |x_k| - |y_\ell| \ | = |x_k| - |y_\ell| \le |x_k| - |y_k|  = |\ |x_k| - |y_k| \ | \le |x_k - y_k| \le |x_i - y_i| \le \epsilon$$
+\\$\textbf{(d)}$
+\end{proof}
+
+\end{document}
