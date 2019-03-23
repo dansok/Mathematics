@@ -155,6 +155,10 @@ $$||Ax||^2 = \langle Ax, Ax \rangle = \langle x, A^*Ax \rangle \le ||x|| \cdot |
 by the Schwarz inequality. Since $x$ is arbitrary,
 $$||A||^2 = \sup_{||v||=1} ||Av||^2 \le ||A^*A||$$
 Thus $||A^*A|| = ||A||^2$.
+\\$\mathbf{(b)}$ By Theorem $12$, $||Q(Ax)|| = ||Ax||$, and $P$ (and $Q$) is invertible. Let $E = \{ x \in X : ||x|| = 1 \}$. Let $F = P^{-1}(E)$. Since $P$ is invertible, $P(F) = P(P^{-1}(E)) = E$. Thus $E$ and $F$ are in $1-1$ correspondence under $P$. We claim $E = F$. Suffices to show $y \in F \implies ||y|| = 1$. That is, $y \in E$. To this end, for $y \in F$, $Py \in E$, and $||y|| = ||Py|| = 1$ by definition of $E$. Thus,
+$$||QA|| = \sup_{x \in E} ||QAx|| = \sup_{x \in E} ||Ax|| = ||A||$$
+and,
+$$||A|| = \sup_{||x|| = 1}||Ax|| = \sup_{x \in E}||Ax|| = \sup_{y \in F}||APy|| = \sup_{||y|| = 1}||APy|| = ||AP||$$
 \end{proof}
 
 \end{document}
