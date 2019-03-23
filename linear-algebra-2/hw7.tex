@@ -164,5 +164,19 @@ Since $A$ is nonsingular, $A(\mathbb{C}^n \setminus \{0\}) = \mathbb{C}^n \setmi
 $$\sup_{x \in \mathbb{C}^n \setminus \{0\}} \dfrac{||A^{-1}(Ax)||}{||Ax||} = \sup_{y \in \mathbb{C}^n \setminus \{0\}} \dfrac{||A^{-1}y||}{||y||} = ||A^{-1}||$$
 $$\iff \dfrac{1}{\inf_{||x||=1} ||Ax||} \le ||A^{-1}|| \iff \inf_{||x||=1} ||Ax|| \ge \dfrac{1}{||A^{-1}||}$$
 \end{proof}
+\begin{question}[4]
+Let $A^* = A$.
+\\(a) Show $(a,x),\ (b, y)$ distinct eigenpairs with $a \ne b$ $\implies $ $x$ and $y$ are orthogonal.
+\\(b) $||A|| = max_j |a_j|$ over distinct eigenvalues $a_j$.
+\end{question}
+\begin{proof}$\mathbf{(a)}$ $$ax^*y = (ay^*x)^* = (y^*ax)^* = (y^*Ax)^* = x^*A^*y = x^*Ay = x^*by = bx^*y$$
+$$\iff (a-b)x^*y = ax^*y - bx^*y = 0 \iff \langle x, y \rangle = x^*y = 0$$
+since $a-b \ne 0$
+\\$\mathbf{(b)}\ A = SJS^*$ where $J$ is diagonal and made up of the eigenvalues, and $S$ is unitary. In particular, $S,\ S^*$ are isometric. By question $(3)(b)$, $||A|| = ||SJS^*|| = ||J||$. Let $\lambda = max_j |a_j|$. Let $x$ be a \textbf{unit eigenvector} corresponding to $\lambda$. Then,
+$$||J|| = \sup_{||y||=1}||Jy|| \ge ||Jx|| = \lambda \cdot ||x||  = \lambda$$
+On the other hand, Since $J$ is a block diagonal matrix made up of $1 \times 1$ Jordan blocks made up of the eigenvalues, by problem $(2)(a)$,
+$$||J|| \le \max_j|a_j| = \lambda$$
+Therefore, $||A|| = ||J|| = \lambda = \max_j|a_j|$.
+\end{proof}
 
 \end{document}
