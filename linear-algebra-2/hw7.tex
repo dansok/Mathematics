@@ -178,5 +178,12 @@ On the other hand, Since $J$ is a block diagonal matrix made up of $1 \times 1$ 
 $$||J|| \le \max_j|a_j| = \lambda$$
 Therefore, $||A|| = ||J|| = \lambda = \max_j|a_j|$.
 \end{proof}
+\begin{question}[5]
+Let $Y \subseteq X$ be a linear subspace. Given $x \in X, y \in Y$ solves $\min_{z \in Y} ||x-z||$, it follows that $\langle x-y, w \rangle = 0$ for all unit vectors $w \in Y$.
+\end{question}
+\begin{proof}
+By equation $(4)$ on page $78$ and the corresponding discussion, $|| \cdot ||$ and $\langle \cdot, \cdot \rangle$ are geometric quantities, and are therefore independent of the choice of basis. Therefore, WLOG, we choose an orthonormal basis $\beta$ for X (one such basis can always be constructed from an arbitrary one by Gram-Schmidt). $\beta = \{y_1, \ldots, y_k, x_1, \ldots, x_{n-k}\}$, where $\{y_i\}_{i \le k}$ is a basis for $Y$. Thus by Theorem $8$, under the basis $\beta,\\ \min_{z \in Y} ||x-z|| = y = P_Y x$, the orthogonal projection of $x$ onto $Y$. Thus
+\\$x = y + y^{\perp} \iff x-y = y^{\perp}$. Thus for any $w \in Y$ $\mathbf{-}$ in particular, for $||w|| = 1$ $\mathbf{-}$ $\langle x-y, w \rangle = \langle y^{\perp}, w \rangle = 0$.
+\end{proof}
 
 \end{document}
