@@ -104,7 +104,7 @@ A\ |\ \mathit{b}
 \mathit{b}_1 \\
 \vdots \\
 \mathit{b}_m
-\end{pmatrix}$. Then,
+\end{pmatrix}$. Denote by $A_i$ the $i^{th}$ row vector of $A$. Then,
 $$||Ax||^2 = (A_1 \cdot x)^2 + \ldots + (A_m \cdot x)^2 = (A_1 \cdot x)^2 + \ldots + (A_m \cdot x)^2 + (\mathit{b} \cdot 0)^2$$
 $$= ||Bx'||^2 \le ||B||^2||x'||^2 = ||B||^2 \iff ||Ax|| \le ||B||$$
 Since $x$ is an arbitrary unit vector,
@@ -141,6 +141,20 @@ Thus,
 $$||J_1 \cdot x||^2 = ||J_2 \cdot x'||^2 \iff ||J_1 \cdot x|| = ||J_2 \cdot x'|| \le ||J_2|| \cdot ||x'|| = ||J_2||$$
 Since $x$ is arbitrary,
 $$||J_1|| = \sup_{||v|| = 1}||J_1 \cdot v|| \le ||J_2||$$
+\end{proof}
+\begin{question}[3]
+Let $A: X \rightarrow U$. Let $Q: U \rightarrow U,\ P: X \rightarrow X$ be isometries.
+\\(a) Prove $||A^*A|| = ||A||^2$
+\\(b) Prove $||QA|| = ||A|| = ||AP||$
+\\(c) Prove $A$ is invertible $\implies min_{||x||=1} ||Ax|| \ge ||A^{-1}||^{-1}$
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ By Theorem $14,\ ||A^*A|| \le ||A^*|| \cdot ||A|| = ||A|| \cdot ||A|| = ||A||^2$.
+Conversely, Let $x$ be a unit vector. Then 
+$$||Ax||^2 = \langle Ax, Ax \rangle = \langle x, A^*Ax \rangle \le ||x|| \cdot ||A^*Ax|| = ||A^*Ax|| \le ||A^*A|| \cdot ||x|| = ||A^*A||$$
+by the Schwarz inequality. Since $x$ is arbitrary,
+$$||A||^2 = \sup_{||v||=1} ||Av||^2 \le ||A^*A||$$
+Thus $||A^*A|| = ||A||^2$.
 \end{proof}
 
 \end{document}
