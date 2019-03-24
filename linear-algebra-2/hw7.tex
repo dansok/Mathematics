@@ -197,8 +197,9 @@ where $U^{1,1}, V^{1,1}$ leave the norm invariant as isometries according to que
 $$nullity(B) + rank(V_{\{1,2\}}) = n - 1 + 2 = n+1$$
 where $V_{\{1,2\}}=[v_1, v_2]$ is the matrix of the first $2$ columns of $V$ associated with $\sigma_1, \sigma_2$; hence we can find
 $$x \in Null(B) \cap Range(V_{\{1,2\}}),\ \ \ \ ||x|| = 1$$
-Hence,
-$$||A-B||^2 \ge ||(A-B)x||^2 = ||Ax||^2  = \sum_{i=1}^2 \sigma_i^2 ||v_i^T x||^2 \ge \sigma_2^2 \sum_{i=1}^2||v_i^T x||^2 = \sigma_2^2$$
+$V_{1,2}^T$ is once again an isometry. Thus it preserves $||x||$. Hence,
+$$||A-B||^2 \ge ||(A-B)x||^2 = ||Ax||^2  = \sum_{i=1}^2 \sigma_i^2 ||v_i^T x||^2$$
+$$\ge \sigma_2^2 \sum_{i=1}^2||v_i^T x||^2 = \sigma_2^2 ||V_{1,2}^Tx||^2 = \sigma_2^2 ||x||^2 = \sigma_2^2$$
 $$\iff ||A-B|| \ge \sigma_2$$
 Thus $A_1 = \sigma_1 u_1 v_1^T$ solves $ \min_{\{rank(R) = 1\}}||A-R||$.
 \end{proof}
