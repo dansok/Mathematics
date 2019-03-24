@@ -185,5 +185,22 @@ Let $Y \subseteq X$ be a linear subspace. Given $x \in X, y \in Y$ solves $\min_
 By equation $(4)$ on page $78$ and the corresponding discussion, $|| \cdot ||$ and $\langle \cdot, \cdot \rangle$ are geometric quantities, and are therefore independent of the choice of basis. Therefore, WLOG, we choose an orthonormal basis $\beta$ for X (one such basis can always be constructed from an arbitrary one by Gram-Schmidt). $\beta = \{y_1, \ldots, y_k, x_1, \ldots, x_{n-k}\}$, where $\{y_i\}_{i \le k}$ is a basis for $Y$. Thus by Theorem $8$, under the basis $\beta,\\ \min_{z \in Y} ||x-z|| = y = P_Y x$, the orthogonal projection of $x$ onto $Y$. Thus
 \\$x = y + y^{\perp} \iff x-y = y^{\perp}$. Thus for any $w \in Y$ $\mathbf{-}$ in particular, for $||w|| = 1$ $\mathbf{-}$ $\langle x-y, w \rangle = \langle y^{\perp}, w \rangle = 0$.
 \end{proof}
+\begin{question}[6]
+Let A be a $m \times n$ real matrix. Find necessary conditions under which you could approximate $A$ by a rank-1 matrix $R:\ A_1 = \min_{\{rank(R) = 1\}}||A-R||$.
+\end{question}
+\begin{proof}
+We require the Singular Value Decomposition of $A$. To that end, $A$ must be positive semidefinite. I.e. $x^TAx > 0$ for any $x \in \mathbb{R}^n$. WLOG, suppose $n \le m$. Let $A = U \Sigma V^T$, where $U$ is $m \times m$ and it's column vectors, $\{u_i\}$, are the orthonormal eigenvectors of $AA^T$, $V$ is $n \times n$ and it's column vectors, $\{v_i\}$, are the orthonormal eigenvectors of $A^TA$. $\Sigma$ is $m \times n$ and the non-zero singular values of $A,\ \{\sigma_i\}$ are found on the diagonal entries of $\Sigma$ in descending order. I.e., $\sigma_1 \ge \sigma_2 \ge \ldots \ge \sigma_n$. $\{\sigma_i\}$ are the square roots of the non-zero eigenvalues of both $A^TA$ and $AA^T$, all of which are nonnegative. $U$ and $V$ are both isometric as orthogonal matrices. Define $A_i = \sigma_i u_iv_i^T$, where $u_i$, $v_i$ are the $i^{th}$ columns of $U,\ V$, respectively. Then $rank(A_i) = 1$ and we can write $A = \sum_{i = 1}^n \sigma_i u_iv_i^T = \sum_{i = 1}^n A_i$. Denote by $M^{i,j}$ the $(i, j)^{th}$ minor of the matrix $M$ (row $i$, column $j$ removed), and notice that $U^{i,j}, V^{i,j}$ are still orthogonal, thus isometric. Now,
+$$||A - A_1||^2 = ||\sum_{i=2}^n A_i||^2 = ||\sum_{i=2}^n \sigma_i u_i v_i^T||^2 = ||U^{1,1} \cdot \Sigma^{1,1} \cdot (V^{1,1})^T||^2 = ||\Sigma^{1,1}||^2 = \sigma_2^2$$
+$$\iff ||A - A_1|| = \sigma_2$$
+where $U^{1,1}, V^{1,1}$ leave the norm invariant as isometries according to question $(3)(b)$, and taking $E$ as the largest upper-left square submatrix of $\Sigma^{1,1}$, $E$ is diagonal with $E_{i,i} = \sigma_{i+1}$ and $E_{i,j} = 0$ for $i \ne j$. E is symmetric, i.e., $E^T=E$, and therefore by question $(4)(b)$, $||E|| = max_{\{2 \le j \le n\}} \sigma_j = \sigma_2$. Adding $0-$columns to $E$ doesn't increase the norm, therefore $||\Sigma^{1,1}||=||E|| = \sigma_2$.
+\\Consider any other $m \times n$ matrix $B$ such that $rank(B) = 1$. Then $nullity(B) = n-1$. From
+$$nullity(B) + rank(V_{\{1,2\}}) = n - 1 + 2 = n+1$$
+where $V_{\{1,2\}}=[v_1, v_2]$ is the matrix of the first $2$ columns of $V$ associated with $\sigma_1, \sigma_2$; hence we can find
+$$x \in Null(B) \cap Range(V_{\{1,2\}}),\ \ \ \ ||x|| = 1$$
+Hence,
+$$||A-B||^2 \ge ||(A-B)x||^2 = ||Ax||^2  = \sum_{i=1}^2 \sigma_i^2 ||v_i^T x||^2 \ge \sigma_2^2 \sum_{i=1}^2||v_i^T x||^2 = \sigma_2^2$$
+$$\iff ||A-B|| \ge \sigma_2$$
+Thus $A_1 = \sigma_1 u_1 v_1^T$ solves $ \min_{\{rank(R) = 1\}}||A-R||$.
+\end{proof}
 
 \end{document}
