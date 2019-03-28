@@ -56,8 +56,8 @@ Dan Sokolsky
 \end{question}
 \begin{proof}
 $\mathbf{(a)}$ Observe that the $i^{th}$ row of $B^T$ is the $i^{th}$ column of $B$. Further observe $B^TA$ is $n \times n$. Denote by $a_j,\ b_j$ the $j^{th}$ columns of $A, B$, respectively.
-\\Thus, $(B^TA)_{i,j} = \langle a_i, b_j \rangle$. Therefore,
-$$tr(B^TA) = \sum_{j=1}^n \langle a_j, b_j \rangle = \sum_{i=1}^m \sum_{j=1}^n A_{i, j} \cdot B_{i, j} = \langle vec(A), vec(B)\rangle$$
+\\Thus, $(B^TA)_{i j} = \langle a_i, b_j \rangle$. Therefore,
+$$tr(B^TA) = \sum_{j=1}^n \langle a_j, b_j \rangle = \sum_{i=1}^m \sum_{j=1}^n A_{i j} \cdot B_{i j} = \langle vec(A), vec(B)\rangle$$
 \\$\mathbf{(b)}$
 $$||A+B||_F = ||vec(A+B)||_2 = ||vec(A) + vec(B)||_2$$ $$\le ||vec(A)||_2 + ||vec(B)||_2 = ||A||_F + ||B||_F$$
 \end{proof}
@@ -66,7 +66,7 @@ $$||A+B||_F = ||vec(A+B)||_2 = ||vec(A) + vec(B)||_2$$ $$\le ||vec(A)||_2 + ||ve
 \\(b) Let $A$ be $m \times k$. Let $B$ be $k \times n$. Prove $||AB||_F \le ||A||_F||B||_F$
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Let $a_j$ denote the $j^{th}$ column of $A$. As before, the $i^{th}$ row of $A^T$ is the $i^{th}$ column of $A$. Thus, $(A^TA)_{i,j} = \langle a_i, a_j \rangle$. Thus,
+$\mathbf{(a)}$ Let $a_j$ denote the $j^{th}$ column of $A$. As before, the $i^{th}$ row of $A^T$ is the $i^{th}$ column of $A$. Thus, $(A^TA)_{i j} = \langle a_i, a_j \rangle$. Thus,
 $$||A^TA||_F = \sqrt{\sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2} \le \sqrt{\sum_{1 \le i,j \le n} ||a_i||^2 \cdot ||a_j||^2} = $$ $$\sqrt{\sum_{i=1}^n \sum_{j=1}^n ||a_i||^2 \cdot ||a_j||^2} = \sqrt{\sum_{i=1}^n ||a_i||^2 \cdot \sum_{j=1}^n  ||a_j||^2} = ||A||_F \cdot ||A||_F = ||A||_F^2$$
 \\$\mathbf{(b)}$ First we note
 $$||BB^T||_F^2 = tr((BB^T)^TBB^T) = tr(BB^TBB^T) =$$
