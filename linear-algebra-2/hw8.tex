@@ -68,7 +68,14 @@ $$||A+B||_F = ||vec(A+B)||_2 = ||vec(A) + vec(B)||_2$$ $$\le ||vec(A)||_2 + ||ve
 \begin{proof}
 $\mathbf{(a)}$ Let $a_j$ denote the $j^{th}$ column of $A$. As before, the $i^{th}$ row of $A^T$ is the $i^{th}$ column of $A$. Thus, $(A^TA)_{i,j} = \langle a_i, a_j \rangle$. Thus,
 $$||A^TA||_F = \sqrt{\sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2} \le \sqrt{\sum_{1 \le i,j \le n} ||a_i||^2 \cdot ||a_j||^2} = $$ $$\sqrt{\sum_{i=1}^n \sum_{j=1}^n ||a_i||^2 \cdot ||a_j||^2} = \sqrt{\sum_{i=1}^n ||a_i||^2 \cdot \sum_{j=1}^n  ||a_j||^2} = ||A||_F \cdot ||A||_F = ||A||_F^2$$
-\\$\mathbf{(b)}$
+\\$\mathbf{(b)}$ First we note
+$$||BB^T||_F^2 = tr((BB^T)^TBB^T) = tr(BB^TBB^T) =$$
+$$tr(B^TBB^TB) = tr((B^TB)^T(B^TB)) = ||B^TB||_F^2$$
+$\iff ||BB^T||_F = ||B^TB||_F$. Then,
+$$||AB||_F^2 = tr((AB)^T(AB)) = tr(B^T A^T A B) = tr((BB^T)^T(A^TA))$$
+$$= \langle vec(BB^T), vec(A^TA) \rangle \le ||vec(BB^T)||_2 \cdot ||vec(A^TA)||_2 = $$
+$$||BB^T||_F \cdot ||A^TA||_F = ||B^TB||_F \cdot ||A^TA||_F \le ||B||_F^2 \cdot ||A||_F^2$$
+$\iff ||AB||_F \le ||A||_F \cdot ||B||_F$
 \end{proof}
 
 \end{document}
