@@ -1,1 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm, mathrsfs}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% put your name here, so we know who to give credit to %%
+Dan Sokolsky
+}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hw}{%%%%%%%%%%%%%%%%%%%%
+%% and which homework assignment is it? %%%%%%%%%
+%% put the correct number below              %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+8
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge Linear Algebra II\hfill Homework \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Homework \hw\qquad\hfill}
 
+%% If you want to define a new command, you can do it like this:
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+%% If you want to use a function like ''sin'' or ''cos'', you can do it like this
+%% (we probably won't have much use for this)
+% \DeclareMathOperator{\sin}{sin}   %% just an example (it's already defined)
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+(a) Let $A, B \in \mathbb{R}^{m \times n}$. Prove $B^TA = vec(A) \cdot vec(B)$.
+\\(b) Prove $||A + B||_F \le ||A||_F + ||B||_F$
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ Observe that the $i^{th}$ row of $B^T$ is the $i^{th}$ column of $B$. Further observe $B^TA$ is $n \times n$. Denote by $a_j,\ b_j$ the $j^{th}$ columns of $A, B$, respectively.
+\\Thus, $(B^TA)_{i,j} = \langle a_i, b_j \rangle$. Therefore,
+$$tr(B^TA) = \sum_{j=1}^n \langle a_j, b_j \rangle = \sum_{i=1}^m \sum_{j=1}^n A_{i, j} \cdot B_{i, j} = \langle vec(A), vec(B)\rangle$$
+\\$\mathbf{(b)}$
+$$||A+B||_F = ||vec(A+B)||_2 = ||vec(A) + vec(B)||_2$$ $$\le ||vec(A)||_2 + ||vec(B)||_2 = ||A||_F + ||B||_F$$
+\end{proof}
+\begin{question}[2]
+(a) Prove $||A^TA||_F \le ||A||_F^2$
+\\(b)
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ Let $a_j$ denote the $j^{th}$ column of $A$. As before, the $i^{th}$ row of $A^T$ is the $i^{th}$ column of $A$. Thus, $(A^TA)_{i,j} = \langle a_i, a_j \rangle$. Thus,
+$$||A^TA||_F = \sqrt{\sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2} \le \sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2 \le \sum_{1 \le i,j \le n} ||a_i||^2 \cdot ||a_j||^2 = $$ 
+$$\sum_{i=1}^n \sum_{j=1}^n ||a_i||^2 \cdot ||a_j||^2 =\sum_{i=1}^n ||a_i||^2 \cdot \sum_{j=1}^n  ||a_j||^2 = \sum_{i=1}^n ||a_i||^2 \cdot ||A||_F = ||A||_F \cdot ||A||_F = ||A||_F^2$$
+\\$\mathbf{(b)}$
+\end{proof}
+
+\end{document}
