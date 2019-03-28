@@ -63,12 +63,11 @@ $$||A+B||_F = ||vec(A+B)||_2 = ||vec(A) + vec(B)||_2$$ $$\le ||vec(A)||_2 + ||ve
 \end{proof}
 \begin{question}[2]
 (a) Prove $||A^TA||_F \le ||A||_F^2$
-\\(b)
+\\(b) Let $A$ be $m \times k$. Let $B$ be $k \times n$. Prove $||AB||_F \le ||A||_F||B||_F$
 \end{question}
 \begin{proof}
 $\mathbf{(a)}$ Let $a_j$ denote the $j^{th}$ column of $A$. As before, the $i^{th}$ row of $A^T$ is the $i^{th}$ column of $A$. Thus, $(A^TA)_{i,j} = \langle a_i, a_j \rangle$. Thus,
-$$||A^TA||_F = \sqrt{\sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2} \le \sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2 \le \sum_{1 \le i,j \le n} ||a_i||^2 \cdot ||a_j||^2 = $$ 
-$$\sum_{i=1}^n \sum_{j=1}^n ||a_i||^2 \cdot ||a_j||^2 =\sum_{i=1}^n ||a_i||^2 \cdot \sum_{j=1}^n  ||a_j||^2 = \sum_{i=1}^n ||a_i||^2 \cdot ||A||_F = ||A||_F \cdot ||A||_F = ||A||_F^2$$
+$$||A^TA||_F = \sqrt{\sum_{1 \le i,j \le n} \langle a_i, a_j \rangle^2} \le \sqrt{\sum_{1 \le i,j \le n} ||a_i||^2 \cdot ||a_j||^2} = $$ $$\sqrt{\sum_{i=1}^n \sum_{j=1}^n ||a_i||^2 \cdot ||a_j||^2} = \sqrt{\sum_{i=1}^n ||a_i||^2 \cdot \sum_{j=1}^n  ||a_j||^2} = ||A||_F \cdot ||A||_F = ||A||_F^2$$
 \\$\mathbf{(b)}$
 \end{proof}
 
