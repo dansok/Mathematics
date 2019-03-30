@@ -81,13 +81,14 @@ $\iff ||AB||_F \le ||A||_F \cdot ||B||_F$
 Find a best approximation to $A,\ R_1 = min_{rank(R)=1} ||A-R||_F$
 \end{question}
 \begin{proof}
+First, note that by definition of the two norms, for $x,y \in \mathbb{R}^n,\ ||x||_2 = ||x||_F$ and $\langle x,y \rangle_2 = \langle x,y \rangle_F$. Thus question $(5)$ in homework $7$ applies for the Frobenius norm as well.
 $$||A-R||_F^2 = ||A-R_1+R_1-R||_F^2 = ||vec(A-R_1+R_1-R)||_2^2 = ||vec(A-R_1)+vec(R_1-R)||_2^2$$
 $$=||vec(A-R_1)||_2^2 + 2\langle vec(A-R_1), vec(R_1-R) \rangle + ||vec(R_1-R)||_2^2 =$$
 $$||A-R_1||_F^2 + 2tr((A-R_1)^T(R_1-R)) + ||R_1-R||_F^2 =$$
 $$||A-R_1||_F^2 + 2\langle A-R_1, R_1-R\rangle_F + ||R_1-R||_F^2$$
 Thus,
 $$||A-R||_F^2 \ge ||A-R_1||_F^2 \iff 2\langle A-R_1, R_1-R\rangle_F + ||R_1-R||_F^2 \ge 0$$
-Now, as in problem $(5)$ in homework $7$, for $R = uv^T$ to be arbitrarily close to $R_1 = ab^T$, $R$ must be a constant multiple of $R_1$. Set $R = (1-t)R_1$. By definition of the two norms, for vectors $x,y,z \in \mathbb{R}^n,\ ||x||_2 = ||x||_F$ and $\langle y,z \rangle_2 = \langle y,z \rangle_F$. Further notice that the arguments at this point both in problem $(5)$ and problem $(6)$ are independent of the particular choice of a norm and an inner product provided they are of the same type. E.g. both the norm and inner product are Frobenius, $\ell_2$, etc. Thus, as before, we must have $\langle A-R_1, R_1 \rangle_F = 0$ as a necessary condition.
+Now, as in problem $(5)$ in homework $7$, for $R = uv^T$ to be arbitrarily close to $R_1 = ab^T$, $R$ must be a constant multiple of $R_1$. Set $R = (1-t)R_1$. Thus, as before, we must have $\langle A-R_1, R_1 \rangle_F = 0$ as a necessary condition.
 \end{proof}
 
 \end{document}
