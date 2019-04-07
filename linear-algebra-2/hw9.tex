@@ -143,15 +143,17 @@ f_n(s_1) & f_n(s_2) & \ldots & f_n(s_m)
 c_2 & c_2 & \ldots & c_2 \\
 \vdots & \vdots & \ddots & \vdots \\
 c_m & c_m & \ldots & c_m
-\end{pmatrix}$$
+\end{pmatrix}\ \ \ \ \ \ \ (9.1)$$
 and the system is overdetermined since $m < n$, 
 which implies a nontrivial linear relation between the rows of the system. That is, $\{f_i(s_j)\}_{1 \le i \le n}$ must be a linearly dependent set for some $s_j$, contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
+\\
 \end{proof}
 
 \begin{question}[6]
 \end{question}
 \begin{proof}
-
+If there are only $m$ linearly independent columns $\{s_j\}_{1 \le j \le m}$ in $f(t)$, then
+\\$rank(f(t)^T) = rank(f(t)) = m$, meaning there are also only $m$ linearly independent rows in $f(t)$. That is, $\{f_i(s_j)\}_{1 \le i \le n}$ must be a linearly dependent set for some $s_j$, contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
 \end{proof}
 
 \end{document}
