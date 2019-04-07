@@ -1,1 +1,125 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm, mathrsfs}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% put your name here, so we know who to give credit to %%
+Dan Sokolsky
+}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hw}{%%%%%%%%%%%%%%%%%%%%
+%% and which homework assignment is it? %%%%%%%%%
+%% put the correct number below              %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+9
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge Linear Algebra II\hfill Homework \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Homework \hw\qquad\hfill}
 
+%% If you want to define a new command, you can do it like this:
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+%% If you want to use a function like ''sin'' or ''cos'', you can do it like this
+%% (we probably won't have much use for this)
+% \DeclareMathOperator{\sin}{sin}   %% just an example (it's already defined)
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ Since $A \ne 0$, there exists $w \in \mathbb{R}^{n}$ such that $Aw \ne 0$. Thus
+\\$\|Av\| = \|A\| \ge \|Aw\| > 0$; whence $Av \ne 0$. That is $v \not\in N_A \iff v \in N_A^{\perp}$ since $N_A \oplus N_A^{\perp} = \mathbb{R}^n$.
+\\$\mathbf{(b)}$ $\|v\| = 1$, so
+$$\langle v, \sigma v \rangle = \sigma \langle v, v \rangle = \sigma \|v\|^2 = \sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = $$ $$\langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
+$$\iff 0= \langle v, \sigma v \rangle - \langle v, A^T u \rangle = \langle v, \sigma v \rangle + \langle v, -A^T u \rangle = \langle 2v, 
+\sigma v - A^T u \rangle$$
+$$\iff \sigma v - A^T u = 0 \iff \sigma v = A^T u$$
+since $\|v\| = 1 > 0$.
+\end{proof}
+
+\begin{question}[2]
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ We iterate step 1. Find a unit vector $v_2 \in \mathbb{R}^n$ such that $\|A_2\| = \|A_2v_2\|$.
+\\Let $\sigma_2 u_2 = A_2 v_2,\ \sigma_2 = \|A_2\|$ so that $u_2 \in \mathbb{R}^m$ is a unit vector.
+\\$\mathbf{(b)}$ By question $(1)(a)$, $v_2 \in N_{A_2}^{\perp}$. Define $A_3 = A_2 - \sigma_2 u_2 v_2^T$. Then
+$$A_3 v_2 = A_2 v_2 - \sigma_2 u_2 v_2^Tv_2 = A_2 v_2 - \sigma_2 u_2 \|v_2\|^2 = A_2 v_2 - \sigma_2 u_2 = 0$$
+That is, $v_2 \in N_{A_3}$.
+\\$\mathbf{(c)}$ Since $v_1 \in N_{A_2}$ and $v_2 \in N_{A_2}^{\perp}$, it follows that $v_1 \perp v_2$, or $\langle v_1, v_2 \rangle = 0$.
+\\$\mathbf{(d)}$ We have $A_i = A_{i-1} - \sigma_{i-1} u_{i-1} v_{i-1}^T = A - \Sigma_{j=1}^{i-1} \sigma_j u_j v_j^T$.
+\end{proof}
+
+\begin{question}[3]
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ Let $A_1 = U_1 \Sigma_1 V_1^T,\ A_2 = U_2 \Sigma_2 V_2^T$. Define $U = \begin{pmatrix}
+U_1 & 0 \\
+0 & U_2
+\end{pmatrix}$, $V = \begin{pmatrix}
+V_1 & 0 \\
+0 & V_2
+\end{pmatrix}$, $\Sigma = \begin{pmatrix}
+\Sigma_1 & 0 \\
+0 & \Sigma_2
+\end{pmatrix}$. Then $U, V$ are orthogonal matrices since $U_i, V_i$ are orthogonal matrices, and $\Sigma$ is diagonal since $\Sigma_1, \Sigma_2$ are diagonal. Then
+\\$A = \begin{pmatrix}
+A_1 & 0 \\
+0 & A_2
+\end{pmatrix} = \begin{pmatrix}
+U_1 \Sigma_1 V_1^T & 0 \\
+0 & U_2 \Sigma_2 V_2^T 
+\end{pmatrix} = U \Sigma V^T$.
+\\$\mathbf{(b)}$ Since $AX_1 \subseteq X_1$ and $AX_2 \subseteq X_2$ and since $X_1 \oplus X_2 = X$, arranging the basis elements of of X, $\{x_1, \ldots, x_m, x_{m+1}, \ldots, x_n\}$ so that $\{x_1, \ldots, x_m\}$ span $X_1$, and $\{x_{m+1}, \ldots, x_n\}$ span $X_2$, we can write $A = \begin{pmatrix}
+A \restriction_{X_1} & 0 \\
+0 & A \restriction_{X_2}
+\end{pmatrix}$; whence we can recover $SVD(A)$ from $SVD(A \restriction_{X_1})$ and $SVD(A \restriction_{X_2})$ by $(a)$.
+\\$\mathbf{(c)}$ Let $F = span \{f_1, \ldots, f_m\}$, $G = span \{f_{m+1}, \ldots, f_n\}$. For $f \in F, g \in G$, $f \cdot g$ is an odd function, so $\langle f, g \rangle = \int_{-1}^{-1} f \cdot g\ dx = 0$. Thus $F \perp G$, whence we can write $F \oplus G = X$, and we can write $A = \begin{pmatrix}
+A \restriction_F & 0 \\
+0 & A \restriction_G
+\end{pmatrix}$ whence by $(a)$ and $(b)$ $U = \begin{pmatrix}
+U_F & 0 \\
+0 & U_G
+\end{pmatrix}$ where $U_F$ is $m \times m$, i.e., has $m$ even functions as left singular vectors, and $U_G$ is $(n-m) \times (n-m)$, i.e., has $n-m$ odd functions as left singular vectors. 
+\end{proof}
+
+\begin{question}[4]
+\end{question}
+\begin{proof}
+$\mathbf{(a)}$ Since $B, C$ are real symmetric positive definite, $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ exist and are real symmetric positive definite themselves. Additionally, $B, C, B^{\frac{1}{2}}, C^{\frac{1}{2}}$ are all isometries. Define $\tilde{A} = B^{\frac{1}{2}} A C^{\frac{1}{2}}$. Then $\tilde{A} = \tilde{U}  \tilde{\Sigma} \tilde{V}^T$. Let $U = B^{-\frac{1}{2}} \tilde{U},\ V = C^{-\frac{1}{2}} \tilde{V}$. Then $U, V$ are orthogonal. Since $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ are isometries, it follows that $\|\tilde{A}\| = \|B^{\frac{1}{2}} A C^{\frac{1}{2}}\| = \|A\|$ so all the singular values $\{\sigma_i\}_{1 \le i \le n}$ are invariant under the weighted inner products. Thus $\Sigma = \tilde{\Sigma}$. Finally
+$$A = B^{-\frac{1}{2}} \tilde{A} C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \tilde{\Sigma} \tilde{V}^T C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \Sigma \tilde{V}^T C^{-\frac{1}{2}} = U \Sigma V^T$$
+$\mathbf{(b)}$ By $(a)$, we have $A = \sum_j \sigma_j \cdot (B^{-\frac{1}{2}} \tilde{u_j}) \cdot (C^{-\frac{1}{2}} \tilde{v_j})^T$
+\end{proof}
+
+\begin{question}[5]
+\end{question}
+\begin{proof}
+Suppose $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and $f(t) \in span\{f(s_j)\}$ for some $t \ne s_j$ for any $1 \le j \le m$. Then $f_i(t) = \sum_{j=1}^m c_j f_i(s_j)$, contradicting the fact that .
+\end{proof}
+
+\end{document}
