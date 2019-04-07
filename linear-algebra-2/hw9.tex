@@ -119,7 +119,22 @@ $\mathbf{(b)}$ By $(a)$, we have $A = \sum_j \sigma_j \cdot (B^{-\frac{1}{2}} \t
 \begin{question}[5]
 \end{question}
 \begin{proof}
-Suppose $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and $f(t) \in span\{f(s_j)\}$ for some $t \ne s_j$ for any $1 \le j \le m$. Then $f_i(t) = \sum_{j=1}^m c_j f_i(s_j)$, contradicting the fact that .
+Suppose $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and $f(t) \in span\{f(s_j)\}$ for all $t \ne s_j$ for any $1 \le j \le m$. Then
+$$B = \begin{pmatrix}
+f(s_1) & \ldots & f(s_m) & f(t)
+\end{pmatrix} = \begin{pmatrix}
+f_1(s_1) & \ldots & f_1(s_m) & f_1(t) \\
+\vdots & \ddots & \vdots & \vdots \\
+f_n(s_1) & \ldots & f_n(s_m) & f_n(t)
+\end{pmatrix}$$
+can be brought to reduced row echelon form by Gaussian elimination
+$$B \rightarrow \begin{pmatrix}
+1 & 0 & \ldots & 0 & c_1 \\
+0 & 1 & \ldots & 0 & c_2\\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \ldots & 1 & c_n
+\end{pmatrix}$$
+which implies a nontrivial linear relation between the rows of $B$, contradicting the fact that $\{f_i(s_j)\}_{1 \le i \le n}$ are linearly independent
 \end{proof}
 
 \end{document}
