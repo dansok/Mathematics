@@ -145,7 +145,7 @@ c_2 & c_2 & \ldots & c_2 \\
 c_m & c_m & \ldots & c_m
 \end{pmatrix}\ \ \ \ \ \ \ (9.1)$$
 and the system is overdetermined since $m < n$, 
-which implies a nontrivial linear relation between the rows of the system, say $\sum_{j=1}^m c_j \cdot f_i(s_j) = \sum_{k \ne i} a_k \cdot \sum_{j=1}^m c_j \cdot f_k(s_j) \iff \\f_i(s_j) = \sum_{k \ne i} a_k \cdot f_k(s_j)$. That is, $\{f_i(s_j)\} \in span\{f_k(s_j)\}_{k \ne i}$, contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
+which implies a nontrivial linear relation between the rows of the system, say $\sum_{j=1}^m c_j \cdot f_i(s_j) = \sum_{k \ne i} a_k \cdot \sum_{j=1}^m c_j \cdot f_k(s_j) \iff \\f_i(s_j) = \sum_{k \ne i} a_k \cdot f_k(s_j)$. That is, $f_i(s_j) \in span\{f_k(s_j)\}_{k \ne i}$, contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
 \\
 \end{proof}
 
