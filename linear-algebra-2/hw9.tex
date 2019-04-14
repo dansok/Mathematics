@@ -168,12 +168,12 @@ x_1 + x_2
 $\iff x_1 = x_2$. Take $\beta_1 = \begin{pmatrix}
 \frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}}
-\end{pmatrix}$ to be the unit eigenvector of $C^TC$ corresponding to $\sigma_1 = 2\|u\|$, and the right singular vector of $C$. Take $\beta_2 = \begin{pmatrix}
+\end{pmatrix}$ to be the unit eigenvector of $C^TC$ corresponding to $\sigma_1 = \sqrt{2\|u\|}$, and the right singular vector of $C$. Take $\beta_2 = \begin{pmatrix}
 -\frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}}
 \end{pmatrix}$ to be the right unit singular vector corresponding to $0$, and observe $\beta_1 \perp \beta_2$.
 Now the left singular vectors are such that $\sigma_i \alpha_i = A \beta_i$. We won't compute the second left singular vector since $\sigma_2 = 0$. That is,
-$$2 \|u\| \alpha_1 = \sigma_1 \alpha_1 = A \beta_1 = \begin{pmatrix}
+$$\sqrt{2\|u\|} \alpha_1 = \sigma_1 \alpha_1 = A \beta_1 = \begin{pmatrix}
 u_1 & u_1 \\
 \vdots & \vdots \\
 u_n & u_n
@@ -181,9 +181,9 @@ u_n & u_n
 \frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}}
 \end{pmatrix} = \sqrt{2} \cdot u$$
-$$\iff \alpha_1 = \dfrac{\sqrt{2}}{2\|u\|} \cdot u$$
+$$\iff \alpha_1 = \dfrac{u}{\sqrt{\|u\|}}$$
 Thus
-$$A = \sum_{i=1}^2 \sigma_i \alpha_i \beta_i^T = \sigma_1 \alpha_1 \beta_1^T = 2\|u\| \cdot \dfrac{\sqrt{2}}{2 \|u\|} \cdot u \cdot \begin{pmatrix}
+$$A = \sum_{i=1}^2 \sigma_i \alpha_i \beta_i^T = \sigma_1 \alpha_1 \beta_1^T = \sqrt{2\|u\|} \cdot \dfrac{u}{\sqrt{\|u\|}} \cdot \begin{pmatrix}
 \frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}}
 \end{pmatrix}^T = u \cdot \begin{pmatrix}
@@ -191,11 +191,11 @@ $$A = \sum_{i=1}^2 \sigma_i \alpha_i \beta_i^T = \sigma_1 \alpha_1 \beta_1^T = 2
 \end{pmatrix} $$
 That is, we can write --
 $$A = \begin{pmatrix}
-\frac{\sqrt{2}}{2 \|u\|} u_1 & 0 & \ldots & 0 \\
+\frac{u_1}{\sqrt{\|u\|}} & 0 & \ldots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
-\frac{\sqrt{2}}{2 \|u\|} u_n & 0 & \ldots & 0
+\frac{u_n}{\sqrt{\|u\|}} & 0 & \ldots & 0
 \end{pmatrix} \cdot \begin{pmatrix}
-2\|u\| & 0 \\
+\sqrt{2\|u\|} & 0 \\
 0 & 0 \\
 \vdots & \vdots \\
 0 & 0
