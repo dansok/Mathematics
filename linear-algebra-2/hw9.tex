@@ -255,6 +255,7 @@ where $U, V$ are unitary and are therefore isometries, and $\Sigma$ is the desir
 \end{proof}
 
 \begin{question}[5]
+Note to the reader: We write out the blocks throughout the proof (we refer to it from here on out as "index notation") purely as a reading aide for the reader (and the author) to help visualize the situation. We don't take advantage of the index notation whatsoever, and proceed to use block notation as far as the content of the proof is concerned.
 \end{question}
 \begin{proof}
 WLOG, suppose the first $k$ columns of $A$ are the linearly independent. Reordering columns certainly doesn't alter the rank. All it does is shuffle the basis elements with respect to which the matrix $A$ is defined.
@@ -270,7 +271,7 @@ $$A = B \cdot C$$
 Then $C$ clearly has $k$ linearly independent rows due to $I_k$ in the front, and the rows of $A$ are linear combinations of the rows of $C$. In particular, where $A_i, C_j$ are row vectors, we have --
 $$A_i = \sum_{j=1}^k a_{ij} C_j$$
 That is, $A$ may have at most $k$ linearly independent rows. I.e., $\textit{rowrank}(A) \le k$.
-\\Using the above argument applied to $A^T$,
+\\We may apply the above argument to $A^T$, yielding --
 $$k=\textit{colrank}(A) = \textit{rowrank}(A^T) \le \textit{colrank}(A^T) = \textit{rowrank}(A)$$
 That is, $k \le \textit{rowrank}(A) \le k \iff \textit{rowrank}(A) = k$.
 \\In other words, $A$ has $k$ linearly independent rows as well.
