@@ -265,7 +265,9 @@ a_1 & \ldots & a_k
 0 & 1 & \ldots & 0 & c_{2,k+1} & \ldots & c_{2n} \\
 \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \ldots & 1 & c_{n,k+1} & \ldots & c_{kn}
-\end{pmatrix} $ be a matrix of coefficients such that $A = B \cdot C$. Then $C$ clearly has $k$ linearly independent rows due to $I_k$ in the front, and the rows of $A$ are linear combinations of the rows of $C$. In particular, where $A_i, C_j$ are row vectors, we have --
+\end{pmatrix} $ be a matrix of coefficients such that
+$$A = B \cdot C$$
+Then $C$ clearly has $k$ linearly independent rows due to $I_k$ in the front, and the rows of $A$ are linear combinations of the rows of $C$. In particular, where $A_i, C_j$ are row vectors, we have --
 $$A_i = \sum_{j=1}^k a_{ij} C_j$$
 That is, $A$ may have at most $k$ linearly independent rows. I.e., $\textit{rowrank}(A) \le k$.
 \\Using the above argument applied to $A^T$,
