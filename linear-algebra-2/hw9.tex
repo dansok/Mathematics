@@ -53,59 +53,179 @@ Dan Sokolsky
 \begin{question}[1]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Since $A \ne 0$, there exists $w \in \mathbb{R}^{n}$ such that $Aw \ne 0$. Thus
-\\$\|Av\| = \|A\| \ge \|Aw\| > 0$; whence $Av \ne 0$. That is $v \not\in N_A \iff v \in N_A^{\perp}$ since $N_A \oplus N_A^{\perp} = \mathbb{R}^n$.
-\\$\mathbf{(b)}$ $\|v\| = 1$, so
-$$\langle v, \sigma v \rangle = \sigma \langle v, v \rangle = \sigma \|v\|^2 = \sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = $$ $$\langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
-$$\iff 0= \langle v, \sigma v \rangle - \langle v, A^T u \rangle = \langle v, \sigma v \rangle + \langle v, -A^T u \rangle = \langle 2v, 
-\sigma v - A^T u \rangle$$
-$$\iff \sigma v - A^T u = 0 \iff \sigma v = A^T u$$
-since $\|v\| = 1 > 0$.
+By Theorem $12(ii)$ on page $87$, we must prove $\\V^TV = I_n = (VQV^T)^T(VQV^T)$. We begin with the second part of the lemma --
+$\\(ii)\ (V^TV)_{ij} = \langle v_i, v_j \rangle = \delta_{ij} = (I_n)_{ij} \iff V^TV = I_n$
+$\\(i)$ Since $Q$ is orthogonal, we have $Q^TQ = I_n$ by definition.
+Since in $(ii)$ we proved $V$ is an isometry, we have $detV = \pm 1$. Thus
+$$det(VV^T) = detV \cdot detV^T = (detV)^2 = (\pm 1)^2 = 1 \ne 0$$
+Thus $VV^T$ is invertible. Therefore,
+$$VV^T \cdot VV^T = V(V^TV)V^T = V \cdot I_n \cdot V^T = VV^T$$
+$$\iff VV^T = (VV^T)^{-1} (VV^T \cdot VV^T) = (VV^T)^{-1} (VV^T) = I_n$$Alternatively, $detV^T = detV = \pm 1$ proves $V^T$ is an isometry. Thus $\\VV^T = (V^T)^TV^T = I_n$.
+\\Thus, we have
+$$(VQV^T)^T(VQV^T) = VQ^TV^TVQV^T = VQ^TQV^T = VV^T = I_n$$
 \end{proof}
 
 \begin{question}[2]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ We iterate step 1. Find a unit vector $v_2 \in \mathbb{R}^n$ such that $\|A_2\| = \|A_2v_2\|$.
-\\Let $\sigma_2 u_2 = A_2 v_2,\ \sigma_2 = \|A_2\|$ so that $u_2 \in \mathbb{R}^m$ is a unit vector.
-\\$\mathbf{(b)}$ By question $(1)(a)$, $v_2 \in N_{A_2}^{\perp}$. Define $A_3 = A_2 - \sigma_2 u_2 v_2^T$. Then
-$$A_3 v_2 = A_2 v_2 - \sigma_2 u_2 v_2^Tv_2 = A_2 v_2 - \sigma_2 u_2 \|v_2\|^2 = A_2 v_2 - \sigma_2 u_2 = 0$$
-That is, $v_2 \in N_{A_3}$.
-\\$\mathbf{(c)}$ Since $v_1 \in N_{A_2}$ and $v_2 \in N_{A_2}^{\perp}$, it follows that $v_1 \perp v_2$, or $\langle v_1, v_2 \rangle = 0$.
-\\$\mathbf{(d)}$ We have $A_i = A_{i-1} - \sigma_{i-1} u_{i-1} v_{i-1}^T = A - \Sigma_{j=1}^{i-1} \sigma_j u_j v_j^T$.
+$\mathbf{(a)}\ (\implies)$ Suppose $A, B$ are isometric. That is, suppose $A = GBH$ with $G, H$ isometric. Then $G, H$ leave norms invariant by question $(3)(b)$ in homework $7$. We have $\sigma_1 = \|A\| = \|GBH\| = \|B\|$. Let us iterate the argument once to see why all the nonzero singular values must be equal by induction. Let $u_1, v_1$ be unit vectors such that $\|Av_1\| = \|A\|$ and $\sigma_1 u_1 = Av_1 = GBHv_1$. Additionally note,
+$$\|B\| = \sigma_1 = \|A\| = \|Av_1\| = \|GBHv_1\| = \|B(Hv_1)\|$$
+Let $w_1$ be a unit vector such that $\sigma_1 w_1 = B(Hv_1)$. Define
+$$A_2 = A - \sigma_1 u_1v_1^T,\ \ B_2 = B - \sigma_1 w_1 (Hv_1)^T$$
+Then
+$$GB_2H = G(B - \sigma_1 w_1 (Hv_1)^T)H = GBH - G(\sigma_1 w_1 (Hv_1)^T)H = A - G(\sigma_1 w_1v_1^T)H^TH$$
+$$= A - G(\sigma_1 w_1v_1^T) \cdot I = A - (GBHv_1)v_1^T = A - Av_1 v_1^T = A - \sigma_1u_1v_1^T = A_2$$
+whence $A_2, B_2$ are isomorphic under the same $G, H$; $\sigma_2 = \|A_2\| = \|GB_2H\| = \|B_2\|$, and we can repeat the procedure. We terminate at the first $i$ such that $\|A_i\| = \|B_i\| = 0$, where thereafter all the singular values are $0$. This proves that $A, B$ share their nonzero singular values.
+$\\(\impliedby)$ Suppose $A, B$ share their nonzero singular values. Suppose $A \in \mathbb{R}^{m_1 \times n_1}, B \in \mathbb{R}^{m_2 \times n_2}$. WLOG, suppose $m_1 \le m_2, n_1 \le n_2$. Let $B = U_B\Sigma V_B^T$. Let $I_R \in \mathbb{R}^{n_2 \times n_1}$ be a tall identity matrix. Let $I_L \in \mathbb{R}^{m_1 \times m_2}$ be a flat identity matrix. Let $V_A = I_R^T \cdot V_B,\\U_A = U_B \cdot I_L$. Then, either $H^TH$ is an identity, or it is an orthogonal projection. In the latter case, it still behaves like an identity, and so WLOG, will assume $H^TH = I$. Then,
+$$A = U_A \Sigma V_A^T = (I_LU_B)\Sigma(I_R^TV_B)^T = I_L (U_B \Sigma V_B^T) I_R = I_L \cdot B \cdot I_R$$
+whence $A, B$ are isomorphic since $I_R, I_L^T$ are orthogonal and hence $I_L$ is orthogonal when restricted to $rowspace(A)$.
+\\$\mathbf{(b)}$ As mentioned in the comment, $G^TG, HH^T$ are either identities, or they are orthogonal projections (tall/flat identities). In the latter case, all the action beyond the identity does is control the dimensions of the output matrix or project the input matrix orthogonally. Therefore, WLOG, suppose $G^TG = I_m, HH^T = I_n$. Then
+$$G^TAH^T = G^T(GBH)H^T = (G^TG)B(HH^T)= I_mB I_n = B$$
 \end{proof}
 
 \begin{question}[3]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Let $A_1 = U_1 \Sigma_1 V_1^T,\ A_2 = U_2 \Sigma_2 V_2^T$. Define $U = \begin{pmatrix}
-U_1 & 0 \\
-0 & U_2
-\end{pmatrix}$, $V = \begin{pmatrix}
-V_1 & 0 \\
-0 & V_2
-\end{pmatrix}$, $\Sigma = \begin{pmatrix}
-\Sigma_1 & 0 \\
-0 & \Sigma_2
-\end{pmatrix}$. Then $U, V$ are orthogonal matrices since $U_i, V_i$ are orthogonal matrices, and $\Sigma$ is diagonal since $\Sigma_1, \Sigma_2$ are diagonal. Then
-\\$A = \begin{pmatrix}
-A_1 & 0 \\
-0 & A_2
+$\mathbf{(a)}$ WLOG, suppose $\|u\| \ge \|v\|$. Then $A^TA = \begin{pmatrix}
+\|u\|^2 & 0 \\
+0 & \|v\|^2
+\end{pmatrix}$. Thus $\\ \lambda_1 = \|u\|^2, \lambda_2 = \|v\|^2$ and $\sigma_1 = \|u\|, \sigma_2 = \|v\|$. Let us find the corresponding eigenvectors, which are the right singular vectors of $A$ --
+$$A^TA \beta_1 = \|u\|^2 \beta_1 \iff \beta_1 = \begin{pmatrix}
+1 \\
+0
+\end{pmatrix} $$
+$$A^TA \beta_2 = \|v\|^2 \beta_2 \iff \beta_2 = \begin{pmatrix}
+0 \\
+1
+\end{pmatrix}$$
+Now the left singular vectors are such that $\sigma_i \alpha_i = A \beta_i$. That is,
+$$\|u\| \alpha_1 = \sigma_1 \alpha_1 = A \beta_1 = A \begin{pmatrix}
+1 \\
+0
+\end{pmatrix} = u \iff \alpha_1 = \dfrac{u}{\|u\|}$$
+$$\|v\| \alpha_2 = \sigma_2 \alpha_2 = A \beta_2 = A \begin{pmatrix}
+0 \\
+1
+\end{pmatrix} = v \iff \alpha_2 = \dfrac{v}{\|v\|}$$
+Thus, the SVD of A is given by --
+$$A = \sum_{i=1}^2 \sigma_i \alpha_i \beta_i^T = \|u\| \cdot \dfrac{u}{\|u\|} \cdot \begin{pmatrix}
+1 \\
+0
+\end{pmatrix}^T + \|v\| \cdot \dfrac{v}{\|v\|} \cdot \begin{pmatrix}
+0 \\
+1
+\end{pmatrix}^T$$
+That is, we can write --
+$$A = \begin{pmatrix}
+u & v
 \end{pmatrix} = \begin{pmatrix}
-U_1 \Sigma_1 V_1^T & 0 \\
-0 & U_2 \Sigma_2 V_2^T 
-\end{pmatrix} = U \Sigma V^T$.
-\\$\mathbf{(b)}$ Since $AX_1 \subseteq X_1$ and $AX_2 \subseteq X_2$ and since $X_1 \oplus X_2 = X$, arranging the basis elements of of X, $\{x_1, \ldots, x_m, x_{m+1}, \ldots, x_n\}$ so that $\{x_1, \ldots, x_m\}$ span $X_1$, and $\{x_{m+1}, \ldots, x_n\}$ span $X_2$, we can write $A = \begin{pmatrix}
-A \restriction_{X_1} & 0 \\
-0 & A \restriction_{X_2}
-\end{pmatrix}$; whence we can recover $SVD(A)$ from $SVD(A \restriction_{X_1})$ and $SVD(A \restriction_{X_2})$ by $(a)$.
-\\$\mathbf{(c)}$ Let $F = span \{f_1, \ldots, f_m\}$, $G = span \{f_{m+1}, \ldots, f_n\}$. For $f \in F, g \in G$, $f \cdot g$ is an odd function, so $\langle f, g \rangle = \int_{-1}^{-1} f \cdot g\ dx = 0$. Thus $F \perp G$, whence we can write $F \oplus G = X$, and we can write $A = \begin{pmatrix}
-A \restriction_F & 0 \\
-0 & A \restriction_G
-\end{pmatrix}$ whence by $(a)$ and $(b)$ $U = \begin{pmatrix}
-U_F & 0 \\
-0 & U_G
-\end{pmatrix}$ where $U_F$ is $m \times m$, i.e., has $m$ even functions as left singular vectors, and $U_G$ is $(n-m) \times (n-m)$, i.e., has $n-m$ odd functions as left singular vectors. 
+u_1 & v_1 \\
+u_2 & v_2 \\
+\vdots & \vdots \\
+u_n & v_n \\
+\end{pmatrix} = \begin{pmatrix}
+\frac{u_1}{\|u\|} & \frac{v_1}{\|v\|} & 0 & \ldots & 0 \\
+\frac{u_2}{\|u\|} & \frac{v_2}{\|v\|} & 0 & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\frac{u_n}{\|u\|} & \frac{v_n}{\|v\|} & 0 & \ldots & 0 \\
+\end{pmatrix} \cdot  \begin{pmatrix}
+\|u\| & 0 \\
+0 & \|v\| \\
+0 & 0 \\
+\vdots & \vdots \\
+0 & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix} = G \cdot \Sigma \cdot H$$
+Since $\frac{u}{\|u\|}, \frac{v}{\|v\|}$ are orthonormal, $G$ is an isometry, and $H$ is clearly an isometry as an identity matrix. Thus $A$ is isometric to $\Sigma = \begin{pmatrix}
+\|u\| & 0 \\
+0 & \|v\| \\
+0 & 0 \\
+\vdots & \vdots \\
+0 & 0
+\end{pmatrix}$.
+\\$\mathbf{(b)}$ $C^TC = \|u\| \begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix} = \|u\| \cdot M$ where the eigenvalues of $M$ are $2$, and $0$. Let us find the corresponding eigenvector, which is also the right singular vector --
+$$\begin{pmatrix}
+2x_1 \\
+2x_2
+\end{pmatrix} = 2 \cdot \begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = \begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix} \cdot \begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = \begin{pmatrix}
+x_1 + x_2\\
+x_1 + x_2
+\end{pmatrix}$$
+$\iff x_1 = x_2$. Take $\beta_1 = \begin{pmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix}$ to be the unit eigenvector of $C^TC$ corresponding to $\sigma_1 = 2\|u\|$, and the right singular vector of $C$. Take $\beta_2 = \begin{pmatrix}
+-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix}$ to be the right unit singular vector corresponding to $0$, and observe $\beta_1 \perp \beta_2$.
+Now the left singular vectors are such that $\sigma_i \alpha_i = A \beta_i$. We won't compute the second left singular vector since $\sigma_2 = 0$. That is,
+$$2 \|u\| \alpha_1 = \sigma_1 \alpha_1 = A \beta_1 = \begin{pmatrix}
+u_1 & u_1 \\
+\vdots & \vdots \\
+u_n & u_n
+\end{pmatrix} \cdot \begin{pmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix} = \sqrt{2} \cdot u$$
+$$\iff \alpha_1 = \dfrac{\sqrt{2}}{2\|u\|} \cdot u$$
+Thus
+$$A = \sum_{i=1}^2 \sigma_i \alpha_i \beta_i^T = \sigma_1 \alpha_1 \beta_1^T = 2\|u\| \cdot \dfrac{\sqrt{2}}{2 \|u\|} \cdot u \cdot \begin{pmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{pmatrix}^T = u \cdot \begin{pmatrix}
+1 & 1
+\end{pmatrix} $$
+That is, we can write --
+$$A = \begin{pmatrix}
+\frac{\sqrt{2}}{2 \|u\|} u_1 & 0 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\sqrt{2}}{2 \|u\|} u_n & 0 & \ldots & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+2\|u\| & 0 \\
+0 & 0 \\
+\vdots & \vdots \\
+0 & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{pmatrix} =$$ $$\begin{pmatrix}
+\frac{u_1}{\|u\|} & 0 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{u_n}{\|u\|} & 0 & \ldots & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+\sqrt{2}\|u\| & 0 \\
+0 & 0 \\
+\vdots & \vdots \\
+0 & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{pmatrix} = G \cdot \Sigma \cdot H$$
+where $G$ is an isometry since it's first column is a unit vector is clearly orthogonal to the rest of the zero-columns, and $H$ is clearly an isometry. Thus $A$ is isometric to $\Sigma = \begin{pmatrix}
+\sqrt{2}\|u\| & 0 \\
+0 & 0 \\
+\vdots & \vdots \\
+0 & 0
+\end{pmatrix}$.
+\\$\mathbf{(c)}$ Let $Q = \begin{pmatrix}
+q_1 & \ldots & q_n
+\end{pmatrix} $. The singular values are the square roots of the eigenvalues of $Q^TQ$. To that end,
+$$(Q^TQ)_{ij} = \langle q_i, q_j \rangle = \|q_i\|^2 \delta_{ij}$$
+Thus $\sigma_i = \|q_i\|, 1 \le i \le n$ are the $n$ singular values.
 \end{proof}
 
 \begin{question}[4]
