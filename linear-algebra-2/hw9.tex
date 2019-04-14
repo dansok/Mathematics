@@ -138,7 +138,7 @@ u_n & v_n \\
 1 & 0 \\
 0 & 1
 \end{pmatrix} = G \cdot \Sigma \cdot H$$
-Since $\frac{u}{\|u\|}, \frac{v}{\|v\|}$ are orthonormal, $G$ is an isometry, and $H$ is clearly an isometry as an identity matrix. Thus $A$ is isometric to $\Sigma = \begin{pmatrix}
+Since $\frac{u}{\|u\|}, \frac{v}{\|v\|}$ are orthonormal, $G$ is an isometry when restricted to $colspace(\Sigma)$, and $H$ is clearly an isometry as an identity matrix. Thus $A$ is isometric to $\Sigma = \begin{pmatrix}
 \|u\| & 0 \\
 0 & \|v\| \\
 0 & 0 \\
@@ -215,7 +215,7 @@ $$A = \begin{pmatrix}
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
 \end{pmatrix} = G \cdot \Sigma \cdot H$$
-where $G$ is an isometry since it's first column is a unit vector is clearly orthogonal to the rest of the zero-columns, and $H$ is clearly an isometry. Thus $A$ is isometric to $\Sigma = \begin{pmatrix}
+where $G$ is an isometry when restricted to $colspace(\Sigma)$ since it's first column is a unit vector and is clearly orthogonal to the rest of the zero-columns, and $H$ is clearly an isometry. Thus $A$ is isometric to $\Sigma = \begin{pmatrix}
 \sqrt{2}\|u\| & 0 \\
 0 & 0 \\
 \vdots & \vdots \\
@@ -231,64 +231,47 @@ Thus $\sigma_i = \|q_i\|, 1 \le i \le n$ are the $n$ singular values.
 \begin{question}[4]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Since $B, C$ are real symmetric positive definite, $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ exist and are real symmetric positive definite themselves. Additionally, $B, C, B^{\frac{1}{2}}, C^{\frac{1}{2}}$ are all isometries. Define $\tilde{A} = B^{\frac{1}{2}} A C^{\frac{1}{2}}$. Then $\tilde{A} = \tilde{U}  \tilde{\Sigma} \tilde{V}^T$. Let $U = B^{-\frac{1}{2}} \tilde{U},\ V = C^{-\frac{1}{2}} \tilde{V}$. Then $U, V$ are orthogonal. Since $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ are isometries, it follows that $\|\tilde{A}\| = \|B^{\frac{1}{2}} A C^{\frac{1}{2}}\| = \|A\|$ so all the singular values $\{\sigma_i\}_{1 \le i \le n}$ are invariant under the weighted inner products. Thus $\Sigma = \tilde{\Sigma}$. Finally
-$$A = B^{-\frac{1}{2}} \tilde{A} C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \tilde{\Sigma} \tilde{V}^T C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \Sigma \tilde{V}^T C^{-\frac{1}{2}} = U \Sigma V^T$$
-$\mathbf{(b)}$ By $(a)$, we have $A = \sum_j \sigma_j \cdot (B^{-\frac{1}{2}} \tilde{u_j}) \cdot (C^{-\frac{1}{2}} \tilde{v_j})^T$
+Let $F = span\{f_1, \ldots, f_m\}$, and let $G = span\{f_{m+1}, \ldots, f_n\}$. Observe that for $f \in F, g \in G,\ f \cdot g$ is an odd function. Then,
+$$\langle f, g \rangle = \int_{-1}^{1} f(x) \cdot g(x) dx = 0$$
+Thus $F \perp G$, whence we can write $F \oplus G = X$, and by question $(3)$ on homework $10$, we can recover $SVD(A)$ from $SVD(A \restriction_F), SVD(A \restriction_G)$ as follows --
+$$A = \begin{pmatrix}
+A \restriction_F & 0 \\
+0 & A \restriction_G
+\end{pmatrix}  = \begin{pmatrix}
+U_F \cdot \Sigma_F \cdot V_F^T & 0 \\
+0 & U_G \cdot \Sigma_G \cdot V_G^T
+\end{pmatrix} =$$
+$$\begin{pmatrix}
+U_F& 0 \\
+0 & U_G
+\end{pmatrix} \cdot \begin{pmatrix}
+\Sigma_F& 0 \\
+0 & \Sigma_G
+\end{pmatrix} \cdot \begin{pmatrix}
+V_F^T& 0 \\
+0 & V_G^T
+\end{pmatrix} = U \cdot \Sigma \cdot V^T$$
+where $U, V$ are unitary and are therefore isometries, and $\Sigma$ is the desired block diagonal matrix for which $A, \Sigma$ are isometric.
 \end{proof}
 
 \begin{question}[5]
 \end{question}
 \begin{proof}
-Suppose $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and $f(t) \in span\{f(s_j)\}$ for all $t \ne s_j$ for any $1 \le j \le m$. Then
-$$\begin{pmatrix}
-f_1(t) \\
-\vdots \\
-f_n(t)
-\end{pmatrix} = f(t) = \sum_{j=1}^m c_j f(s_j) = \begin{pmatrix}
-c_1 \cdot f_1(s_1) + \ldots + c_m \cdot f_1(s_m) \\
-\vdots \\
-c_1 \cdot f_n(s_1) + \ldots + c_m \cdot f_n(s_m)
-\end{pmatrix}$$
-This system of linear equations can be described by the variable and coefficient matrices, respectively -- 
-$$\begin{pmatrix}
-c_1 \cdot f_1(s_1) + \ldots + c_m \cdot f_1(s_m) \\
-\vdots \\
-c_1 \cdot f_n(s_1) + \ldots + c_m \cdot f_n(s_m)
-\end{pmatrix} = \begin{pmatrix}
-f_1(s_1) & f_1(s_2) & \ldots & f_1(s_m) \\
-f_2(s_1) & f_2(s_2) & \ldots & f_2(s_m) \\
-\vdots & \vdots & \ddots & \vdots \\
-f_n(s_1) & f_n(s_2) & \ldots & f_n(s_m)
-\end{pmatrix} \cdot \begin{pmatrix} c_1 & c_1 & \ldots & c_1 \\
-c_2 & c_2 & \ldots & c_2 \\
-\vdots & \vdots & \ddots & \vdots \\
-c_m & c_m & \ldots & c_m
-\end{pmatrix}\ \ \ \ \ \ \ (9.1)$$
-and the system is overdetermined since $m < n$, 
-which implies a nontrivial linear relation between the rows of the system, say $\sum_{j=1}^m c_j \cdot f_i(s_j) = \sum_{k \ne i} a_k \cdot \sum_{j=1}^m b_j \cdot f_k(s_j) \iff \\c_j \cdot f_i(s_j) = \sum_{k \ne i} a_kb_j \cdot f_k(s_j)$. That is, $f_i(s_j) \in span\{f_k(s_j)\}_{k \ne i}$, contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
-\\
-\end{proof}
-
-\begin{question}[6]
-\end{question}
-\begin{proof}
-If there are only $m$ linearly independent columns $\{s_j\}_{1 \le j \le m}$ in $f(t)$, then
-\\$rank(A^T) = rank(f(t)^T) = rank(f(t)) = rank(A) = m$, meaning there are also only $m$ linearly independent rows in $A = f(t)$. Say the $i^{th}$ row is in the span of the rest of the rows. Then,
-$$\begin{pmatrix}
-f_i(s_1) \\
-\vdots \\
-f_i(s_m)
-\end{pmatrix} = \sum_{j \ne i} c_j \cdot \begin{pmatrix}
-f_j(s_1) \\
-\vdots \\
-f_j(s_m)
-\end{pmatrix} = \begin{pmatrix}
-\sum_{j \ne i} c_j \cdot f_j(s_1) \\
-\vdots \\
-\sum_{j \ne i} c_j \cdot f_j(s_m)
-\end{pmatrix}$$
-$$\iff f_i(s_k) = \sum_{j \ne i} c_j \cdot f_j(s_k)$$
-contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
+WLOG, suppose the first $k$ columns of $A$ are the linearly independent. Reordering columns certainly doesn't alter the rank. All it does is shuffle the basis elements with respect to which the matrix $A$ is defined.
+\\Let the $n \times k,\ B = \begin{pmatrix}
+a_1 & \ldots & a_k
+\end{pmatrix}$ be the matrix of the first $k$ linearly independent columns in $A$. Let the $k \times n,\ C = \begin{pmatrix}
+1 & 0 & \ldots & 0 & c_{1,k+1} & \ldots & c_{1n} \\
+0 & 1 & \ldots & 0 & c_{2,k+1} & \ldots & c_{2n} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \ldots & 1 & c_{n,k+1} & \ldots & c_{kn}
+\end{pmatrix} $ be a matrix of coefficients such that $A = B \cdot C$. Then $C$ clearly has $k$ linearly independent rows due to $I_k$ in the front, and the rows of $A$ are linear combinations of the rows of $C$. In particular, where $A_i, C_j$ are row vectors, we have --
+$$A_i = \sum_{j=1}^k a_{ij} C_j$$
+That is, $A$ may have at most $k$ linearly independent rows. I.e., $\textit{rowrank}(A) \le k$.
+\\Using the above argument applied to $A^T$,
+$$k=\textit{colrank}(A) = \textit{rowrank}(A^T) \le \textit{colrank}(A^T) = \textit{rowrank}(A)$$
+That is, $k \le \textit{rowrank}(A) \le k \iff \textit{rowrank}(A) = k$.
+\\In other words, $A$ has $k$ linearly independent rows as well.
 \end{proof}
 
 \end{document}
