@@ -270,7 +270,8 @@ a_1 & \ldots & a_k
 $$A = B \cdot C$$
 Then $C$ clearly has $k$ linearly independent rows due to $I_k$ in the front, and the rows of $A$ are linear combinations of the rows of $C$. In particular, where $A_i, C_j$ are row vectors, we have --
 $$A_i = \sum_{j=1}^k a_{ij} C_j$$
-That is, $A$ may have at most $k$ linearly independent rows. I.e., $\textit{rowrank}(A) \le k$.
+That is, $A$ may have at most $k$ linearly independent rows.
+\\I.e., $\textit{rowrank}(A) \le \textit{colrank(A)} = k$.
 \\We may apply the above argument to $A^T$, yielding --
 $$k=\textit{colrank}(A) = \textit{rowrank}(A^T) \le \textit{colrank}(A^T) = \textit{rowrank}(A)$$
 That is, $k \le \textit{rowrank}(A) \le k \iff \textit{rowrank}(A) = k$.
