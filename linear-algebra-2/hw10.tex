@@ -58,15 +58,15 @@ $\mathbf{(a)}$ Since $A \ne 0$, there exists $w \in \mathbb{R}^{n}$ such that $A
 \\$\mathbf{(b)}$ $\|v\| = 1$, so
 $$\langle v, \sigma v \rangle = \sigma \langle v, v \rangle = \sigma \|v\|^2 = \sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = $$ $$\langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
 $$\iff 0= \langle v, \sigma v \rangle - \langle v, A^T u \rangle = \langle v, \sigma v \rangle + \langle v, -A^T u \rangle = \langle v, 
-\sigma v - A^T u \rangle$$
+\sigma v - A^T u \rangle\ \ \ \ \ \ \ \ \ \ \ \ (10.1)$$
 $\iff v \perp \sigma v - A^T u$.
 Now,
-$$\langle A^Tu, v  \rangle = \sigma = \|A\| = \|A^T\| = \sup_{\|w\|=1} \langle A^Tu, w \rangle$$
-That is, $A^T$ achieves it's maximum at $A^Tu$, for $w=v$. That is,
+$$\sup_{\|x\|=1, \|w\| = 1}\langle A^Tx, w \rangle = \|A^T\| = \|A\| = \sigma = \langle A^Tu, v  \rangle = \sup_{\|w\|=1} \langle A^Tu, w \rangle = \|A^Tu\|$$
+That is, $A^T$ achieves it's maximum for $x = u,\ w=v$. That is,
 $$\langle A^Tu, v  \rangle = \sigma = \|A^T\| = \|A^Tu\| = \|A^Tu\| \cdot 1 = \|A^Tu\| \cdot \|v\|$$
 $$\iff A^Tu = k \cdot v$$
 since by Cauchy-Schwartz, equality is achieved $\iff$ the two vectors are scalar multiples of one another.
-Now,
+Now, from $(10.1)$ --
 $$0 = \langle v, \sigma v - A^Tu \rangle = \langle v, \sigma v - kv \rangle = \langle v, (\sigma - k)v \rangle = (\sigma - k)\langle v, v \rangle$$
 $$=(\sigma - k) \cdot \|v\|^2 = (\sigma - k)$$
 $$\iff k = \sigma$$
