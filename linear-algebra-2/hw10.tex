@@ -57,10 +57,20 @@ $\mathbf{(a)}$ Since $A \ne 0$, there exists $w \in \mathbb{R}^{n}$ such that $A
 \\$\|Av\| = \|A\| \ge \|Aw\| > 0$; whence $Av \ne 0$. That is $v \not\in N_A \iff v \in N_A^{\perp}$ since $N_A \oplus N_A^{\perp} = \mathbb{R}^n$.
 \\$\mathbf{(b)}$ $\|v\| = 1$, so
 $$\langle v, \sigma v \rangle = \sigma \langle v, v \rangle = \sigma \|v\|^2 = \sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = $$ $$\langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
-$$\iff 0= \langle v, \sigma v \rangle - \langle v, A^T u \rangle = \langle v, \sigma v \rangle + \langle v, -A^T u \rangle = \langle 2v, 
+$$\iff 0= \langle v, \sigma v \rangle - \langle v, A^T u \rangle = \langle v, \sigma v \rangle + \langle v, -A^T u \rangle = \langle v, 
 \sigma v - A^T u \rangle$$
-$$\iff \sigma v - A^T u = 0 \iff \sigma v = A^T u$$
-since $\|v\| = 1 > 0$.
+$\iff v \perp \sigma v - A^T u$.
+Now,
+$$\langle A^Tu, v  \rangle = \sigma = \|A\| = \|A^T\| = \sup_{\|w\|=1} \langle A^Tu, w \rangle$$
+That is, $A^T$ achieves it's maximum at $A^Tu$, for $w=v$. That is,
+$$\langle A^Tu, v  \rangle = \sigma = \|A^T\| = \|A^Tu\| = \|A^Tu\| \cdot 1 = \|A^Tu\| \cdot \|v\|$$
+$$\iff A^Tu = k \cdot v$$
+since by Cauchy-Schwartz, equality is achieved $\iff$ the two vectors are scalar multiples of one another.
+Now,
+$$0 = \langle v, \sigma v - A^Tu \rangle = \langle v, \sigma v - kv \rangle = \langle v, (\sigma - k)v \rangle = (\sigma - k)\langle v, v \rangle$$
+$$=(\sigma - k) \cdot \|v\|^2 = (\sigma - k)$$
+$$\iff k = \sigma$$
+That is, $A^Tu = \sigma v$.
 \end{proof}
 
 \begin{question}[2]
