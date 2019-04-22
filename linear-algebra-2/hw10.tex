@@ -56,21 +56,17 @@ Dan Sokolsky
 $\mathbf{(a)}$ Since $A \ne 0$, there exists $w \in \mathbb{R}^{n}$ such that $Aw \ne 0$. Thus
 \\$\|Av\| = \|A\| \ge \|Aw\| > 0$; whence $Av \ne 0$. That is $v \not\in N_A \iff v \in N_A^{\perp}$ since $N_A \oplus N_A^{\perp} = \mathbb{R}^n$.
 \\$\mathbf{(b)}$ $\|v\| = 1$, so
-$$\langle v, \sigma v \rangle = \sigma \langle v, v \rangle = \sigma \|v\|^2 = \sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = $$ $$\langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
-$$\iff 0= \langle v, \sigma v \rangle - \langle v, A^T u \rangle = \langle v, \sigma v \rangle + \langle v, -A^T u \rangle = \langle v, 
-\sigma v - A^T u \rangle\ \ \ \ \ \ \ \ \ \ \ \ (10.1)$$
-$\iff v \perp \sigma v - A^T u$.
+$$\sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = \langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
 Now,
 $$\sup_{\|x\|=1, \|w\| = 1}\langle A^Tx, w \rangle = \|A^T\| = \|A\| = \sigma = \langle A^Tu, v  \rangle = \sup_{\|w\|=1} \langle A^Tu, w \rangle = \|A^Tu\|$$
 That is, $A^T$ achieves it's maximum for $x = u,\ w=v$. That is,
 $$\langle A^Tu, v  \rangle = \sigma = \|A^T\| = \|A^Tu\| = \|A^Tu\| \cdot 1 = \|A^Tu\| \cdot \|v\|$$
-$$\iff A^Tu = k \cdot v$$
-since by Cauchy-Schwartz, equality is achieved $\iff$ the two vectors are scalar multiples of one another.
-Now, from $(10.1)$ --
-$$0 = \langle v, \sigma v - A^Tu \rangle = \langle v, \sigma v - kv \rangle = \langle v, (\sigma - k)v \rangle = (\sigma - k)\langle v, v \rangle$$
-$$=(\sigma - k) \cdot \|v\|^2 = (\sigma - k)$$
-$$\iff k = \sigma$$
+$$\iff A^Tu = k \cdot v \iff v = \dfrac{A^Tu}{k}$$
+since by Cauchy-Schwartz, equality is achieved $\iff$ the two vectors are scalar multiples of one another. Now,
+$$\|A^Tu\| = \langle A^Tu, v\rangle = \langle A^Tu, \dfrac{A^Tu}{k}\rangle = \dfrac{1}{k} \langle A^Tu, A^Tu \rangle = \dfrac{1}{k} \|A^Tu\|^2$$
+$$\iff k = \|A^Tu\| = \sigma$$
 That is, $A^Tu = \sigma v$.
+
 \end{proof}
 
 \begin{question}[2]
@@ -105,80 +101,125 @@ A_1 & 0 \\
 U_1 \Sigma_1 V_1^T & 0 \\
 0 & U_2 \Sigma_2 V_2^T 
 \end{pmatrix} = U \Sigma V^T$.
-\\$\mathbf{(b)}$ Since $AX_1 \subseteq X_1$ and $AX_2 \subseteq X_2$ and since $X_1 \oplus X_2 = X$, arranging the basis elements of of X, $\{x_1, \ldots, x_m, x_{m+1}, \ldots, x_n\}$ so that $\{x_1, \ldots, x_m\}$ span $X_1$, and $\{x_{m+1}, \ldots, x_n\}$ span $X_2$, we can write $A = \begin{pmatrix}
+\\$\mathbf{(b)}$ Since $AX_1 \subseteq X_1$ and $AX_2 \subseteq X_2$, $A \restriction_{X_1} : X_1 \rightarrow X_1$ and $A \restriction_{X_2} : X_2 \rightarrow X_2$; and since $X_1 \oplus X_2 = X$, we can find an orthonormal basis for $X$, $\{q_1, \ldots, q_m, q_{m+1}, \ldots, q_n\}$ so that $\{q_1, \ldots, q_m\}$ spans $X_1$, and $\{q_{m+1}, \ldots, q_n\}$ spans $X_2$.
+Suppose $\dim X_1 = m,\ \dim X_2 = n-m$. Now for $v \in X_1,\ w \in X_2$, we have
+$$Qv = \begin{pmatrix}
+v_1 \\
+\vdots \\
+v_m \\
+0 \\
+\vdots \\
+0
+\end{pmatrix},\ Qw = \begin{pmatrix}
+0 \\
+\vdots \\
+0 \\
+w_1 \\
+\vdots \\
+w_{n-m}
+\end{pmatrix}$$
+This is because $\{q_{m+1}, \ldots, q_n\}$ doesn't span $X_1$, and $\{q_1, \ldots, q_m\}$ doesn't span $X_2$.
+\\It follows that
+$$AQv = \begin{pmatrix}
+| \\
+A\restriction_{X_1} \begin{pmatrix}
+v_1 \\
+\vdots \\
+v_m \end{pmatrix} \\
+| \\
+0 \\
+\vdots \\
+0
+\end{pmatrix},\ AQw = \begin{pmatrix}
+0 \\
+\vdots \\
+0 \\
+| \\
+A\restriction_{X_2} \begin{pmatrix}
+w_1 \\
+\vdots \\
+w_{n-m} \end{pmatrix} \\
+|
+\end{pmatrix}$$
+and we can write --
+$$A = Q^T \begin{pmatrix}
 A \restriction_{X_1} & 0 \\
 0 & A \restriction_{X_2}
-\end{pmatrix}$; whence we can recover $SVD(A)$ from $SVD(A \restriction_{X_1})$ and $SVD(A \restriction_{X_2})$ by $(a)$.
-\\$\mathbf{(c)}$ Let $F = span \{f_1, \ldots, f_m\}$, $G = span \{f_{m+1}, \ldots, f_n\}$. For $f \in F, g \in G$, $f \cdot g$ is an odd function, so $\langle f, g \rangle = \int_{-1}^{-1} f \cdot g\ dx = 0$. Thus $F \perp G$, whence we can write $F \oplus G = X$, and we can write $A = \begin{pmatrix}
+\end{pmatrix} Q = Q^T \begin{pmatrix}
+U_1 \Sigma_1 V_1^T & 0 \\
+0 & U_2 \Sigma_2 V_2^T
+\end{pmatrix} Q = (Q^TU) \cdot \Sigma \cdot (Q^TV)^T$$
+as in $\mathbf{(a)}$. Now, $Q^TU,\ Q^TV$ are still orthogonal matrices (orthogonal matrices form a group), whence we get the desired SVD decomposition.
+\\$\mathbf{(c)}$ Let $F = span \{f_1, \ldots, f_m\}$, $G = span \{f_{m+1}, \ldots, f_n\}$. For $f \in F, g \in G$, $f \cdot g$ is an odd function, so $\langle f, g \rangle = \int_{-1}^{-1} f \cdot g\ dx = 0$. Thus $F \perp G$, whence we can write $F \oplus G = X$, and by Gram-Schmidt we can extract from $\{f_1, \ldots, f_m, f_{m+1}, \ldots, f_n\}$ an orthonormal basis for $X$, $\{q_1, \ldots, q_m, q_{m+1}, \ldots, q_n\}$ so that $\{q_1, \ldots, q_m\}$ spans $F$, and $\{q_{m+1}, \ldots, q_n\}$ spans $G$. 
+And so, under this basis, as before, we can write
+$$A = Q^T \begin{pmatrix}
 A \restriction_F & 0 \\
 0 & A \restriction_G
-\end{pmatrix}$ whence by $(a)$ and $(b)$ $U = \begin{pmatrix}
+\end{pmatrix} Q = Q^T \begin{pmatrix}
+U_F \Sigma_F V_F^T & 0 \\
+0 & U_G \Sigma_G V_G^T
+\end{pmatrix} Q = (Q^TU) \cdot \Sigma \cdot (Q^TV)^T$$
+where $Q, Q^T$ are orthogonal, and
+$$Q^T = \begin{pmatrix}
+q_{11} & q_{21} & \ldots & q_{n1}\\
+\vdots & \vdots & \ddots & \vdots \\
+q_{1m} & q_{2m} & \ldots & q_{nm} \\
+q_{1,(m+1)} & q_{2,(m+1)} & \ldots & q_{n,(m+1)} \\
+\vdots & \vdots & \ddots & \vdots \\
+q_{1n} & q_{2n} & \ldots & q_{nn}
+\end{pmatrix} = \begin{pmatrix}
+Q_F^T & P_F^T \\
+P_G^T & Q_G^T
+\end{pmatrix}$$
+where $Q_F^T \in \mathbb{R}^{m \times m},\ P_F^T \in \mathbb{R}^{m \times (n-m)}$ and $P_G^T \in \mathbb{R}^{(n-m) \times m},\ Q_G^T \in \mathbb{R}^{(n-m) \times (n-m)}$.
+\\By $(a)$ and $(b)$, $U = \begin{pmatrix}
 U_F & 0 \\
 0 & U_G
-\end{pmatrix}$ where $U_F$ is $m \times m$, i.e., has $m$ even functions as left singular vectors, and $U_G$ is $(n-m) \times (n-m)$, i.e., has $n-m$ odd functions as left singular vectors. 
+\end{pmatrix}$, $U_F$ is $m \times m$, i.e., has $m$ even functions as left singular vectors, and $U_G$ is $(n-m) \times (n-m)$, i.e., has $n-m$ odd functions as left singular vectors.
+\\Together, since $\{q_1, \ldots, q_m\}$ are orthogonal to the odd functions in $U_G$, and $\{q_{m+1}, \ldots, q_n\}$ are orthogonal to the even functions in $U_F$, we get -- 
+\\$Q^TU = \begin{pmatrix}
+Q_F^T \cdot U_F & 0 \\
+0 & Q_G^T \cdot U_G
+\end{pmatrix}$ is still orthogonal (once again, orthogonal matrices form a group) and has $m$ even functions as left singular vectors, and $n-m$ odd functions as left singular vectors.
 \end{proof}
 
 \begin{question}[4]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Since $B, C$ are real symmetric positive definite, $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ exist and are real symmetric positive definite themselves. Additionally, $B, C, B^{\frac{1}{2}}, C^{\frac{1}{2}}$ are all isometries. Define $\tilde{A} = B^{\frac{1}{2}} A C^{\frac{1}{2}}$. Then $\tilde{A} = \tilde{U}  \tilde{\Sigma} \tilde{V}^T$. Let $U = B^{-\frac{1}{2}} \tilde{U},\ V = C^{-\frac{1}{2}} \tilde{V}$. Then $U, V$ are orthogonal. Since $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ are isometries, it follows that $\|\tilde{A}\| = \|B^{\frac{1}{2}} A C^{\frac{1}{2}}\| = \|A\|$ so all the singular values $\{\sigma_i\}_{1 \le i \le n}$ are invariant under the weighted inner products. Thus $\Sigma = \tilde{\Sigma}$. Finally
-$$A = B^{-\frac{1}{2}} \tilde{A} C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \tilde{\Sigma} \tilde{V}^T C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \Sigma \tilde{V}^T C^{-\frac{1}{2}} = U \Sigma V^T$$
-$\mathbf{(b)}$ By $(a)$, we have $A = \sum_j \sigma_j \cdot (B^{-\frac{1}{2}} \tilde{u_j}) \cdot (C^{-\frac{1}{2}} \tilde{v_j})^T$
+$\mathbf{(a)}$ Since $B, C$ are real symmetric positive definite, $B^{\frac{1}{2}}, C^{\frac{1}{2}}$ exist and are real symmetric positive definite themselves. Define $\tilde{A} = B^{\frac{1}{2}} A C^{\frac{1}{2}}$. Then $\tilde{A} = \tilde{U}  \tilde{\Sigma} \tilde{V}^T$. Let $U = B^{-\frac{1}{2}} \tilde{U},\ V = C^{-\frac{1}{2}} \tilde{V}$. Then $U, V$ are orthogonal, and $\tilde{\Sigma}$ is diagonal. Thus,
+$$A = B^{-\frac{1}{2}} \tilde{A} C^{-\frac{1}{2}} = B^{-\frac{1}{2}} \tilde{U}  \tilde{\Sigma} \tilde{V}^T C^{-\frac{1}{2}} = U \tilde{\Sigma} V^T$$
+$\mathbf{(b)}$ By $(a)$, we have $A = \sum_j \tilde{\sigma}_j \cdot (B^{-\frac{1}{2}} \tilde{u_j}) \cdot (C^{-\frac{1}{2}} \tilde{v_j})^T$
 \end{proof}
 
 \begin{question}[5]
 \end{question}
 \begin{proof}
-Suppose $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and $f(t) \in span\{f(s_j)\}$ for all $t \ne s_j$ for any $1 \le j \le m$. Then
+By contradiction, suppose we can only find $m$ points $\{s_j\}_{1 \le j \le m}$ for which the columns of $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and let $A_S = \begin{pmatrix}
+f(s_1) & f(s_2) & \ldots & f(s_m)
+\end{pmatrix}$ be $n \times m,\ m < n$. Then $A_S$ has linearly dependent rows since we have a collection of $n$ (row) vectors in $\mathbb{R}^m$. So there exists a nontrivial coefficient vector $\alpha \in \mathbb{R}^n$, such that $\alpha^T A_S = 0 \in \mathbb{R}^{1 \times m}$. Let us expand the last expression to see why this is an immediate contradiction --
 $$\begin{pmatrix}
-f_1(t) \\
-\vdots \\
-f_n(t)
-\end{pmatrix} = f(t) = \sum_{j=1}^m c_j f(s_j) = \begin{pmatrix}
-c_1 \cdot f_1(s_1) + \ldots + c_m \cdot f_1(s_m) \\
-\vdots \\
-c_1 \cdot f_n(s_1) + \ldots + c_m \cdot f_n(s_m)
-\end{pmatrix}$$
-This system of linear equations can be described by the variable and coefficient matrices, respectively -- 
-$$\begin{pmatrix}
-c_1 \cdot f_1(s_1) + \ldots + c_m \cdot f_1(s_m) \\
-\vdots \\
-c_1 \cdot f_n(s_1) + \ldots + c_m \cdot f_n(s_m)
-\end{pmatrix} = \begin{pmatrix}
+0 & 0 & \ldots & 0
+\end{pmatrix} = \alpha^T A_S = \begin{pmatrix}
+\alpha_1 & \alpha_2 & \ldots & \alpha_n
+\end{pmatrix} \cdot \begin{pmatrix}
 f_1(s_1) & f_1(s_2) & \ldots & f_1(s_m) \\
 f_2(s_1) & f_2(s_2) & \ldots & f_2(s_m) \\
 \vdots & \vdots & \ddots & \vdots \\
 f_n(s_1) & f_n(s_2) & \ldots & f_n(s_m)
-\end{pmatrix} \cdot \begin{pmatrix} c_1 & c_1 & \ldots & c_1 \\
-c_2 & c_2 & \ldots & c_2 \\
-\vdots & \vdots & \ddots & \vdots \\
-c_m & c_m & \ldots & c_m
-\end{pmatrix}\ \ \ \ \ \ \ (9.1)$$
-and the system is overdetermined since $m < n$, 
-which implies a nontrivial linear relation between the rows of the system, say $\sum_{j=1}^m c_j \cdot f_i(s_j) = \sum_{k \ne i} a_k \cdot \sum_{j=1}^m b_j \cdot f_k(s_j) \iff \\c_j \cdot f_i(s_j) = \sum_{k \ne i} a_kb_j \cdot f_k(s_j)$. That is, $f_i(s_j) \in span\{f_k(s_j)\}_{k \ne i}$, contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
-\\
+\end{pmatrix} $$
+$$\iff \sum_{i=1}^n \alpha_i \cdot f_i(s_j) = 0$$
+where $\alpha_i \ne 0$ for at least one $i$. This contradicts the linear independence of $\{f_i\}$.
 \end{proof}
 
 \begin{question}[6]
 \end{question}
 \begin{proof}
-If there are only $m$ linearly independent columns $\{s_j\}_{1 \le j \le m}$ in $f(t)$, then
-\\$rank(A^T) = rank(f(t)^T) = rank(f(t)) = rank(A) = m$, meaning there are also only $m$ linearly independent rows in $A = f(t)$. Say the $i^{th}$ row is in the span of the rest of the rows. Then,
-$$\begin{pmatrix}
-f_i(s_1) \\
-\vdots \\
-f_i(s_m)
-\end{pmatrix} = \sum_{j \ne i} c_j \cdot \begin{pmatrix}
-f_j(s_1) \\
-\vdots \\
-f_j(s_m)
-\end{pmatrix} = \begin{pmatrix}
-\sum_{j \ne i} c_j \cdot f_j(s_1) \\
-\vdots \\
-\sum_{j \ne i} c_j \cdot f_j(s_m)
-\end{pmatrix}$$
-$$\iff f_i(s_k) = \sum_{j \ne i} c_j \cdot f_j(s_k)$$
-contradicting the fact that $\{f_i\}_{1 \le i \le n}$ are linearly independent.
+By contradiction, suppose we can only find $m$ points $\{s_j\}_{1 \le j \le m}$ for which the columns of $\{f(s_j)\}_{1 \le j \le m}$ are linearly independent and let $A_S = \begin{pmatrix}
+f(s_1) & f(s_2) & \ldots & f(s_m)
+\end{pmatrix}$ be $n \times m,\ m < n$. Then $A_S$ has linearly dependent rows since we have a collection of $n$ (row) vectors in $\mathbb{R}^m$. So there exists a nontrivial coefficient vector $\alpha \in \mathbb{R}^n$, such that $\alpha^T A_S = 0$. A right action by $A_S$ implies a linear combination of its rows. Let $(\alpha^T A_S)_j$ denote the $j^{th}$ entry of the row vector $\alpha^T A_S$.
+\\Let $i$ be such that $\alpha_i \ne 0$. Then,
+$$(\alpha^T A_S)_i = \sum_{i=1}^n \alpha_i \cdot f_i(s_j) = 0$$
+contradicting the linear independence of $\{f_i\}$.
 \end{proof}
 
 \end{document}
