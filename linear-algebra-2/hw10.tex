@@ -101,56 +101,16 @@ A_1 & 0 \\
 U_1 \Sigma_1 V_1^T & 0 \\
 0 & U_2 \Sigma_2 V_2^T 
 \end{pmatrix} = U \Sigma V^T$.
-\\$\mathbf{(b)}$ Since $AX_1 \subseteq X_1$ and $AX_2 \subseteq X_2$, $A \restriction_{X_1} : X_1 \rightarrow X_1$ and $A \restriction_{X_2} : X_2 \rightarrow X_2$; and since $X_1 \oplus X_2 = X$, we can find an orthonormal basis for $X$, $\{q_1, \ldots, q_m, q_{m+1}, \ldots, q_n\}$ so that $\{q_1, \ldots, q_m\}$ spans $X_1$, and $\{q_{m+1}, \ldots, q_n\}$ spans $X_2$.
-Suppose $\dim X_1 = m,\ \dim X_2 = n-m$. Now for $v \in X_1,\ w \in X_2$, we have
-$$Qv = \begin{pmatrix}
-v_1 \\
-\vdots \\
-v_m \\
-0 \\
-\vdots \\
-0
-\end{pmatrix},\ Qw = \begin{pmatrix}
-0 \\
-\vdots \\
-0 \\
-w_1 \\
-\vdots \\
-w_{n-m}
-\end{pmatrix}$$
-This is because $\{q_{m+1}, \ldots, q_n\}$ doesn't span $X_1$, and $\{q_1, \ldots, q_m\}$ doesn't span $X_2$.
-\\It follows that
-$$AQv = \begin{pmatrix}
-| \\
-A\restriction_{X_1} \begin{pmatrix}
-v_1 \\
-\vdots \\
-v_m \end{pmatrix} \\
-| \\
-0 \\
-\vdots \\
-0
-\end{pmatrix},\ AQw = \begin{pmatrix}
-0 \\
-\vdots \\
-0 \\
-| \\
-A\restriction_{X_2} \begin{pmatrix}
-w_1 \\
-\vdots \\
-w_{n-m} \end{pmatrix} \\
-|
-\end{pmatrix}$$
-and we can write --
-$$A = Q^T \begin{pmatrix}
+\\$\mathbf{(b)}$ Let $\beta = \{x_1, \ldots, x_m, x_{m+1}, \ldots, x_n\}$ be any basis for $X$ such that $\{x_1, \ldots, x_m\}$ spans $X_1$, and $\{x_{m+1}, \ldots, x_n\}$ spans $X_2$. Since $AX_1 \subseteq X_1$ and $AX_2 \subseteq X_2$, $A \restriction_{X_1} : X_1 \rightarrow X_1$ and $A \restriction_{X_2} : X_2 \rightarrow X_2$, and we can write w.r.t $\beta$ --
+$$A =  \begin{pmatrix}
 A \restriction_{X_1} & 0 \\
 0 & A \restriction_{X_2}
-\end{pmatrix} Q = Q^T \begin{pmatrix}
+\end{pmatrix} = \begin{pmatrix}
 U_1 \Sigma_1 V_1^T & 0 \\
 0 & U_2 \Sigma_2 V_2^T
-\end{pmatrix} Q = (Q^TU) \cdot \Sigma \cdot (Q^TV)^T$$
-as in $\mathbf{(a)}$. Now, $Q^TU,\ Q^TV$ are still orthogonal matrices (orthogonal matrices form a group), whence we get the desired SVD decomposition.
-\\$\mathbf{(c)}$ Let $F = span \{f_1, \ldots, f_m\}$, $G = span \{f_{m+1}, \ldots, f_n\}$. For $f \in F, g \in G$, $f \cdot g$ is an odd function, so $\langle f, g \rangle = \int_{-1}^{-1} f \cdot g\ dx = 0$. Thus $F \perp G$, whence we can write $F \oplus G = X$, and by Gram-Schmidt we can extract from $\{f_1, \ldots, f_m, f_{m+1}, \ldots, f_n\}$ an orthonormal basis for $X$, $\{q_1, \ldots, q_m, q_{m+1}, \ldots, q_n\}$ so that $\{q_1, \ldots, q_m\}$ spans $F$, and $\{q_{m+1}, \ldots, q_n\}$ spans $G$. 
+\end{pmatrix} = U \cdot \Sigma \cdot V^T$$
+as in $\mathbf{(a)}$.
+\\$\mathbf{(c)}$ Let $F = span \{f_1, \ldots, f_m\}$, $G = span \{f_{m+1}, \ldots, f_n\}$, $F \oplus G = X$. For $f \in F, g \in G$, $f \cdot g$ is an odd function, so $\langle f, g \rangle = \int_{-1}^{-1} f \cdot g\ dx = 0$. Thus $F \perp G$, and by Gram-Schmidt we can extract from $\{f_1, \ldots, f_m, f_{m+1}, \ldots, f_n\}$ an orthonormal basis for $X$, $\{q_1, \ldots, q_m, q_{m+1}, \ldots, q_n\}$ so that $\{q_1, \ldots, q_m\}$ spans $F$, and $\{q_{m+1}, \ldots, q_n\}$ spans $G$. 
 And so, under this basis, as before, we can write
 $$A = Q^T \begin{pmatrix}
 A \restriction_F & 0 \\
@@ -160,27 +120,11 @@ U_F \Sigma_F V_F^T & 0 \\
 0 & U_G \Sigma_G V_G^T
 \end{pmatrix} Q = (Q^TU) \cdot \Sigma \cdot (Q^TV)^T$$
 where $Q, Q^T$ are orthogonal, and
-$$Q^T = \begin{pmatrix}
-q_{11} & q_{21} & \ldots & q_{n1}\\
-\vdots & \vdots & \ddots & \vdots \\
-q_{1m} & q_{2m} & \ldots & q_{nm} \\
-q_{1,(m+1)} & q_{2,(m+1)} & \ldots & q_{n,(m+1)} \\
-\vdots & \vdots & \ddots & \vdots \\
-q_{1n} & q_{2n} & \ldots & q_{nn}
-\end{pmatrix} = \begin{pmatrix}
-Q_F^T & P_F^T \\
-P_G^T & Q_G^T
-\end{pmatrix}$$
-where $Q_F^T \in \mathbb{R}^{m \times m},\ P_F^T \in \mathbb{R}^{m \times (n-m)}$ and $P_G^T \in \mathbb{R}^{(n-m) \times m},\ Q_G^T \in \mathbb{R}^{(n-m) \times (n-m)}$.
-\\By $(a)$ and $(b)$, $U = \begin{pmatrix}
+By $(a)$ and $(b)$, $U = \begin{pmatrix}
 U_F & 0 \\
 0 & U_G
-\end{pmatrix}$, $U_F$ is $m \times m$, i.e., has $m$ even functions as left singular vectors, and $U_G$ is $(n-m) \times (n-m)$, i.e., has $n-m$ odd functions as left singular vectors.
-\\Together, since $\{q_1, \ldots, q_m\}$ are orthogonal to the odd functions in $U_G$, and $\{q_{m+1}, \ldots, q_n\}$ are orthogonal to the even functions in $U_F$, we get -- 
-\\$Q^TU = \begin{pmatrix}
-Q_F^T \cdot U_F & 0 \\
-0 & Q_G^T \cdot U_G
-\end{pmatrix}$ is still orthogonal (once again, orthogonal matrices form a group) and has $m$ even functions as left singular vectors, and $n-m$ odd functions as left singular vectors.
+\end{pmatrix}$, $U_F$ is $m \times m$, i.e., has $m$ even functions as left singular vectors, and $U_G$ is $(n-m) \times (n-m)$, i.e., has $n-m$ odd functions as left singular vectors, and where
+$Q^TU$ is still orthogonal (once again, orthogonal matrices form a group).
 \end{proof}
 
 \begin{question}[4]
