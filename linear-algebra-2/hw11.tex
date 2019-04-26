@@ -185,11 +185,21 @@ $$\|G^Tv\| = \|G^TGu\| = \|u\| = \|Gu\| = \|v\|$$
 \begin{question}[5]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ See $(11.1)$.
-\\$\mathbf{(b)}$ By question $(4)(a)$, it follows that $G^TG$ is an orthogonal projection. That is, taking all the singular values to be the positive square roots, we have $\sigma_i  = 1$. Since this gives a diagonal matrix $\Sigma$, it follows that $\Sigma$ is diagonalized by the identity matrix, hence the matrix of right singular vectors is $V = I$. I.e., $v_i = e_i$; whence this gives
+Suppose $\dim V = n, \dim U = m$.
+\\$\mathbf{(a)}$ See $(11.1)$.
+\\$\mathbf{(b)}$ By question $(4)(a)$, it follows that $G^TG$ is an orthogonal projection (WLOG suppose the first k entries on the diagonal are ones. That is, suppose the first $k$ column vectors of $G$ are the orthonormal ones). That is, taking all the singular values to be the positive square roots, we have $\sigma_i  = 1$. Since this gives a diagonal matrix $\Sigma$, it follows that $\Sigma$ is diagonalized by the identity matrix, hence the matrix of right singular vectors is $V = I_{k \times n}$. I.e., $v_i = e_i$; whence this gives
 $$u_i = \sigma_i \cdot u_i = G v_i = G e_i = g_i$$
-for $1 \le i \le k$. As indeed is expected since the first $k$ columns of $G$ must be orthogonal if $G^TG$ is to be an orthogonal projection. Thus $G = \sum_{i=1}^k \sigma_i u_i v_i^T$ is the desired reduced SVD.
-\\$\mathbf{(c)}$
+for $1 \le i \le k$. As indeed is expected since the first $k$ columns of $G$ must be orthonormal if $G^TG$ is to be an orthogonal projection. Thus $G = \sum_{i=1}^k \sigma_i u_i v_i^T = \sum_{i=1}^k g_i e_i^T$ is the desired reduced SVD. In matrix form --
+$$G = \begin{pmatrix}
+g_1 & \ldots & g_k
+\end{pmatrix} \cdot I_k \cdot I_{k \times n}$$
+\\$\mathbf{(c)}$ Since $\{g_1, \ldots, g_k\}$ spans $N_G^{\perp}$ (and is orthonormal), it follows that $\{g_{k+1}, \ldots, g_m\}$ spans $N_G$. Let us orthogonalize the latter set using Gram-Schmidt to give an orthonormal basis to $N_G$. For $k+1 \le j \le m$,
+$$\hat{g}_j = g_j - \sum_{i=1}^{j-1}\dfrac{\langle g_i, g_j \rangle}{\|g_i\|^2}g_i$$
+That is, the full SVD in matrix form is --
+$$G = \begin{pmatrix}
+g_1 & \ldots & g_k & \hat{g}_{k+1} & \ldots & \hat{g}_m
+\end{pmatrix} \cdot I_{m \times n} \cdot I_n = U \Sigma V^T$$
+where $\Sigma$ is diagonal, and $U, V$ are both orthogonal.
 \end{proof}
 
 \end{document}
