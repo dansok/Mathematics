@@ -174,14 +174,6 @@ $$G^TGv= G^T \cdot 0 = 0$$
 Let $x \in X = N_G^{\perp} \oplus N_G$. Then $x$ can be written uniquely: $x = u +v$, for $u \in N_G^{\perp},\\ v \in N_G$. We have --
 $$G^TGx = G^TG(u+v) = G^TGu + G^TGv = u + 0 = u$$
 Obviously $N_G^{\perp} \perp N_G$ by definition, whence we have that $G^TG$ is the orthogonal projection of $X$ onto $N_G^{\perp}$.
-\\$\mathbf{(b)}$ Let $F = G \restriction_{N_G^{\perp}}$. We showed in $\mathbf{(a)}$ that $F^TF = I_{\dim N_G^{\perp}}$. Also, $\|Fv\| = \|v\|$ for every $v \in N_G^{\perp}$. It follows that $N_F = \{0\} \iff F$ is invertible $\iff detF \ne 0$. Recall that a left inverse is a right inverse for an invertible transformation --
-$$det(FF^T) = det(F) \cdot det(F^T) = (detF)^2 > 0$$
-so $FF^T$ is invertible. Now, recall that $\dim N_G^{\perp} = \dim N_{G^T}^{\perp}$ as the respective dimensions of the row space, and column space of $G$; whence $I_{\dim N_{G^T}^{\perp}} = I_{\dim N_G^{\perp}} = I$ --
-$$(FF^T)^2 = FF^T \cdot FF^T = F \cdot (F^TF) \cdot F^T = F \cdot I \cdot F^T = FF^T$$
-$$\iff FF^T = (FF^T)^{-1} (FF^T)^2 = (FF^T)^{-1} (FF^T) = I$$
-Finally, for $u \in N_{G^T}^{\perp}$, $G^Tu = F^Tu$, and
-$$\|G^Tu\|^2 = \|F^Tu\|^2 = \langle F^Tu, F^Tu \rangle =  \langle u, FF^Tu \rangle = \langle u, Iu \rangle = \langle u, u \rangle = \|u\|^2$$
-$\iff \|G^Tu\| = \|u\|$.
 \\$\mathbf{(b)}$ $X = N_G^{\perp} \oplus N_G$. So,
 $$u \in N_G^{\perp} \iff u \not \in N_G \iff Gu \ne 0 \iff N_{G \restriction_{N_G^{\perp}}} = \{0\}$$
 $\iff G \restriction_{N_G^{\perp}}$ is bijective and hence invertible. Additionally, for $0 \ne u \in N_G^{\perp}$, we showed in $\mathbf{(a)}$ that
