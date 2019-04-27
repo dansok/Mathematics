@@ -53,32 +53,100 @@ Dan Sokolsky
 \begin{question}[1]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Since $A \ne 0$, there exists $w \in \mathbb{R}^{n}$ such that $Aw \ne 0$. Thus
-\\$\|Av\| = \|A\| \ge \|Aw\| > 0$; whence $Av \ne 0$. That is $v \not\in N_A \iff v \in N_A^{\perp}$ since $N_A \oplus N_A^{\perp} = \mathbb{R}^n$.
-\\$\mathbf{(b)}$ $\|v\| = 1$, so
-$$\sigma = \|A\| = \|Av\| = \langle Av, \frac{Av}{\|Av\|} \rangle = \langle Av, \frac{\sigma u}{\sigma} \rangle = \langle Av, u \rangle = \langle v, A^T u \rangle$$
-Now,
-$$\sup_{\|x\|=1, \|w\| = 1}\langle A^Tx, w \rangle = \|A^T\| = \|A\| = \sigma = \langle A^Tu, v  \rangle = \sup_{\|w\|=1} \langle A^Tu, w \rangle = \|A^Tu\|$$
-That is, $A^T$ achieves it's maximum for $x = u,\ w=v$. That is,
-$$\langle A^Tu, v  \rangle = \sigma = \|A^T\| = \|A^Tu\| = \|A^Tu\| \cdot 1 = \|A^Tu\| \cdot \|v\|$$
-$$\iff A^Tu = k \cdot v \iff v = \dfrac{A^Tu}{k}$$
-since by Cauchy-Schwartz, equality is achieved $\iff$ the two vectors are scalar multiples of one another. Now,
-$$\|A^Tu\| = \langle A^Tu, v\rangle = \langle A^Tu, \dfrac{A^Tu}{k}\rangle = \dfrac{1}{k} \langle A^Tu, A^Tu \rangle = \dfrac{1}{k} \|A^Tu\|^2$$
-$$\iff k = \|A^Tu\| = \sigma$$
-That is, $A^Tu = \sigma v$.
-
+$\mathbf{(a)}$ Gaussian Elimination is a set of row operations.
+\\$\mathbf{(b)}$ Let $A = \begin{pmatrix}
+a_{11} & * \\
+\vec{a} & * \end{pmatrix}$ where $\vec{a} = \begin{pmatrix}
+a_{21} \\
+\vdots \\
+a_{n1}
+\end{pmatrix}$. Let $G = \begin{pmatrix}
+1 & 0 \\
+\vec{g} & I_{n-1}
+\end{pmatrix}$ where $\vec{g} = \begin{pmatrix}
+-\frac{a_{21}}{a_{11}} \\
+\vdots \\
+-\frac{a_{n1}}{a_{11}}
+\end{pmatrix}$
+Then $GA = \begin{pmatrix}
+a_{11} & * \\
+0 & *
+\end{pmatrix} $ as required.
+\\$\mathbf{(c)}$ $G = I_n - g \cdot e_1^T$ where similarly to what is defined above --
+$$g = \begin{pmatrix}
+\frac{a_{21}}{a_{11}} \\
+\vdots \\
+\frac{a_{n1}}{a_{11}}
+\end{pmatrix},\ e_1 = \begin{pmatrix}
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}$$
+and where $g \cdot e_1^T$ is the desired rank$-1$ matrix in outer product form.
 \end{proof}
 
 \begin{question}[2]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ We iterate step 1. Find a unit vector $v_2 \in \mathbb{R}^n$ such that $\|A_2\| = \|A_2v_2\|$.
-\\Let $\sigma_2 u_2 = A_2 v_2,\ \sigma_2 = \|A_2\|$ so that $u_2 \in \mathbb{R}^m$ is a unit vector.
-\\$\mathbf{(b)}$ By question $(1)(a)$, $v_2 \in N_{A_2}^{\perp}$. Define $A_3 = A_2 - \sigma_2 u_2 v_2^T$. Then
-$$A_3 v_2 = A_2 v_2 - \sigma_2 u_2 v_2^Tv_2 = A_2 v_2 - \sigma_2 u_2 \|v_2\|^2 = A_2 v_2 - \sigma_2 u_2 = 0$$
-That is, $v_2 \in N_{A_3}$.
-\\$\mathbf{(c)}$ Since $v_1 \in N_{A_2}$ and $v_2 \in N_{A_2}^{\perp}$, it follows that $v_1 \perp v_2$, or $\langle v_1, v_2 \rangle = 0$.
-\\$\mathbf{(d)}$ We have $A_i = A_{i-1} - \sigma_{i-1} u_{i-1} v_{i-1}^T = A - \Sigma_{j=1}^{i-1} \sigma_j u_j v_j^T$.
+$\mathbf{(a)}$ $A = I_n + u \cdot e_1^T$ where
+$$u = \begin{pmatrix}
+0 \\
+u_1 \\
+\vdots \\
+u_{n-1}
+\end{pmatrix},\ e_1 = \begin{pmatrix}
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}$$
+\\$\mathbf{(b)}$ $A$ clearly has full rank as a lower triangular matrix. Thus $A$ is invertible. Denote $X = A^{-1}$ for convenience, and observe --
+$$I_n = XA = X(I + B) = X + XB = \begin{pmatrix}
+x_{11} & \ldots & x_{1n} \\
+\vdots & \ddots & \vdots \\
+x_{n1} & \ldots & x_{nn}
+\end{pmatrix} + \begin{pmatrix}
+x_{11} & \ldots & x_{1n} \\
+\vdots & \ddots & \vdots \\
+x_{n1} & \ldots & x_{nn}
+\end{pmatrix} \cdot \begin{pmatrix}
+0 & \ldots & 0 \\
+u_1 & \ldots & 0 \\
+\vdots & \ddots & \vdots \\
+u_{n-1} & \ldots & 0
+\end{pmatrix}$$
+$$= \begin{pmatrix}
+x_{11} & \ldots & x_{1n} \\
+\vdots & \ddots & \vdots \\
+x_{n1} & \ldots & x_{nn}
+\end{pmatrix} + \begin{pmatrix}
+x_{12} u_1 + \ldots + x_{1n} u_{n-1} & 0 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+x_{n2} u_1 + \ldots + x_{nn} u_{n-1} & 0 & \ldots & 0
+\end{pmatrix}$$
+From which it immediately follows that $x_{jj} = 1$ for $j \ge 2$, and $x_{ij} = 0$ for $i \ne j,\\ j \ge 2$. It follows that $(XB)_{11} = 0$ and therefore $x_{11} = 1$. Finally, we see that
+$$XB = \begin{pmatrix}
+0 & 0 & \ldots & 0 \\
+u_1 & 0 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+u_{n-1} & 0 & \ldots & 0
+\end{pmatrix} $$
+Therefore, we must have --
+$$A^{-1} = X = \begin{pmatrix}
+1 & 0 & \ldots & 0 \\
+-u_1 & 1 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+-u_{n-1} & 0 & \ldots & 1
+\end{pmatrix} = I_n -u \cdot e_1^T$$
+\\$\mathbf{(c)}$ Supppose $A$ is invertible, i.e. $A^{-1}$ exists and is unique. Then, given $x$,
+$$x + uv^Tx = (I + uv^T)x = Ax = y$$
+$$\iff x = y - uv^Tx$$
+$$\iff v^Tx = v^Ty - v^Tuv^Tx$$
+$$\iff (1 + v^Tu)v^Tx = v^Ty$$
+$$\iff v^Tx = \dfrac{v^Ty}{1 + v^Tu}$$
+$$\iff x = y - uv^Tx = y - u \cdot \dfrac{v^Ty}{1 + v^Tu} = \Big(I - \dfrac{uv^T}{1 + v^Tu}\Big) \cdot y$$
+That is, $\Big(I - \dfrac{uv^T}{1 + v^Tu}\Big)$ maps $y$ back to $x$. Since $x$ is arbitrary, and $A^{-1}$ is unique, we have $A^{-1} = I - \dfrac{uv^T}{1 + v^Tu}$.
 \end{proof}
 
 \begin{question}[3]
