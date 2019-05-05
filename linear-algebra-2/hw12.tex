@@ -76,10 +76,17 @@ $$A = \begin{pmatrix}
 \end{pmatrix} $$
 and observe that for any $v \in X$ --
 $$Av = \sum_{i=1}^s \hat{y}_i v_i \in Y,\ \ \ \ Bv = \sum_{i=1}^t \hat{z}_i v_i \in Z$$
-We see that in particular, $A, B$ are onto $Y, Z$, respectively.
+We see that in particular, $A, B$ are onto $Y, Z$, respectively. Additionally,
+\\$A^TA = \begin{pmatrix}
+I_s & 0 \\
+0 & 0
+\end{pmatrix} $, $B^TB = \begin{pmatrix}
+I_t & 0 \\
+0 & 0
+\end{pmatrix} $. That is, $A, B$ are isometric. I.e., $A, B$ preserve the norms of vectors in their row spaces.
 Now consider the matrix $M = A^TB$. For $v, w \in X$, we have --
 $$\sigma = \|M\| = \sup_{v \in X} \|Mv\| = \sup_{v,w \in X} \langle Mv, w \rangle = \sup_{v,w \in X} \langle A^TB v, w \rangle = $$ $$= \sup_{v,w \in X} \langle B v, A w \rangle = \sup_{z \in Z, y \in Y} \langle z, y \rangle = \cos \theta(Y, Z)$$
-Where $z= Bv, y = Aw$, and where $M = A^TB$ is the desired matrix.
+Where $z= Bv, y = Aw$, and $\|z\| = \|Bv\| = \|v\| = 1 = \|w\| = \|Aw\| = \|y\|$. Therefore, $M = A^TB$ is the desired matrix.
 \end{proof}
 
 \begin{question}[3]
