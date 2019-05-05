@@ -68,7 +68,7 @@ I_s & 0
 $$P = \begin{pmatrix}
 y_1 & \ldots & y_s & z_1 & \ldots & z_t
 \end{pmatrix}  = Y \cdot I_{s \times n}  + Z \cdot \tilde{I}_{t \times n} $$
-\\$\mathbf{(c)}$ Let $\beta = \{\hat{y}_1, \ldots, \hat{y}_s, \hat{z}_1, \ldots, \hat{z}_s\}$ form an orthonormal basis for $X$, such that $\beta_Y = \{\hat{y}_1, \ldots, \hat{y}_s\}$, $\beta_Z = \{\hat{z}_1, \ldots, \hat{z}_s\}$ form bases for $Y, Z$, respectively. Let
+\\$\mathbf{(c)}$ Let $\beta_Y = \{\hat{y}_1, \ldots, \hat{y}_s\}$, $\beta_Z = \{\hat{z}_1, \ldots, \hat{z}_s\}$ form orthonormal bases for $Y, Z$, respectively. Let
 $$A = \begin{pmatrix}
 \hat{y}_1 & \ldots & \hat{y}_s & 0 & \ldots & 0
 \end{pmatrix}, B = \begin{pmatrix}
@@ -83,9 +83,12 @@ I_s & 0 \\
 \end{pmatrix} $, $B^TB = \begin{pmatrix}
 I_t & 0 \\
 0 & 0
-\end{pmatrix} $. That is, $A, B$ are isometric. I.e., $A, B$ preserve the norms of vectors in their row spaces.
-Now consider the matrix $M = A^TB$. For $v, w \in X$, by question $\mathbf{(1)(a)}$ in homework $11$, suffices to consider $v \in N_B^{\perp}, w \in N_A^{\perp}$. Then we denote $z= Bv, y = Aw$, and therefore and $\|z\| = \|Bv\| = \|v\| = 1 = \|w\| = \|Aw\| = \|y\|$. Thus,
-$$\sigma = \|M\| = \sup_{v \in X} \|Mv\| = \sup_{v,w \in X} \langle Mv, w \rangle = \sup_{v,w \in X} \langle A^TB v, w \rangle = $$ $$= \sup_{v,w \in X} \langle B v, A w \rangle = \sup_{z \in Z, y \in Y} \langle z, y \rangle = \cos \theta(Y, Z)$$
+\end{pmatrix} $. That is, $A, B$ are isometric. I.e., $A, B$ preserve the norms of vectors in their row spaces. Furthermore, for all $w \in X$, $w = w_{\perp} + w_N$, where $w_{\perp} \in N_A^{\perp}$, and $w_N \in N_A$. So
+$$Aw = A(w_{\perp} + w_N) = Aw_{\perp}\ \ \ \ \ \ \ \ \ \ \ (12.1)$$
+Likewise, for all $v \in X$, $v = v_{\perp} + v_N$, where $v_{\perp} \in N_B^{\perp}$, and $v_N \in N_B$. So
+$$Bv = B(v_{\perp} + v_N) = Bv_{\perp}\ \ \ \ \ \ \ \ \ \ \ (12.2)$$
+Now consider the matrix $M = A^TB$. By $(12.1)$, and $(12.2)$, in the following discussion suffices to consider only $v \in N_B^{\perp}, w \in N_A^{\perp}, \|v\| = 1 = \|w\|$ (and indeed, by question $\mathbf{(1)(a)}$ in homework $11$, the maximizers are achieved in these respective subspaces). Then denoting $z= Bv, y = Aw$, we have $\|z\| = \|Bv\| = \|v\| = 1 = \|w\| = \|Aw\| = \|y\|$. Thus,
+$$\sigma = \|M\| = \sup_{\hat{v} \in N_B^{\perp}} \|M\hat{v}\| = \sup_{\hat{v} \in N_B^{\perp},\hat{w} \in N_A^{\perp}} \langle M\hat{v}, \hat{w} \rangle = \sup_{\hat{v} \in N_B^{\perp},\hat{w} \in N_A^{\perp}} \langle A^TB \hat{v}, \hat{w} \rangle = $$ $$= \sup_{\hat{v} \in N_B^{\perp},\hat{w} \in N_A^{\perp}} \langle B \hat{v}, A \hat{w} \rangle = \sup_{\hat{z} \in Z, \hat{y} \in Y} \langle \hat{z}, \hat{y} \rangle = \cos \theta(Y, Z)$$
 Where ,  Therefore, $M = A^TB$ is the desired matrix.
 \end{proof}
 
