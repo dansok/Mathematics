@@ -92,6 +92,21 @@ $$\sigma = \|M\| = \sup_{\hat{v} \in N_B^{\perp}} \|M\hat{v}\| = \sup_{\hat{v} \
 Therefore, $M = A^TB$ is the desired matrix.
 \end{proof}
 
+\begin{question}[2]
+Let $u = u_1$ be a unit vector. Let the orthogonal projection onto $span\{u\}$ be $P_u = uu^T$. Then $P_u^{\perp} = I - P_u = I - uu^T$. We have
+$$P_u A = uu^T(I + uv^T) = uu^T + uv^T = P_u + A - I$$
+and
+$$P_u^{\perp} A = (I - uu^T)(I + uv^T) = I - uu^T + uv^T - uu^Tuv^T = I - uu^T + uv^T - uv^T = I - uu^T = P_u^{\perp}$$
+and
+$$(P_u)^2 = (uu^T)^2 = u(u^Tu)u^T = u \cdot 1 \cdot u^T = uu^T$$
+and
+$$(P_u^{\perp})^2 = (I - uu^T)^2 = I - 2uu^T + (uu^T)^2 = I - 2uu^T + uu^T = I - uu^T = P_u^{\perp}$$
+and
+$$P_u \cdot P_u^{\perp} = uu^T(I - uu^T) = uu^T - uu^T = 0$$
+We see that this setup satisfies the resolution of the identity described on page $110$.
+Note That $P_u^{\perp}$ acts as an identity on $span\{u\}^{\perp}$. Let $u_2 \ in span\{u\}^{\perp}$ be a unit vector. Define $P_{u_2} = u_2 u_2^T$. Define $P_{u_2}^{\perp} = P_{u}^{\perp} - P_{u_2} = I - P_u - P_{u_2}$. Now $P_{u_2}^{\perp}$ is the orthogonal projection onto $span\{u, u_2\}^{\perp}$. Continuing in this way, we get $I = \sum_{i=1}^n P_{u_i} = \sum_{i=1}^n u_i u_i^T$. Since this decomposition is a resolution of the identity, it follows that $\{u_i\}_{1 \le i \le n}$ forms a basis for $X$.
+\end{question}
+
 \begin{question}[3]
 \end{question}
 \begin{proof}
