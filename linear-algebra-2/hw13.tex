@@ -53,7 +53,7 @@ Dan Sokolsky
 \begin{question}[1]
 \end{question}
 \begin{proof}
-Let $X = Y \oplus Z$. Let $P$ be the projection of $X$ onto $Y$ along $Z$. That is, for $X \ni x = y + z$, $Px = P(y+z) = y$. First, we claim $N_P = Z$ -- To that end, $z \in Z \implies Pz = P(0 + z) = 0 \iff z \in N_P$. Conversely, let $x \in N_P$. Then $x$ can be written uniquely: $x = y + z$, $y \in Y, z \in Z$. Thus $0 = Px = P(y+z) = y$. That is, $x = z \in Z$. Thus $Z = N_P$, as claimed. Now let $\beta = \{y_1, \ldots, y_r\}$ be any basis for $Y$. From $Y \oplus N_P = Y \oplus Z = X = N_P^{\perp} \oplus N_P$, we have that $\beta$ forms a basis for $N_P^{\perp}$ as well. Now, for $v \in N_P^{\perp}$, $v = \sum_{i=1}^r c_iy_i$. Finally, $Pv = P(\sum_{i=1}^r c_iy_i) = \sum_{i=1}^r c_iPy_i = \sum_{i=1}^r c_iy_i = v$. Naturally, therefore, $\|Pv\| = \|v\|$.
+The claim is false in general. Let $X = Y \oplus Z$. Let $P$ be an oblique projection of $X$ onto $Y$ along $Z$. That is, for $X \ni x = y + z$, $Px = P(y+z) = y$. First, we claim $N_P = Z$ -- To that end, $z \in Z \implies Pz = P(0 + z) = 0 \iff z \in N_P$. Conversely, let $x \in N_P$. Then $x$ can be written uniquely: $x = y + z$, $y \in Y, z \in Z$. Thus $0 = Px = P(y+z) = y$. That is, $x = z \in Z$. Thus $Z = N_P$, as claimed.
 \end{proof}
 
 \begin{question}[2]
