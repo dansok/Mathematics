@@ -127,7 +127,14 @@ this yields an $n^2 \times n^2$ matrix representation of the linear operator $dr
 \begin{question}[4]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ 
+$\mathbf{(a)}$ Suppose $A$ is not invertible. Then $AA^*$ is a self-adjoint, positive semi-definite. We can find a self-adjoint, positive semi-definite $R$, such that $AA^* = R^2$, and by the spectral representation theorem $R = W\Sigma W^*$, whence $R^2 = W\Sigma^2 W^*$. The problem now is to find a unitary matrix $U$, such that $A = RU$. Let us tackle this issue by introducing $H = AA^* + \sigma I$. Then $H$ is self-adjoint, strictly positive definite, and we have
+$$H = AA^* + \sigma I = W\Sigma^2 W^* + \sigma WW^* = W(\Sigma^2 + \sigma I)W^* = R_{\sigma}^2$$
+Then $\lim_{\sigma \rightarrow 0}R_{\sigma} = R$. Define $U_{\sigma} = R_{\sigma}^{-1}H$. Then $H = R_{\sigma}U_{\sigma}$, and $A = \lim_{\sigma \rightarrow 0} H = \lim_{\sigma \rightarrow 0} R_{\sigma}U_{\sigma} = RU$. As before,
+$$U_{\sigma} U_{\sigma}^* = R_{\sigma}^{-1}H H^* R_{\sigma}^{-1} = R_{\sigma}^{-1}R_{\sigma}^2 R_{\sigma}^{-1} = I$$
+I.e., $U_{\sigma}$ is unitary. Remains to show $U = \lim_{\sigma \rightarrow 0}U_{\sigma}$ is itself unitary. To this end, we claim that the set of unitary operators, $\mathscr{U}$ is compact, whence the limit of any sequence of unitary matrices is itself unitary. We show $\mathscr{U}$ is closed and bounded --
+\\$(1)$ $\mathscr{U}$ is bounded -- $M \in \mathscr{U} \implies \|M\| = 1 \implies M$ is bounded.
+\\$(2)$ $\mathscr{U}$ is closed as the inverse image of the closed singleton $\{I\}$ under the continuous mapping $A \mapsto AA^*$.
+Therefore, $U$ is unitary as well, as required. We have the desired decomposition $A = RU$.
 \\$\mathbf{(b)}$ Let $A = W\Sigma V^* = (W \Sigma W^*) \cdot (WV^*) = R \cdot U$, where $R = W \Sigma W^*, U = WV^*$. Obviously $U$ is unitary as a product of unitary matrices, and $R$ is positive semi-definite since $\Sigma$ is positive semi-definite (all singular values $\sigma_i \ge 0$), and positive (semi-)definite matrices are closed under $M \mapsto QMQ^*$ (in the strictly positive case we also require that $Q$ should have full rank which it does in our case as an orthogonal matrix). Finally, if $A$ is invertible, then $R$ is strictly positive, as the entries on the diagonal of $\Sigma$ are positive, whence $\Sigma$ is positive.
 \end{proof}
 \end{document}
