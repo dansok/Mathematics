@@ -53,67 +53,81 @@ Dan Sokolsky
 \begin{question}[1]
 \end{question}
 \begin{proof}
-The claim is false in general. Let $X = Y \oplus Z$. Let $P$ be an oblique projection of $X$ onto $Y$ along $Z$. That is, for $X \ni x = y + z$, $Px = P(y+z) = y$. First, we claim $N_P = Z$ -- To that end, $z \in Z \implies Pz = P(0 + z) = 0 \iff z \in N_P$. Conversely, let $x \in N_P$. Then $x$ can be written uniquely: $x = y + z$, $y \in Y, z \in Z$. Thus $0 = Px = P(y+z) = y$. That is, $x = z \in Z$. Thus $Z = N_P$, as claimed.
+The claim is false in general. Let $X = Y \oplus Z$. Let $P$ be an oblique projection of $X$ onto $Y$ along $Z$. That is, for $X \ni x = y + z$, $Px = P(y+z) = y$. First, we claim $N_P = Z$ -- To that end, $z \in Z \implies Pz = P(0 + z) = 0 \iff z \in N_P$. Conversely, let $x \in N_P$. Then $x$ can be written uniquely: $x = y + z$, $y \in Y, z \in Z$. Thus $0 = Px = P(y+z) = y$. That is, $x = z \in Z$. Thus $Z = N_P$, as claimed. Having established this, we proceed with a counter example. Let $X = \mathbb{R}^2$. Let $Z = span\{\begin{pmatrix}
+1 \\
+0
+\end{pmatrix} \} = span\{e_1\}$. Let $Y = span\{\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}$. Let $P$ be the projection onto $Y$ along $Z$. By our claim, $N_P = Z$. Thus $N_P^{\perp} = span\{\begin{pmatrix}
+0 \\
+1
+\end{pmatrix}\} = span\{e_2\}$. Then
+$$e_2 = \begin{pmatrix}
+0 \\
+1
+\end{pmatrix} = \begin{pmatrix}
+1 \\
+1
+\end{pmatrix} - \begin{pmatrix}
+1 \\
+0
+\end{pmatrix} = \begin{pmatrix}
+1 \\
+1
+\end{pmatrix} - e_1$$
+Now $Pe_2 = \begin{pmatrix}
+1 \\
+1
+\end{pmatrix}$ but
+$$\|e_1\| = 1 \ne 2 = 1^2 + 1^2 = \|\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}\| = \|Pe_1\|$$
 \end{proof}
 
 \begin{question}[2]
-Let $u = u_1$ be a unit vector. Let the orthogonal projection onto $span\{u\}$ be $P_u = uu^T$. Then $P_u^{\perp} = I - P_u = I - uu^T$. We have
-$$P_u A = uu^T(I + uv^T) = uu^T + uv^T = P_u + A - I$$
-and
-$$P_u^{\perp} A = (I - uu^T)(I + uv^T) = I - uu^T + uv^T - uu^Tuv^T = I - uu^T + uv^T - uv^T = I - uu^T = P_u^{\perp}$$
-and
-$$(P_u)^2 = (uu^T)^2 = u(u^Tu)u^T = u \cdot 1 \cdot u^T = uu^T$$
-and
-$$(P_u^{\perp})^2 = (I - uu^T)^2 = I - 2uu^T + (uu^T)^2 = I - 2uu^T + uu^T = I - uu^T = P_u^{\perp}$$
-and
-$$P_u \cdot P_u^{\perp} = uu^T(I - uu^T) = uu^T - uu^T = 0$$
-We see that this setup satisfies the resolution of the identity described on page $110$.
-Note That $P_u^{\perp}$ acts as an identity on $span\{u\}^{\perp}$. Let $u_2 \ in span\{u\}^{\perp}$ be a unit vector. Define $P_{u_2} = u_2 u_2^T$. Define $P_{u_2}^{\perp} = P_{u}^{\perp} - P_{u_2} = I - P_u - P_{u_2}$. Now $P_{u_2}^{\perp}$ is the orthogonal projection onto $span\{u, u_2\}^{\perp}$. Continuing in this way, we get $I = \sum_{i=1}^n P_{u_i} = \sum_{i=1}^n u_i u_i^T$. Since this decomposition is a resolution of the identity, it follows that $\{u_i\}_{1 \le i \le n}$ forms a basis for $X$.
+Let $f(x) = x^TBx$.
+\\$\mathbf{(a)}$ We take advantage of the fact that for real vectors $x, y \in \mathbb{R}^n$, $\langle x, y \rangle = \langle y, x \rangle$. In particular, $u^TAv = \langle u, Av \rangle = \langle Av, u \rangle = v^TA^Tu$
+$$f(x + ty) = (x + ty)^TB(x + ty) = x^TBx + t(y^TBx + x^TBy)+t^2y^TBy$$
+By our definition and comment above,
+$$df_x(y) = y^TBx + x^TBy = x^TB^Ty + x^TBy = x^T(B + B^T)y = \langle (B + B^T)x, y \rangle$$
+so that our linear operator $df_x = (B + B^T)x$, which is clearly a column vector.
+\\$\mathbf{(b)}$ Let $H$ be symmetric. Let $R_H(x) = \dfrac{x^THx}{x^Tx} = \dfrac{q(x)}{p(x)}$. Note that
+$$R(cx) = \dfrac{cx^TH(cx)}{cx^T(cx)} = \dfrac{c^2}{c^2} \cdot \dfrac{x^THx}{x^Tx} = \dfrac{x^THx}{x^Tx} = R(x)$$
+Thus suffices to study the situation for $\|x\|^2 = x^Tx = 1$, and note that $R$ must take it's minimum at some point on the unit sphere. Call that point $f$. Then
+$$R(f + tg) = \dfrac{f^THf + 2g^THf + t^2f^THf}{f^Tf + 2tg^Tf + t^2g^Tg} = \dfrac{q(t)}{p(t)}$$
+Since $R$ achieves it's minimum at $f$, $R(f + tg)$ achieves it's minimum at $t=0$. Thus
+$$0 = \dfrac{d}{dt}R(f + tg)|_{t=0} = R' = \dfrac{q'p - p'q}{p^2}$$
+Now $\|f\| = p = 1$, and denoting $\lambda = R_H(f) = \min R$, we have
+$$0 = R' = q' - \lambda p'\ \ \ \ \ \ \ \ \ \ \ \ (13.1)$$
+Finally,
+$$q' = \dfrac{d}{dt}q(f + tg)|_{t=0} = 2g^THf$$
+$$p' = \dfrac{d}{dt}q(f + tg)|_{t=0} = 2g^Tf$$
+We get readily from $(13.1)$
+$$0 = 2g^THf - 2\lambda g^Tf = 2g^T(Hf - \lambda f)\ \ \ \ \ \ \ \ \ \ \ \ (13.2)$$
+$(13.2)$ is true for all $g \in \mathbb{R}^n$. A vector orthogonal to all other vectors is the $0$ vector. It follows that $Hf - \lambda f = 0 \iff Hf = \lambda f$. I.e., $(\lambda, f)$ is an eigenpair of $H$.
 \end{question}
 
 \begin{question}[3]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ since $\|uv^T\| < 1$, the geometric series gives --
-$$(I + uv^T)^{-1} = \sum_{j=0}^\infty (-uv^T)^j = I + u \Big[\sum_{j=1}^\infty (-1)^j(v^Tu)^{j-1}\Big] v^T$$
-$$= I - u \Big[\sum_{j=1}^\infty (-v^Tu)^{j-1}\Big] v^T = I - u \Big[\sum_{j=0}^\infty (-v^Tu)^j\Big] v^T = I - \dfrac{uv^T}{1 + v^Tu}$$
-\\$\mathbf{(b)}$ We have
-$$I = AA^{-1} = (I - uv^T)A^{-1} = A^{-1} - uv^TA^{-1}$$
-Now,
-$$v^T = v^T \cdot I = v^T(A^{-1} - uv^TA^{-1}) = v^T A^{-1} - v^Tuv^TA^{-1} = (1 - v^Tu) \cdot v^TA^{-1}$$
-$$\iff v^TA^{-1} = \dfrac{v^T}{1 - v^Tu}$$
-$$\iff I = A^{-1} - uv^TA^{-1} = A^{-1} - u \cdot \dfrac{v^T}{1 - v^Tu} = A^{-1} - \dfrac{uv^T}{1 - v^Tu}$$
-$$\iff A^{-1} = I + \dfrac{uv^T}{1 - v^Tu}$$
+$\mathbf{(a)}$ Let $q(X) = X^TAX$. Then
+$$dq_X(Y) = \lim_{t \rightarrow 0} \dfrac{q(X + tY) - q(X)}{t} = \lim_{t \rightarrow 0} \dfrac{(X + tY)^TA(X + tY) - X^TAX}{t} =$$
+$$\lim_{t \rightarrow 0} \dfrac{X^TAX + t(X^TAY + Y^TAX) + t^2(Y^TAY) - X^TAX}{t} = X^TAY + Y^TAX$$
+which is our compact format, since $A, X, X^T, Y, Y^T$ are all $n \times n$ matrices.
+\\$\mathbf{(b)}$ Let $r(X) = AX^2$. Then
+$$dr_X(Y) = \lim_{t \rightarrow 0} \dfrac{r(X + tY) - r(X)}{t} = \lim_{t \rightarrow 0} \dfrac{A(X+tY)^2 - AX^2}{t} =$$
+$$\lim_{t \rightarrow 0} \dfrac{AX^2 + tA(XY + YX) + t^2AY^2 - AX^2}{t} = A(XY + YX)$$
+Identifying each matrix $M \in M_{n \times n}(\mathbb{R})$ with a vector $vec(M) \in \mathbb{R}^{n^2}$, we describe the matrix action by the action of $dr_X$ on the $n^2$ basis elements $e_i e_j^T$ --
+$$dr_X(e_i e_j^T) = A(X e_i e_j^T + e_i e_j^T X) \in M_{n \times n}(\mathbb{R}) \simeq \mathbb{R}^{n^2}$$
+this yields an $n^2 \times n^2$ matrix representation of the linear operator $dr_X$.
 \end{proof}
 
 \begin{question}[4]
 \end{question}
 \begin{proof}
-$\mathbf{(a)}$ Suppose $G$ is isometric. Then for $v \in N_G^{\perp}$, $\|G v \| = \|v\|$. Additionally, $G$ preserves the inner product on $N_G^{\perp}$ -- Let $u,v \in N_G^{\perp}$. Then,
-$$\|u\|^2 -2 \langle Gu, Gv \rangle + \|v\|^2 = \|Gu\|^2 -2 \langle Gu, Gv \rangle + \|Gv\|^2 = \|Gu - Gv \|^2$$
-$$= \|G (u-v)\|^2 = \|u - v\|^2  = \|u\|^2 -2 \langle u, v \rangle + \|v\|^2$$
-$$\iff \langle Gu, Gv \rangle = \langle u, v \rangle$$
-Then for any $u, v \in N_G^{\perp}$, we have --
-$$\langle u, v \rangle = \langle Gu, Gv \rangle = \langle u, G^TG v \rangle \iff 0 = \langle u, G^TGv \rangle - \langle u, v \rangle  = \langle u, G^TGv - v \rangle $$
-In particular, for $u = G^TG v - v$, we have --
-$$\|G^TGv - v\|^2 = \langle G^TGv - v, G^TGv - v \rangle  = 0$$
-$$\iff G^TGv - v = 0 \iff G^TGv = v$$
-Since $v \in N_G^{\perp}$ is arbitrary, we have that $G^TG$ acts as an identity on $N_G^{\perp}$.
-\\Now, for $v \in N_G$, we have
-$$G^TGv= G^T \cdot 0 = 0$$
-Let $x \in X = N_G^{\perp} \oplus N_G$. Then $x$ can be written uniquely: $x = u +v$, for $u \in N_G^{\perp},\\ v \in N_G$. We have --
-$$G^TGx = G^TG(u+v) = G^TGu + G^TGv = u + 0 = u$$
-Obviously $N_G^{\perp} \perp N_G$ by definition, whence we have that $G^TG$ is the orthogonal projection of $X$ onto $N_G^{\perp}$.
-\\$\mathbf{(b)}$ Let $k = \dim N_G^{\perp}$. By $\mathbf{(a)}$, $G^TG = \begin{pmatrix}
-I_k & 0 \\
-0 & 0
-\end{pmatrix} $. That is, taking all the singular values to be the positive square roots, we have $\sigma_i  = 1$. Since this gives a diagonal matrix $\Sigma$, it follows that $\Sigma$ is diagonalized by the identity matrix, hence the matrix of right singular vectors is $V = I_{k \times n} = \begin{pmatrix}
-I_k & 0
-\end{pmatrix}$. I.e., $v_i = e_i$; whence this gives
-$$u_i = \sigma_i \cdot u_i = G v_i = G e_i = g_i$$
-for $1 \le i \le k$. As indeed is expected since the first $k$ columns of $G$ must be orthonormal if $G^TG$ is to be an orthogonal projection. Thus $G = \sum_{i=1}^k \sigma_i u_i v_i^T = \sum_{i=1}^k g_i e_i^T$ is the desired reduced SVD. In matrix form --
-$$G = \begin{pmatrix}
-g_1 & \ldots & g_k
-\end{pmatrix} \cdot I_k \cdot I_{k \times n}$$
+$\mathbf{(a)}$ 
+\\$\mathbf{(b)}$ Let $A = W\Sigma V^* = (W \Sigma W^*) \cdot (WV^*) = R \cdot U$, where $R = W \Sigma W^*, U = WV^*$. Obviously $U$ is unitary as a product of unitary matrices, and $R$ is positive semi-definite since $\Sigma$ is positive semi-definite (all singular values $\sigma_i \ge 0$), and positive semi-definite matrices are closed under $M \mapsto QMQ^*$. Finally, if $A$ is invertible, then $R$ is strictly positive, as the entries on the diagonal of $\Sigma$ are positive, whence $\Sigma$ is positive.
 \end{proof}
 \end{document}
