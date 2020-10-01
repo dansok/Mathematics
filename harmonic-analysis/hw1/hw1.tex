@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+% INTERMISSION
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+
+\begin{document}
+
+\title{Harmonic Analysis}
+\title{Homework #1}
+\author{Dan Sokolsky}
+
+\maketitle
+
+\begin{exercise}{1}
+Let X be a Fréchet space, and let us index the countable family of seminorms
+with positive integers, i.e., $\|\cdot\|_1, \|\cdot\|_2$, and so on. Check that
+$$d(x, y) = \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-y\|_j, 1\}$$
+defines a distance on $X$ and that it induces the same topology as the Fréchet structure.
+\end{exercise}
+
+\begin{proof}
+Let us verify the $d$ is a distance function. First observe that all terms are nonnegative, so
+$$(i)\ 0 \le d(x, y) = \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-y\|_j, 1\} \le \sum_{j=1}^{\infty} \dfrac{1}{2^j} = 1 < \infty$$
+
+$$(ii)\ d(x,x) = \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-x\|_j, 1\} = \sum_{j=1}^{\infty} 0 = 0$$
+
+$$(iii)\ d(x, y) = 0 \implies \|x - y\|_j = 0\ \forall j \in \mathbb{N} \iff x-y = 0 \iff x = y$$
+
+$$(iv)\ d(x, y) = \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-y\|_j, 1\} = \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|y-x\|_j, 1\} = d(y, x)$$
+
+$$(v)\ d(x,z) = \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-z\|_j, 1\} \le \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-y\|_j + \|y-z\|_j, 1\}$$ $$ \le \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-y\|_j, 1\} + \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|y-z\|_j, 1\} = d(x,y) + d(y,z)$$
+
+Now, define $B^j_r(x) = \{y \in X : \|x-y\|_j < r\}$. Let $B^d_r(x) = \{y \in X : d(x,y) < r\}$. Define $B^{\le k}_r = \cap_{j \le k} B^j_r(x) = \{y \in X: \|x - y\|_1 < r, \ldots, \|x - y\|_k < r\}$. Let the bases of the Fréchet topology and the new topology defined by the metric $d$, be $$\mathscr{B}_1 = \{B^{\le k}_{\epsilon}(x) | x \in X, \epsilon \in \mathbb{R}, k \in \mathbb{N}\}$$
+
+$$\mathscr{B}_2 = \{B^d_{\epsilon}(x) | x \in X, \epsilon \in \mathbb{R}\}$$
+respectively. We prove $\mathscr{B}_1 = \mathscr{B}_2$.
+$$(\supseteq)\ \sum_{j=1}^{\infty} \dfrac{1}{2^j} \min\{\|x-z\|_j, 1\} = d(x, y) < \epsilon < 1 \implies \|x - y \|_1 < \dfrac{\epsilon}{2} \implies B^d_{\epsilon}(x) \subseteq B^1_{\frac{\epsilon}{2}}(x) \subseteq \mathscr{B}_1$$
+Now an arbitrary open set $B_r^1(x) \subseteq \mathscr{B}_1$ can be  written as $$B_r^1(x) = \cup_{y \in B_r^1(x)}{B_{\epsilon_y}(y)}$$ where $\epsilon_y < 1$. So that $\mathscr{B}_1 \supseteq \mathscr{B}_2$.
+$(\subseteq)$ Now recall that $\sum_{j=k+1}^{\infty} \dfrac{1}{2^j} = \dfrac{1}{2^k}$. So that
+$$\sum_{j=1}^k \dfrac{\epsilon}{2^j} + \sum_{j=k+1}^{\infty} \dfrac{1}{2^j} < \epsilon + \dfrac{1}{2^k}$$
+It follows that $B^{\le k}_{\epsilon}(x) \subseteq B^d_{\epsilon + \frac{1}{2^k}}(x) \subseteq \mathscr{B}_2$; so that $\mathscr{B}_1 \subseteq \mathscr{B}_2$. Thus $\mathscr{B}_1 = \mathscr{B}_2$ and $\mathscr{B}_2$ generates the Fréchet topology, indeed.
+\end{proof}
+
+\begin{lemma}{1}
+  $\int_{\Omega} f \phi = 0$ for all $\phi \in \mathcal{D}(\Omega, \mathbb{C}) \implies f = 0$ a.e.
+\end{lemma}
+
+\begin{proof}
+  Recall that for an arbitrary ball $B_r(x_0) \subseteq \Omega,\ \mathcal{D}(B_r(x_0), \mathbb{C})$ is dense in $L^1(B_r(x_0))$. Thus for $\text{sgn}(f) \in L^1(B_r(x_0))$, there exists a sequence $\phi_n \rightarrow \text{sgn}(f)$ in $L^1$, where $\phi_n \in \mathcal{D}(B_r(x_0), \mathbb{C})$. Then some subsequence $\phi_{n_j} \rightarrow f$ pointwise a.e. Now let $g(x) = x$ if $|x| \le 1$, and $g(x) = \dfrac{x}{|x|}$, otherwise. Define $\psi_j = g \circ \phi_{n_j}$. Then $\psi_j \in \mathcal{D}(B_r(x_0), \mathbb{C})$, $|\psi_j| \le 1$, and $\psi_j \nearrow \text{sgn}(f)$. Now, by  the Dominated  Convergence Theorem, we have,
+  $$\int_{B_r(x_0)} |f| = \int_{B_r(x_0)} f\cdot \text {sgn}(f) = \int_{B_r(x_0)} f \cdot \lim_{j \rightarrow \infty} \psi_j = \lim_{j \rightarrow \infty} \int_{B_r(x_0)} f \cdot \psi_j =\lim_{j \rightarrow \infty} 0 = 0$$
+  Thus $|f| = 0$ a.e. on $B_r(x_0)$, iff $f = 0$ a.e.  on $B_r(x_0)$. Since $B_r(x_0)$ was arbitrary, it follows that $f = 0$ a.e. on all of $\Omega$.
+\end{proof}
+
+\begin{exercise}{2}
+$(i)$ Prove $R \in \mathcal{D}'(\Omega, \mathbb{C})$ can be written as $R = S + iT$ with $S, T \in \mathcal{D}'(\Omega, \mathbb{R})$.
+$(ii)$ Write the most reasonable defintion for $\overline{R}$, for $R \in \mathcal{D}'(\Omega, \mathbb{C})$
+\end{exercise}
+
+\begin{proof}
+  $(i)$ For $\phi \in \mathcal{D}(\Omega, \mathbb{C})$, let $R \in \mathcal{D}'(\Omega, \mathbb{C})$. Then, $R$ is a linear functional, and $$R(\phi) = R(\mathfrak{R}\phi + i \mathfrak{I} \phi) = R(\mathfrak{R}\phi) + iR(\mathfrak{I}\phi) = (R \circ \mathfrak{R})(\phi) + i(R \circ \mathfrak{I})(\phi) = ((R \circ \mathfrak{R}) + i(R \circ \mathfrak{I}))(\phi)$$
+  For all $\phi \in \mathcal{D}(\Omega, \mathbb{C})$. Now $R \circ \mathfrak{R}, R \circ \mathfrak{I} \in \mathcal{D}(\Omega, \mathbb{R})$. Let $S = R \circ \mathfrak{R},\ T = R \circ \mathfrak{I}$. We have $R = S + iT$, as desired.\\
+  $(ii)$ Let $R = R_f$. Then,
+  $$\langle R_{\overline{f}}, \phi \rangle = \int \overline{f} \phi = \int \overline{\overline{\overline{f} \phi}} = \overline{\int f \overline{\phi}} = \overline{\langle R_f, \overline{\phi} \rangle}$$
+  Now,$$\int f\phi = \langle R_f, \phi \rangle = \langle R_{\overline{f}}, \phi \rangle = \int \overline{f}\phi \iff \int (f - \overline{f}) \phi = 0$$
+  for all $\phi \in \mathcal{D}(\Omega, \mathbb{C})$. By Lemma $1$, it follows that $f - \overline{f} = 0 \iff f = \overline{f} \iff \newline f \in \mathcal{D}(\Omega, \mathbb{R})$.
+\end{proof}
+
+\begin{exercise}{3}
+  Let $f \in L^p(\Omega), g \in L^q(\Omega),\ 1 \le p, q \le \infty$. Prove $T_f = T_g \iff f = g$ a.e.
+\end{exercise}
+
+\begin{proof}
+  We have $f \in L^p(\Omega) \subseteq L^1(\Omega),\ g \in L^q(\Omega) \subseteq L^1(\Omega)$.\\
+  $$(\Leftarrow)\ f = g\ \text{a.e.} \implies f \phi = g \phi\ \text{a.e. for all}\ \phi \in \mathcal{D}(\Omega, \mathbb{R}) \implies \langle T_f, \phi \rangle = \int_{\Omega} f \phi = \int_{\Omega} g \phi = \langle T_g, \phi \rangle$$
+  for all $\phi \in \mathcal{D}(\Omega, \mathbb{R}) \iff T_f = T_g$.
+  $(\Rightarrow)$ Now suppose $T_f = T_g$. Then,
+  $$\int f \phi = \langle T_f, \phi \rangle = \langle T_g, \phi \rangle = \int g \phi \iff \int (f - g) \phi = 0$$
+  for all $\phi \in \mathcal{D}(\Omega, \mathbb{R})$. By Lemma $1$, it follows that $f - g = 0$ a.e. on $\Omega \iff f = g$ a.e. on $\Omega$.
+\end{proof}
+
+\end{document}
