@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+% INTERMISSION
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+
+\begin{document}
+
+\title{Harmonic Analysis}
+\title{Homework #2}
+\author{Dan Sokolsky}
+
+\maketitle
+
+\begin{exercise}{1}
+\end{exercise}
+
+\begin{proof}
+  $(i)$ Let $\phi \in \mathcal{S}(\mathbb{R}^n)$ and $\psi = \partial^{\alpha} \phi$ for some multi-index $\alpha$. Then $\| \psi \|_{a, \beta} = \| x^{\beta} \partial^a \psi\| = \| x^{\beta} \partial^{\alpha + a} \phi\| = \|\phi\|_{\alpha + a, \beta} < \infty$. So that $\psi = \partial^{\alpha} \phi \in \mathcal{S}(\mathbb{R}^n)$. Now consider the neighborhood $\| \phi \|_{\alpha, \beta} < \epsilon$. We have $\epsilon > \| \phi \|_{\alpha, \beta} = \| x^{\beta} \partial^{\alpha} \phi \| = \| \partial^{\alpha} \phi \|_{0, \beta}$. So that $\partial^{\alpha}$ is a continuous operator. \\
+  $(ii)$ $$\| \tau_a \phi \|_{\alpha, \beta} = \sup_{x \in \mathbb{R}^n} |x^{\beta} \partial^{\alpha} \phi(x-a)| = \sup_{x \in \mathbb{R}^n} |(x + a)^{\beta} \partial^{\alpha} \phi(x)| \le \sum_{k \le \beta} {\beta \choose k} \sup_{x \in \mathbb{R}^n}|x^k a^{\beta - k} \partial^{\alpha} \phi(x)|$$
+  $$= \sum_{k \le \beta} {\beta \choose k} |a|^{\beta - k} \| \phi \|_{\alpha, k} < \infty$$
+  This shows simultaneously that $\tau_a \phi \in \mathcal{S}(\mathbb{R}^n)$ and that $\tau_a$ is a continuous operator. \\
+  $(iii)$ We use the equivalent, alternative definition of the Schwartz space here. By the generalized Leibniz rule (for multi-indices), we have $-$
+  $$|\partial^{\alpha}(h \phi)(x)| = |\sum_{k \le \alpha} {\alpha \choose k} \partial^k h(x) \cdot \partial^{\alpha - k} \phi(x)| \le \sum_{k \le \alpha} [C_k (1+|x|)^{N_k} + C_{M_k, \alpha - k} (1+|x|)^{-M_k}] \le$$ $$\sum_{k \le \alpha} \max\{C_k, C_{M_k, \alpha - k}\} (1+|x|)^{-M_k + N_k} = \sum_{k \le \alpha} A_k \|\phi\|_{\alpha, (-M_k+N_k)} < \infty$$
+  where $M_k$ can be chosen sufficiently large. This shows simultaneously that $h \phi \in \mathcal{S}(\mathbb{R}^n)$ and $\phi \mapsto h \phi$ is a continuous operator.
+\end{proof}
+
+\begin{exercise}{2}
+\end{exercise}
+
+\begin{proof}
+  $(i)$ We want $\partial^{\alpha}T_f = T_{\partial^{\alpha}f}$. By integration by parts, we have
+  $$\langle \partial^{\alpha}T_f, \phi \rangle = \langle T_{\partial^{\alpha}f}, \phi \rangle = \int \partial^{\alpha}f \cdot \phi = -1^{|\alpha|} \int f \cdot \partial^{\alpha} \phi = -1^{|\alpha|} \langle T_f, \partial^{\alpha} \phi \rangle$$
+  We want $\tau_a T_f = T_{\tau_a f}$. Thus,
+  $$\langle \tau_a T_f, \phi \rangle = \langle T_{\tau_a f}, \phi \rangle = \int_{\mathbb{R}^n} \tau_a f(x) \cdot \phi(x) = \int_{\mathbb{R}^n} f(x-a) \cdot \phi(x) = \int_{\mathbb{R}^n} f(x) \phi(x+a) =$$
+  $$\langle T_f, \tau_{-a} \phi \rangle$$
+  We want $hT_f = T_{hf}$. Thus,
+  $$\langle hT_f, \phi \rangle = \langle T_{hf}, \phi \rangle = \int (hf) \phi = \int f (h \phi) = \langle T_f, h \phi  \rangle$$
+  where the condition on $h,\ |h(x)| \le C_0 (1 + |x|)^{N_0}$, is used to guarantee $\int h f \phi  \\ \le C \int \dfrac{1}{(1+|x|)^M} < \infty$ for some $C$, and some integer $M \ge 2$, since $f, \phi \in \mathcal{S}(\mathbb{R}^n)$, and so we can choose constants $C_f, C_{\phi}$ so that $|f(x)| \le C_f (1 + |x|)^{M_f}$ and $|\phi(x)| \le C_{\phi}} (1 + |x|)^{M_{\phi}}}$ for some very large $M_f, M_{\phi}$. This ensures that $hT_f  = T_{hf}$ is a well defined distribution.\\
+  We want $\mathcal{F}^{-1}(T_f) = T_{\mathcal{F}^{-1}(f)}$. Thus,
+  $$\langle \mathcal{F}^{-1}(T_f), \phi \rangle = \langle T_{\mathcal{F}^{-1}(f)}, \phi \rangle = \int \mathcal{F}^{-1}(f) \cdot \phi = \int \mathcal{F}^{-1}(f)(x) \phi(x) = \int \Bigg(\int f(\xi) e^{2 \pi i x \xi} d\xi \Bigg) \phi(x) dx =$$
+  $$\int  \Bigg(\int \phi(x) e^{2 \pi i x \xi} dx \Bigg) f(\xi) d\xi = \int f \cdot  \mathcal{F}^{-1}(\phi) = \langle T_f, \mathcal{F}^{-1}(\phi) \rangle$$\\
+  $(ii)$
+  $$\langle \mathcal{F}^{-1}(\mathcal{F}(T)), \phi \rangle = \langle \mathcal{F}(T), \mathcal{F}^{-1}(\phi) \rangle = \langle T_f, \mathcal{F}(\mathcal{F}^{-1}(\phi)) \rangle = \langle T_f, \phi \rangle$$
+  The last equality we proved in class $\mathcal{F}(\mathcal{F}^{-1}(\phi)) = \phi = \mathcal{F}^{-1}(\mathcal{F}(\phi))$. Since this holds for all $\phi \in \mathcal{S}(\mathbb{R}^n)$, it follows that $\mathcal{F}^{-1}(\mathcal{F}(T)) = T$. Likewise, $\mathcal{F}(\mathcal{F}^{-1}(T)) = T$.\\
+
+  $$\langle \partial_j \mathcal{F}(T), \phi \rangle = - \langle \mathcal{F}(T), \partial_j \phi \rangle = - \langle T, \mathcal{F}(\partial_j \phi) \rangle = - \langle T, 2 \pi i x_j \mathcal{F}(\phi) \rangle =$$ $$\langle -2 \pi i x_j T, \mathcal{F}(\phi) \rangle = \langle \mathcal{F}(-2 \pi i x_j T), \phi \rangle$$
+  So that $\partial_j \mathcal{F}(T) = \mathcal{F}(-2 \pi i x_j T)$.\\
+
+  $$\langle \mathcal{F}(\partial_j T), \phi \rangle = \langle \partial_j T, \mathcal{F}(\phi) \rangle = - \langle T, \partial_j \mathcal{F}(\phi) \rangle = - \langle T, \mathcal{F}(-2 \pi i \xi_j \phi) \rangle = - \langle \mathcal{F}(T), -2 \pi i \xi_j \phi \rangle = \langle 2 \pi i \xi_j \mathcal{F}(T), \phi \rangle$$
+  So that $\mathcal{F}(\partial_j T) = 2 \pi i \xi_j \mathcal{F}(T)$.\\
+
+  $$\langle \mathcal{F}(\tau_a T), \phi \rangle = \langle \tau_a T, \mathcal{F}(\phi) \rangle = \langle T, \tau_{-a} \mathcal{F}(\phi) \rangle = \int f(x) \int \phi(\xi) e^{-2 \pi i \xi (x+a)} d\xi dx =$$ $$e^{-2 \pi i \xi a} \int f \hat{\phi} = e^{-2 \pi i \xi a} \int \hat{f} \phi = \langle e^{-2 \pi i \xi a} \mathcal{F}(T), \phi \rangle$$
+  So that $\mathcal{F}(\tau_a T) = e^{-2 \pi i \xi a} \mathcal{F}(T)$.\\
+
+  $$\langle \mathcal{F}(e^{2 \pi i \xi a} T), \phi \rangle = \langle e^{2 \pi i \xi a} T, \mathcal{F}(\phi) \rangle = \langle T, e^{2 \pi i \xi a} \mathcal{F}(\phi) \rangle = \int f(x) \int \phi(\xi) e^{-2 \pi i \xi (x-a)} d\xi =$$ $$\langle T, \mathcal{F}(\tau_a \phi)) \rangle = \langle \tau_{-a} \mathcal{F}(T), \phi \rangle$$
+  So that $\mathcal{F}(e^{2 \pi i \xi a} T) = \tau_{-a} \mathcal{F}(T)$.
+\end{proof}
+
+\begin{exercise}{3}
+\end{exercise}
+
+\begin{proof}
+  $(i)$
+  $$|\langle T_f, \phi \rangle| = |\int f \phi| \le \int |f \phi| = \|f \phi\|_{L^1} \le \|f\|_{L^p} \cdot \|\phi\|_{L^q} < \infty$$
+  Since $\phi \in \mathcal{S}(\mathbb{R}^n) \subseteq L^q$ and where $\dfrac{1}{p} + \dfrac{1}{q} = 1$. Hence $T_f$ defines a tempered distribution, indeed.\\
+  $(ii)$ Let $f \in L^1$, and let $\hat{f}(x) = \int f(\xi) e^{- 2 \pi i x \xi} d\xi$. We want to verify $\hat{T_f} = T_{\hat{f}}$. I.e., we want to show $$\int_{\mathbb{R}^n} f\hat{\phi} = \langle T_f, \hat{\phi} \rangle = \langle \hat{T}_f, \phi \rangle = \int_{\mathbb{R}^n} \hat{f} \phi$$
+  for all $\phi \in L^1$. Observe, $\hat{f} \in L^{\infty}$, so, $$\int_{\mathbb{R}^n} |\hat{f}(x) \phi(x)| \le \|\hat{f}\|_{L^{\infty}} \int_{\mathbb{R}^n} |\phi(x)| < \infty$$
+  Therefore, Fubini's theorem applies, and
+  $$\int_{\mathbb{R}^n} \hat{f}(x) \phi(x) = \int_{\mathbb{R}^n} \Big(\int_{\mathbb{R}^n} f(\xi) e^{-2 \pi i x \xi} d\xi \Big) \phi(x) dx = \int_{\mathbb{R}^n} f(\xi) \Big(\int_{\mathbb{R}^n} \phi(x) e^{-2 \pi i x \xi} dx \Big) d\xi = \int_{\mathbb{R}^n} f(x) \hat{\phi}(x)$$
+  So that $\hat{T}_f = T_{\hat{f}}$, indeed.\\
+  $(iii)$ Let $f \in L^2$, and let $f_i \rightarrow f$ pointwise in $L^2$, where $f_i \in \mmathcal{S}$. Then
+  $$\int |f_i|^2 = \| f_i \|^2_2 = \langle f_i, \overline{f_i} \rangle = \langle \hat{f_i}, \overline{\hat{f_i}} \rangle = \|\hat{f_i} \|^2_2 = \int |\hat{f_i}|^2$$
+  The third equality is Plancherel's identity we proved in class.
+  Since $f_i \in \mathcal{S}$, we have $|\hat{f_i}|^2 = |f_i|^2 < \infty$. Thus by the dominated convergence theorem, it follows that $\int |f_i|^2 \rightarrow \int |f|^2$ and $\int |\hat{f_i}|^2 \rightarrow \int |\hat{f}|^2$. Thus,
+  $$\|f\|^2_2 = \lim_{i \rightarrow \infty} \|f_i\|^2_2 = \lim_{i \rightarrow \infty} \|\hat{f_i}\|^2_2 = \|\hat{f}\|^2_2 \iff \|f\|_2 = \|\hat{f}\|_2$$\\
+  $(iii)$ $Let$
+\end{proof}
+
+\begin{exercise}{4}
+\end{exercise}
+
+\begin{proof}
+  $(i)$
+  $$\|\delta_{\lambda} \phi(x)\|_{\alpha, \beta} = \|\phi(\frac{x}{\lambda})\|_{\alpha, \beta} = \sup_{x \in \mathbb{R}^n} |x^{\beta} \partial^{\alpha} \phi(\frac{x}{\lambda})| = \frac{1}{\lambda^{|\alpha|}} \sup_{x \in \mathbb{R}^n} |x^{\beta} \partial^{\alpha} \phi(\frac{x}{\lambda})| =$$ $$\frac{1}{\lambda^{|\alpha|}} \sup_{x \in \mathbb{R}^n} |(\lambda x)^{\beta} \partial^{\alpha} \phi(x)| = \lambda^{|\beta| - |\alpha|} \|\phi\|_{\alpha, \beta}$$
+  This proves that $\delta_{\lambda} \in \mathcal{S}$ and that it is a continuous operator.\\
+  $(ii)$ Now, we want $\delta_{\lambda}T_f = T_{\delta_{\lambda}f}$. Thus,
+  $$\langle \delta_{\lambda}T_f, \phi \rangle = \langle T_{\delta_{\lambda}f}, \phi \rangle = \int \delta_{\lambda}f(x) \phi(x) dx = \int f(\frac{x}{\lambda}) \phi(x) dx = \lambda \int f(x) \phi(\lambda x) dx = \lambda \langle T_f, \delta_{\frac{1}{\lambda}}\phi \rangle$$
+  $(iii)$\\
+  $$\mathcal{F}(\delta_{\lambda}\phi) = \mathcal{F}(\phi(\frac{x}{\lambda})) = \int \phi(\xi) e^{-2 \pi i \frac{x}{\lambda} \xi} d\xi = e^{\frac{-2 \pi i}{\lambda}} \int \phi(\xi) e^{-2 \pi i x \xi} d\xi = e^{\frac{-2 \pi i}{\lambda}} \mathcal{F}(\phi)$$
+  For a tempered distribution $T_f$,
+  $$\langle \mathcal{F}(\delta_{\lambda} T_f), \phi \rangle = \langle \delta_{\lambda} T_f, \mmathcal{F}(\phi) \rangle = \lambda \langle T_f, \delta_{\frac{1}{\lambda}} \mmathcal{F}(\phi) \rangle$$
+\end{proof}
+
+\end{document}
