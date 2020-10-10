@@ -92,12 +92,9 @@
   Therefore, Fubini's theorem applies, and
   $$\int_{\mathbb{R}^n} \hat{f}(x) \phi(x) = \int_{\mathbb{R}^n} \Big(\int_{\mathbb{R}^n} f(\xi) e^{-2 \pi i x \xi} d\xi \Big) \phi(x) dx = \int_{\mathbb{R}^n} f(\xi) \Big(\int_{\mathbb{R}^n} \phi(x) e^{-2 \pi i x \xi} dx \Big) d\xi = \int_{\mathbb{R}^n} f(x) \hat{\phi}(x)$$
   So that $\hat{T}_f = T_{\hat{f}}$, indeed.\\
-  $(iii)$ Let $f \in L^2$, and let $f_i \rightarrow f$ pointwise in $L^2$, where $f_i \in \mmathcal{S}$. Then
-  $$\int |f_i|^2 = \| f_i \|^2_2 = \langle f_i, \overline{f_i} \rangle = \langle \hat{f_i}, \overline{\hat{f_i}} \rangle = \|\hat{f_i} \|^2_2 = \int |\hat{f_i}|^2$$
-  The third equality is Plancherel's identity we proved in class.
-  Since $f_i \in \mathcal{S}$, we have $|\hat{f_i}|^2 = |f_i|^2 < \infty$. Thus by the dominated convergence theorem, it follows that $\int |f_i|^2 \rightarrow \int |f|^2$ and $\int |\hat{f_i}|^2 \rightarrow \int |\hat{f}|^2$. Thus,
-  $$\|f\|^2_2 = \lim_{i \rightarrow \infty} \|f_i\|^2_2 = \lim_{i \rightarrow \infty} \|\hat{f_i}\|^2_2 = \|\hat{f}\|^2_2 \iff \|f\|_2 = \|\hat{f}\|_2$$\\
-  $(iii)$ $Let$
+  $(iii)$ Let $\|f\|_{L^2} = \|\hat{f}\|_{L^2}$ for all $f \in L^2(\mathbb{R}^n)$, let $f, g \in L^2(\mathbb{R}^n)$ and let $f_i \rightarrow f, g_j \rightarrow g$ in L^2$ where $f_i, g_j \in \mathcal{S}(\mathbb{R}^n)$. Then, since the Fourier transform is a unique operator in $\mathcal{S}(\mathbb{R}^n)$, the Plancherel identity holds in $\mathcal{S}(\mathbb{R}^n)$, and the inner product is a continuous operator in any vector space, we have -
+  $$\langle f, \hat{g} \rangle = \lim_{i, j \rightarrow \infty} \langle f_i, \hat{g_j} \rangle = \lim_{i, j \rightarrow \infty} \langle \hat{f_i}, g_j \rangle = \langle \hat{f}, g \rangle$$
+  So that $\hat{T}_f = T_{\hat{f}}$, indeed.
 \end{proof}
 
 \begin{exercise}{4}
