@@ -39,6 +39,11 @@
 \end{exercise}
 
 \begin{proof}
+  Since $f \ne 0$, there exists a radius $r$, on which $\int_{B_r(0)} |f| = c > 0$. For $|x| > r$, we have $B_r(0) \subseteq B_{|x| + r}(x)$ and therefore
+  $$Mf(x) \ge \dfrac{1}{\mu(B_{|x|+r}(x))} \int_{B_{|x|+r}(x)} |f| \ge \dfrac{c}{(|x|+r)^n}$$
+  So that
+  $$\int_{\mathbb{R}^n} |Mf(x)| \ge \int_{|x| > r} \dfrac{c}{(|x|+r)^n} = \infty$$
+  Thus, $Mf \not\in L^1(\mathbb{R}^n)$.
 \end{proof}
 
 \begin{exercise}{2}
