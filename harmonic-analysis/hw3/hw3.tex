@@ -57,10 +57,28 @@
   $(iii)$ Since $|f| + |g| \ge |f + g|$, we have
   $$\{|f| > \dfrac{\lambda}{2}\} \cup \{|g| > \dfrac{\lambda}{2}\} \supseteq \{|f| + |g| > \lambda\} \supseteq \{|f+g| > \lambda\}$$
   so that
-  $$2(\|f\|_{L^{1, \infty}} + \|g\|_{L^{1, \infty}}) = 2\|f\|_{L^{1, \infty}} + 2\|g\|_{L^{1, \infty}} =$$ $$\sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \dfrac{\lambda}{2}\} + \sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \dfrac{\lambda}{2}\} \ge$$
+  $$2(\|f\|_{L^{1, \infty}} + \|g\|_{L^{1, \infty}}) = 2\|f\|_{L^{1, \infty}} + 2\|g\|_{L^{1, \infty}} =$$
+  $$\sup_{\lambda > 0} \lambda \cdot \mu \{2|f| > \lambda\} + \sup_{\lambda > 0} \lambda \cdot \mu \{2|g| > \lambda\} = $$
+  $$\sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \dfrac{\lambda}{2}\} + \sup_{\lambda > 0} \lambda \cdot \mu \{|g| > \dfrac{\lambda}{2}\} \ge$$
   $$\sup_{\lambda > 0} \lambda \cdot \mu \{|f| + |g| > \lambda\} \ge \sup_{\lambda > 0} \lambda \cdot \mu \{|f + g| > \lambda\} =$$
   $$\|f + g\|_{L^{1, \infty}}$$
-  $(b)$
+  $(b)$ For $x \in [0, 1]$, we  have
+  $$|f_\ell(x)| = \dfrac{1}{\log \ell} |\sum_{j=1}^\ell \dfrac{1}{x \ell - j}| = \dfrac{1}{\log \ell} |\sum_{j=1}^\ell \dfrac{1}{j - x \ell}|$$
+  $$= \dfrac{1}{\log \ell} |\sum_{j=1}^\ell \dfrac{1}{j} - \dfrac{x \ell}{j(x \ell - j)}| \ge \dfrac{1}{\log \ell}(\sum_{j=1}^\ell |\dfrac{1}{j}| - |\dfrac{x \ell}{j(x \ell - j)}|) =$$
+  $$\dfrac{1}{\log \ell}(\sum_{j=1}^\ell |\dfrac{1}{j}| - \sum_{j=1}^\ell|\dfrac{x \ell}{j(x \ell - j)}|) \ge \dfrac{1}{\log \ell} \sum_{j=1}^\ell \dfrac{1}{j} \ge$$
+  $$\dfrac{1}{\log \ell} \sum_{j=1}^{\ell - 1} \int_{j}^{j+1}\dfrac{1}{j} = \dfrac{1}{\log \ell} \cdot \log  \ell = 1$$
+  So that $\|f_\ell \|_{L^{1, \infty}} \ge 1 \cdot \mu\{|f_\ell| > 1\} \ge \mu[0, 1] = 1$.\\
+  $(c)$ Since $\mu$ is translation invariant, we have
+  $$\mu \Bigg\{\Bigg | \dfrac{1}{x - \frac{j}{\ell}} \Bigg | > \lambda \Bigg\} = \mu \Bigg\{\Bigg |\dfrac{1}{x} \Bigg | > \lambda \Bigg\}$$
+  So that
+  $$\Bigg \|\dfrac{1}{x - \frac{j}{\ell}} \Bigg\|_{L^{1, \infty}} = \Bigg \|\dfrac{1}{x} \Bigg\|_{L^{1, \infty}} = \sup_{\lambda > 0} \lambda \cdot \mu \Big \{x \in \mathbb{R}: \Big| \frac{1}{x} \Big | > \lambda \Big \} =$$
+  $$2 \sup_{\lambda > 0} \lambda \cdot \mu \Big \{x \in [0, \infty): \frac{1}{x} > \lambda \Big \} = 2 \sup_{\lambda > 0} \lambda \cdot \mu \Big \{x \in [0, \infty): x < \frac{1}{\lambda} \Big \} =$$
+  $$2 \sup_{\lambda > 0} \lambda \cdot \mu[0, \frac{1}{\lambda}) = 2 \sup_{\lambda > 0} \lambda \cdot \frac{1}{\lambda} = 2 \sup_{\lambda > 0} 1  = 2  \cdot 1 = 2$$
+  So that
+  $$\|f_\ell\|_{L^{1, \infty}} ֿ\le 2 \sum_{j=1}^\ell = \frac{1}{\ell \cdot \log \ell} \|\frac{1}{x}\|_{L^{1, \infty}} = \frac{4 \ell}{\ell \cdot \log \ell} = \frac{4}{\log \ell}$$
+  Now, if there exists a norm $\|\cdot\|'$ such that $c\|f_\ell\|' \le \|f_\ell\|_{L^{1, \infty}} \le C\|\f_\ell\|'$, such that $c,C > 0$, then
+  $$c\|f_\ell\|' \le \|f_\ell\|_{L^{1, \infty}} \le \dfrac{4}{\log \ell} \rightarrow 0$$
+  as $\ell \rightarrow \infty$. Since $c > 0$, it follows that $\|f_\ell\|' = 0$, which is a contradiction since $|f_\ell| \ge 1$ on $[0, 1]$ for all $\ell$. Meaning, $f \ne 0$, so  that $\|\cdot\|'$ isn't a proper  norm.
 \end{proof}
 
 \begin{exercise}{3}
