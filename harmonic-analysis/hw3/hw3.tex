@@ -85,6 +85,17 @@
 \end{exercise}
 
 \begin{proof}
+  $(a)\ (i)$ Since $\{B_r(x) | x \in \mathbb{R}^n\} \subseteq \{B_r(y) | x  \in B_r(y)\}$, we have
+  $$M_1f = \sup_{\{B_r(y) | x  \in B_r(y)\}} \dfrac{1}{\mu(B_r(y))} \int_{B_r(y)} |f| \ge \sup_{\{B_r(x) | x \in \mathbb{R}\}} \dfrac{1}{\mu(B_r(x))} \int_{B_r(x)} |f| = Mf$$
+  Now, for every $z \in B_r(y)$, $|x - z| \le |x - y| + |y - z| \le r + r = 2r$ so that $B_r(y) \subseteq B_{2r}(x)$. Now,
+  $$M_1f = \sup_{\{B_r(y) | x  \in B_r(y)\}} \dfrac{1}{\mu(B_r(y))} \int_{B_r(y)} |f| \le \sup_{\{B_r(x) | x  \in \mathbb{R}^n\}} \dfrac{1}{\mu(B_r(x))} \int_{B_{2r}(x)} |f| =$$ $$\sup_{\{B_r(x) | x  \in \mathbb{R}^n\}} \dfrac{2^n}{\mu(B_r(x))} \int_{B_{2r}(x)} |f| = 2^n Mf$$
+  So that $Mf \le M_1f \le 2^n Mf$.\\
+  $(ii)$ $B_r(x) \subseteq Q_r(x) \subseteq B_{2r}(x)$. Let $c_2 = \frac{\mu(B_r(x))}{\mu(Q_r(x))}$. Observe that $c_2$ is independent of $r$. Then,
+  $$M_2f = \sup_{\{Q_r(x) | x  \in \mathbb{R}^n\}} \dfrac{1}{\mu(Q_r(x))} \int_{Q_r(x)} |f| \ge \sup_{\{B_r(x) | x \in \mathbb{R}\}} \dfrac{c_2}{\mu(B_r(x))} \int_{B_r(x)} |f| = c_2Mf$$
+  and
+  $$M_2f = \sup_{\{Q_r(x) | x  \in \mathbb{R}^n\}} \dfrac{1}{\mu(Q_r(x))} \int_{Q_r(x)} |f| \le \sup_{\{B_{2r}(x) | x  \in \mathbb{R}^n\}} \dfrac{2^n}{\mu(B_{2r}(x))} \int_{B_{2r}(x)} |f| = 2^n Mf$$
+  So that $c_2Mf \le M_2f \le 2^n Mf$.\\
+  $(iii)$
 \end{proof}
 
 \end{document}
