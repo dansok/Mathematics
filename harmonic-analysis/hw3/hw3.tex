@@ -30,7 +30,7 @@
 \begin{document}
 
 \title{Harmonic Analysis}
-\title{Homework #2}
+\title{Homework #3}
 \author{Dan Sokolsky}
 
 \maketitle
@@ -95,7 +95,19 @@
   and
   $$M_2f = \sup_{\{Q_r(x) | x  \in \mathbb{R}^n\}} \dfrac{1}{\mu(Q_r(x))} \int_{Q_r(x)} |f| \le \sup_{\{B_{2r}(x) | x  \in \mathbb{R}^n\}} \dfrac{2^n}{\mu(B_{2r}(x))} \int_{B_{2r}(x)} |f| = 2^n Mf$$
   So that $c_2Mf \le M_2f \le 2^n Mf$.\\
-  $(iii)$
+  $(iii)$ Same argument as $(i)$ applied to $(ii)$.\\
+  Since $\{Q_r(x) | x \in \mathbb{R}^n\} \subseteq \{Q_r(y) | x  \in Q_r(y)\}$, we have
+  $$M_3f = \sup_{\{Q_r(y) | x  \in Q_r(y)\}} \dfrac{1}{\mu(Q_r(y))} \int_{Q_r(y)} |f| \ge \sup_{\{Q_r(x) | x \in \mathbb{R}\}} \dfrac{1}{\mu(Q_r(x))} \int_{Q_r(x)} |f| = M_2f$$
+  Now, for every $z \in Q_r(y)$, $|x - z| \le |x - y| + |y - z| \le 2r + 2r = 4r$ so that $Q_r(y) \subseteq B_{4r}(x) \subseteq Q_{4r}(x)$. Now,
+  $$M_3f = \sup_{\{Q_r(y) | x  \in Q_r(y)\}} \dfrac{1}{\mu(Q_r(y))} \int_{Q_r(y)} |f| \le \sup_{\{Q_r(x) | x  \in \mathbb{R}^n\}} \dfrac{1}{\mu(Q_r(x))} \int_{Q_{4r}(x)} |f| =$$ $$\sup_{\{Q_r(x) | x  \in \mathbb{R}^n\}} \dfrac{4^n}{\mu(Q_r(x))} \int_{Q_{4r}(x)} |f| = 4^n M_2f$$
+  So that $c_2Mf \le M_2f \le M_3f \le 4^nM_2f \le 8^n Mf$.\\\\
+  $(b)$ Notice that the fact that the dyadic cubes are defined using half open intervals  doesn't change the measure or the value of the integrals. This is practically a particular case of $(a)(iii)$. Let $O_{x, k}$ be the centerpoint of the dyadic cube $\mathfrak{Q}_{x, k} = 2^k x + [0, 2^k)^n$. Then the  radius of . Thus, since $$\mu(\mathfrak{Q}_{x_0, k}) = \mu(2^k x_0 + [0, 2^k)^n) = \mu(Q_{2^k}(O_{x_0, k}))$$
+  and
+  $$\int_{\mathfrak{Q}_{x_0, k}} |f| = \int_{2^k x_0 + [0, 2^k)^n} |f| = \int_{Q_{2^k}(O_{x_0, k})} |f|$$
+  we have
+  $$M_4f = \sup_{\mathfrak{Q}_{x, k} \in \mathfrak{D}} \dfrac{1}{\mu(\mathfrak{Q}_{x, k})} \int_{\mathfrak{Q}_{x, k}} |f| = \sup_{\mathfrak{Q}_{x, k} \in \mathfrak{D}} \dfrac{1}{\mu(Q_{2^k}(O_{x, k})} \int_{Q_{2^k}(O_{x, k})} |f| \le$$
+  $$\sup_{Q_{r}(y) : x  \in  Q_r(y)} \dfrac{1}{\mu(Q_{r}(y)} \int_{Q_{r}(y)} |f| = M_3f \le 8^nMf$$
+  So that $M_4f \le 8^nMf$.
 \end{proof}
 
 \end{document}
