@@ -101,6 +101,24 @@
 \end{exercise}
 
 \begin{proof}
+  $(a)$ Let $R = |x - y|$. Since  $f \in \mathcal{S}(\mathbb{R}^n)$, $Df$ is bounded. Let $Df \le K$. Let us first estimate
+  $$\dashint_{B_R(x)} f - \dashint_{B_R(y)} f = \dashint_{B_R(x)} f(z + (y-x)) - f(z) dz = \dashint_{B_R(x)} \Big(\int_{z}^{z + (y - x)} Df(t) dt \Big) dz \le$$
+  $$\dashint_{B_R(x)} K \cdot |z + (y - x) - z| dz = \dashint_{B_R(x)} K \cdot |x - y| dz = K \cdot |x - y| \cdot \dfrac{1}{\mu(B_r(x))} \int_{B_r(x)} dz =$$
+  $$K \cdot |x - y| \cdot 1 = K \cdot |x - y|$$
+  Thus, by the lemma we proved in class, we have -
+  $$|f(x) - f(x)| \le \Big|f(x) - \dashint_{B_R(x)} f\Big| + \Big|\dashint_{B_R(x)} f - \dashint_{B_R(y)} f\Big| + \Big|\dashint_{B_R(y)} f - f(y)\Big| \le$$
+  $$C_1 \cdot |x-y| \cdot Mf(x) + K \cdot |x-y| + C_2 \cdot |x-y| \cdot Mf(y) \le$$
+  $$C(Mf(x) + Mf(y)) \cdot |x-y|$$
+  where $C = \max\{C_1, C_2, K\}$.\\\\
+  $(b)$ By Hölder's inequality, we have, for all $s$,
+  $$s \dashint_{B_s(x)} |Df| \le C(p, n) s^{1 - n + \frac{n}{p'}} \|Df\|_{L^p} = C(p, n) s^\alpha \|Df\|_{L^p}$$
+  Thus
+  $$s \cdot M(Df)(x) \le C(p, n) s^\alpha \|Df\|_{L^p}$$
+  Substituting $s=\frac{r}{2},\frac{r}{4},\frac{r}{8}, \ldots$, we have
+  $$r \cdot M(Df)(x) = \sum_{k=1}^{\infty} \frac{r}{2^k} \cdot M(Df)(x) \le \sum_{k=1}^{\infty} C(p, n) (\frac{r}{2^k})^\alpha \|Df\|_{L^p} \le$$ $$\sum_{k=1}^{\infty} C(p, n) r^\alpha \frac{1}{2^k} \|Df\|_{L^p} = C(p, n) r^\alpha \|Df\|_{L^p}$$
+
+  Now, by the lemma we proved preceeding Sobolev's inequality, we have
+  $$\Big|f(x) - \dashint_{B_R(x)} f\Big| \le C \cdot r \cdot M(Df)(x) \le C(p, n) r^\alpha \|Df\|_{L^p}$$
 \end{proof}
 
 \end{document}
