@@ -53,7 +53,9 @@
   $(a) (i)$
   $$0 = \|f\|_{L^{1, \infty}} = \sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \lambda\} \iff \mu \{|f| > \lambda\} = 0 \text{ for all } \lambda > 0$$ $$\iff |f| = 0 \iff f = 0$$
   $(ii)$
-  $$\|kf\|_{L^{1, \infty}} = \sup_{\lambda > 0} \lambda \cdot \mu \{|kf| > \lambda\} = |k| \cdot \sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \lambda\} = |k| \cdot \|f\|_{L^{1, \infty}}$$
+  $$\|kf\|_{L^{1, \infty}} = \sup_{\lambda > 0} \lambda \cdot \mu \{|kf| > \lambda\} = \sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \frac{\lambda}{|k|}\} =$$
+  $$\sup_{|k|\lambda > 0} |k|\lambda \cdot \mu \{|f| > \frac{|k|\lambda}{|k|}\} = \sup_{|k|\lambda > 0} |k|\lambda \cdot \mu \{|f| > \lambda\} =$$
+  $$|k| \cdot \sup_{\lambda > 0} \lambda \cdot \mu \{|f| > \lambda\} = |k| \cdot \|f\|_{L^{1, \infty}}$$
   $(iii)$ Since $|f| + |g| \ge |f + g|$, we have
   $$\{|f| > \dfrac{\lambda}{2}\} \cup \{|g| > \dfrac{\lambda}{2}\} \supseteq \{|f| + |g| > \lambda\} \supseteq \{|f+g| > \lambda\}$$
   so that
