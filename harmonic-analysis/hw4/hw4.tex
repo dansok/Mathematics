@@ -2,6 +2,7 @@
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
+\usepackage{esint}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -18,6 +19,18 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
 
 % -----------------------------------------
 % #########################################
@@ -39,6 +52,14 @@
 \end{exercise}
 
 \begin{proof}
+  Let $\{Q_j\}$ be the cubes defined in the proof of the Calderón–Zygmund lemma. Let $S = \{x \in [0, 1)^n\ |\ M_4f(x) > \lambda\}$, where $x_0 = 0$ in the definition
+  $$M_4f(x) = \sup_{Q \in \mathfrak{D}\ :\ Q \in [0, 1]^n} \dashint_Q |f|$$
+  $(\subseteq)$ Let $Q_j = [a, b]^n$. Let $\tilde{Q}_j = [a, b)^n$. Then, $Q_j, \tilde{Q}_j$ only differ on a set of measure 0. By construction,
+  $$\dashint_{\tilde{Q}_j} |f| = \dashint_{Q_j} |f| > \lambda$$
+  so that $M_4f(x) > \lambda$ for all $x \in Q_j$. Therefore, $Q_j \subseteq S$ (for a.e. $x \in Q_j$). Thus, $\cup Q_j \subseteq S$ up to a set of measure 0.\\
+  $(\supseteq)$ Let $x \in S$. Then there exists a dyadic cube $Q \subseteq [0, 1)^n$ such that
+  $$\dashint_{Q} |f| > \lambda$$
+  So that $Q = Q_j$ for some $j$. Thus $S \subseteq \cup Q_j$. Therefore, $S = \cup Q_j$ up to a set of measure 0.
 \end{proof}
 
 \begin{exercise}{2}
