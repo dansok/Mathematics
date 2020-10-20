@@ -66,6 +66,35 @@
 \end{exercise}
 
 \begin{proof}
+  $(a) (i)$ Since $\lambda > 0$ and $\mu\{|f| > \lambda\} \ge 0$, we have $\|f\|_{L^{p, \infty}}\ge 0$.\\
+  $(ii)$
+  $$\|kf\|_{L^{p, \infty}} = \sup_{\lambda > 0} \lambda \cdot \mu\{|kf| > \lambda\} = \sup_{\lambda > 0} \lambda \cdot \mu\{|f| > \frac{\lambda}{|k|}\} =$$
+  $$\sup_{|k|\lambda > 0} |k|\lambda \cdot \mu\{|f| > \frac{|k|\lambda}{|k|}\} = \sup_{|k|\lambda > 0} |k|\lambda \cdot \mu\{|f| > \frac{|k|\lambda}{|k|}\} =
+  |k| \cdot \sup_{|k|\lambda > 0} \lambda \cdot \mu\{|f| > \lambda\} =$$
+  $$|k| \cdot \sup_{\lambda > 0} \lambda \cdot \mu\{|f| > \lambda\} = |k| \cdot \|f\|_{L^{p, \infty}}$$
+  $(iii)$
+  $$\|f + g\|_{L^{p, \infty}} = \sup_{\lambda > 0} \lambda \cdot \mu\{|f + g| > \lambda\} \le \sup_{\lambda > 0} \lambda \cdot (\mu\{|f| > \frac{\lambda}{2}\} + \mu\{|g| > \frac{\lambda}{2}\}) \le$$
+  $$\sup_{\lambda > 0} \lambda \cdot (\mu\{|f| > \frac{\lambda}{2}\}) + \sup_{\lambda > 0} \lambda \cdot (\mu\{|g| > \lambda\}) =$$
+  $$\sup_{2\lambda > 0} 2\lambda \cdot (\mu\{|f| > \lambda\}) + \sup_{2\lambda > 0} 2\lambda \cdot (\mu\{|g| > \lambda\}) =$$
+  $$2\sup_{\lambda > 0} \lambda \cdot (\mu\{|f| > \lambda\}) + 2\sup_{\lambda > 0} \lambda \cdot (\mu\{|g| > \lambda\}) = 2 (\|f\|_{L^{p, \infty}} + \|g\|_{L^{p, \infty}})$$
+  $(b)$
+  $$\int_E |f| \ge \int_E \lambda = \lambda \mu(E)$$
+  So that,
+  $$\mu(E)^{\frac{1}{p}-1} \int_E |f| \ge \mu(E)^{\frac{1}{p}-1} \cdot \lambda \mu(E) = \lambda \cdot \mu(E)^{\frac{1}{p}}$$
+  Thus,
+  $$\|f\|' = \sup_{E: 0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p}-1} \int_E |f| \ge \sup_{\lambda > 0} \lambda \mu\{|f| > \lambda\}^{\frac{1}{p}} = \|f\|_{L^{p, \infty}}$$
+  $(c)$
+  $$\int_E |f(x)| d\mu = \int_E \Big(\int_0^{|f(x)|} d\lambda \Big) du = \int_E \mu\{|f(x)| > \lambda\} d\lambda = \int_0^{\infty} \mu\{x \in E\ |\ |f(x)| > \lambda\} d\lambda \le$$
+  $$\int_0^{\mu(E)^{-\frac{1}{p}}\|f\|_{L^{p, \infty}}} \mu(E) d\lambda + \int_{\mu(E)^{-\frac{1}{p}}\|f\|_{L^{p, \infty}}}^{\infty} \mu\{|f| > \lambda\} d\lambda le$$
+  $$\int_0^{\mu(E)^{-\frac{1}{p}}\|f\|_{L^{p, \infty}}} \mu(E) d\lambda + \int_{\mu(E)^{-\frac{1}{p}}\|f\|_{L^{p, \infty}}}^{\infty} \dfrac{\|f\|_{L^{p, \infty}}}{\lambda^p} d\lambda = $$
+  $$\mu(E)^{-\frac{1}{p}}\|f\|_{L^{p, \infty}}\mu(E) + \|f\|_{L^{p, \infty}}^p \cdot \Big[\dfrac{\lambda^{1-p}}{1-p}\Big]_{\mu(E)^{-\frac{1}{p}}\|f\|_{L^{p, \infty}}}^{\infty} =$$
+  $$\mu(E)^{\frac{p-1}{p}} \|f\|_{L^{p, \infty}} \cdot \dfrac{p}{p-1} \iff$$
+  $$\mu(E)^{\frac{1}{p} - 1} \int_E |f| d\mu \le \dfrac{p}{p-1} \|f\|_{L^{p, \infty}}$$
+  For all Borel sets $E$. Therefore,
+  $$\|f\|' = \sup_{E: 0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p} - 1} \int_E |f| d\mu \le \dfrac{p}{p-1} \|f\|_{L^{p, \infty}}$$
+  $(d)$ We have
+  $$\|f\|_{L^{p, \infty}} \le \|f\|' \le \dfrac{p}{p-1} \|f\|_{L^{p, \infty}}$$
+  Thus the two norms are equivalent.
 \end{proof}
 
 \begin{exercise}{3}
