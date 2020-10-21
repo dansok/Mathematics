@@ -102,7 +102,7 @@
 
 \begin{proof}
   $(a)$ Let $R = |x - y|$. Since  $f \in \mathcal{S}(\mathbb{R}^n)$, $Df$ is bounded. Let $Df \le K$. Let us first estimate
-  $$\dashint_{B_R(x)} f - \dashint_{B_R(y)} f = \dashint_{B_R(x)} f(z + (y-x)) - f(z) dz = \dashint_{B_R(x)} \Big(\int_{z}^{z + (y - x)} Df(t) dt \Big) dz \le$$
+  $$|\dashint_{B_R(x)} f - \dashint_{B_R(y)} f| = |\dashint_{B_R(x)} f(z + (y-x)) - f(z) dz| = |\dashint_{B_R(x)} \Big(\int_{z}^{z + (y - x)} Df(t) dt \Big) dz| \le$$
   $$\dashint_{B_R(x)} K \cdot |z + (y - x) - z| dz = \dashint_{B_R(x)} K \cdot |x - y| dz = K \cdot |x - y| \cdot \dfrac{1}{\mu(B_r(x))} \int_{B_r(x)} dz =$$
   $$K \cdot |x - y| \cdot 1 = K \cdot |x - y|$$
   Thus, by the lemma we proved in class, we have -
@@ -119,6 +119,13 @@
 
   Now, by the lemma we proved preceeding Sobolev's inequality, we have
   $$\Big|f(x) - \dashint_{B_R(x)} f\Big| \le C \cdot r \cdot M(Df)(x) \le C(p, n) r^\alpha \|Df\|_{L^p}$$
+  $(c)$ Let $R=|x-y|$, as before. We had shown in $(b)$ that
+  $$R \cdot M(Df)(x) \le C(p, n) R^\alpha \|Df\|_{L^p}$$
+  It follows that
+  $$M(Df)(x) \le C(p, n) R^{\alpha-1} \|Df\|_{L^p}$$
+  Now from $(a)$,
+  $$|f(x) - f(x)| \le C(Mf(x) + Mf(y)) \cdot |x-y| \le$$
+  $$2 \cdot C(p, n) \cdot R^{\alpha-1} \cdot \|Df\|_{L^p} \cdot |x-y| = C(p, n) |x-y|^\alpha \|Df\|_{L^p}$$
 \end{proof}
 
 \end{document}
