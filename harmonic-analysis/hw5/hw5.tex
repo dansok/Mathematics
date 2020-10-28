@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+% INTERMISSION
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+
+\begin{document}
+
+\title{Harmonic Analysis}
+\title{Homework #5}
+\author{Dan Sokolsky}
+
+\maketitle
+
+\begin{exercise}{1}
+\end{exercise}
+
+\begin{proof}
+  First, we claim $f_b \in L^1(\mathbb{R}^n)$, and $f_s \in L^r(\mathbb{R}^n)$ -
+  $$\int |f_b| = \int |f_b|^p |f_b|^{1-p} \le C(p) \|f\|^p_p < \infty$$
+  $$\int |f_s|^r = \int |f_s|^{r-p} |f_s|^p \le C(r, p) \|f\|^p_p < \infty$$
+  Now, since $|Tf| \le |Tf_b| + |Tf_s|$, we have
+  $\{|Tf| > t\} \subseteq \{|Tf_b| > \frac{t}{2}\} \cup \{|Tf_s| > \frac{t}{2}\}$, so that -
+
+  $$\mu\{|Tf| > t\} \le \mu\{|Tf_b| > \frac{t}{2}\} + \mu\{|Tf_s| > \frac{t}{2}\} \le$$
+  $$\dfrac{2A \|f\|_1}{t} \int |f_b| + \dfrac{2^rA^r \|f\|_r^r}{t^r} \int |f_s|^r$$
+  Now,
+  $$\int_0^\infty t^{q-1}t^{-1} \int_{|f| > t} |f| = \int_{\mathbb{R}^n} |f| \int_0^{|f|} t^{q-2} = \dfrac{1}{q-1} \int_{\mathbb{R}^n} |f||f|^{q-1} = \dfrac{\|f\|^q_q}{q-1}$$
+  since $q > p > 1$, and
+  $$\int_0^\infty t^{q-1}t^{-r} \int_{|f| \le t} |f|^r = \int_{\mathbb{R}^n} |f|^r \int_{|f|}^{\infty} t^{q-1-r} = \dfrac{1}{r-q} \int_{\mathbb{R}^n} |f|^r|f|^{q-r} = \dfrac{\|f\|^q_q}{r-q}$$
+  since $q < r$. Altogether,
+  $$\|Tf\|_q \le C \|f\|_q$$
+\end{proof}
+
+\begin{exercise}{2}
+\end{exercise}
+
+\begin{proof}{2}
+
+\end{proof}
+
+\begin{exercise}{3}
+\end{exercise}
+
+\begin{proof}{3}
+
+\end{proof}
+
+\end{document}
