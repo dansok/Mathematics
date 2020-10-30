@@ -67,9 +67,9 @@
   $$\int_{\mathbb{R}^n} \Big( K(x) - K(x - x_{\xi}) \Big) e^{-2 \pi i x \xi}\ dx = \int_{\mathbb{R}^n} K(x) e^{-2 \pi i x \xi}\ dx - \int_{\mathbb{R}^n} K(x-x_\xi) e^{-2 \pi i x \xi}\ dx =$$
   $$\hat{K}(\xi) - \int_{\mathbb{R}^n} K(x) e^{-2 \pi i (x + x_\xi) \xi}\ dx = \hat{K}(\xi) - e^{-i \pi} \int_{\mathbb{R}^n} K(x) e^{-2 \pi i x \xi}\ dx =$$
   $$\hat{K}(\xi) + \hat{K}(\xi) = 2 \hat{K}(\xi)$$\\
-  $(c)$ By  the cnacellation condition, we have $|\int_{B_{\frac{1}{|\xi|}}(0)} K(x)|=0$. Therefore,
-  $$\Big| \int_{B_\frac{1}{|\xi|}(0)} K(x)e^{-2 \pi i x \xi} \Big| = \Big| \int_{B_\frac{1}{|\xi|}(0)} K(x)e^{-2 \pi i x \xi} - \int_{B_{\frac{1}{|\xi|}}(0)} K(x) \Big| = \Big| \int_{B_\frac{1}{|\xi|}(0)} K(x)(e^{-2 \pi i x \xi} - 1) \Big| \le$$
-  $$\int_{B_\frac{1}{|\xi|}(0)} |K(x)|\cdot|e^{-2 \pi i x \xi} - 1| = C(n)A$$\\
+  $(c)$ Since $K$ vanishes outside the annulus $B_R(0) \setminus B_\epsilon(0)$, we have
+  $$\Big| \int_{B_\frac{1}{|\xi|}(0)} K(x)e^{-2 \pi i x \xi} \Big| dx \le \int_{B_\frac{1}{|\xi|}(0) \setminus  (B_R(0) \cup B_\epsilon(0))} |K(x)e^{-2 \pi i x \xi}| dx \le$$
+  $$A \int_{B_\frac{1}{|\xi|}(0) \setminus  (B_R(0) \cup B_\epsilon(0))} \dfrac{1}{|x|^n} = C(n)A$$\\
   $(d)$
   $$\Big| \int_{B_\frac{1}{|\xi|}(0)} K(x-x_\xi)e^{-2 \pi i x \xi} \Big| dx \le \int_{B_{\frac{1}{|\xi|}+x_\xi}(x_\xi) \setminus  (B_{R+x_\xi}(x_\xi) \cup B_{\epsilon+x_\xi}(x_\xi))} |K(x)e^{-2 \pi i (x+x_\xi) \xi}| dx =$$ $$\int_{B_{\frac{1}{|\xi|}+x_\xi}(x_\xi) \setminus  (B_{R+x_\xi}(x_\xi) \cup B_{\epsilon+x_\xi}(x_\xi))} |e^{-i \pi}| \cdot |K(x)e^{-2 \pi i (x) \xi}| dx \le C(n) A$$\\
   $(e)$
