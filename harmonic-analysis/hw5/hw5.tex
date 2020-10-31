@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+a\documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
@@ -85,17 +85,17 @@ $(a)$ $(i)$ $|K \mathbf{1}_{B_r \setminus B_\epsilon}(x)| \le |K(x)| \le A|x|^{-
 $(ii)$
 $$\int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx \le \int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x)| + |K_{\epsilon, R}(x-z)| dx \le$$
 $$\dfrac{2A}{|\epsilon|^n} \cdot \mu \{B_R(0)\} = C(n) A$$\\
-$(iii)$\\
+$(iii)$
+$$\int_{B_s(0) \setminus B_r(0)} K = \int_{B_s(0)} K - \int_{B_r(0)} K = 0 - 0 = 0$$
 $(b)$
 $$\|K_{\epsilon, R} * f\|_p^p = \int |K_{\epsilon, R}(x-y) f(y)|^p dy \le \dfrac{A}{|\epsilon|^{np}} \int_{B_R(0) \setminus B_\epsilon(0)} |f|^p \le C(n, p) \|f\|_p^p$$
-$(c)$ Since $f$ is smooth and has compact support, by the Extreme Value Theorem, $f$ achieves a minimum and a maximum on it's domain. Let $m, M$ be the minimal, and mmaximal values of $f$, respectively. WLOG, suppose $R \ge 2a$. Then,
-$$|(K_{\epsilon, R} * f)(x)| = \Big| \int K_{\epsilon, R}(y) f(x-y) dy \Big| = \Big| \int_{|x| \ge 2a} K_{\epsilon, R}(y) f(x-y) dy + \int_{B_{2a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
-$$\Big| \int_{|x| \ge 2a} K_{\epsilon, R}(y) f(x-y) dy \Big| + \Big| \int_{B_{2a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
-$$\int_{|x| \ge 2a} |K_{\epsilon, R}(y) f(x-y)| dy + \Big| \int_{B_{2a}(0) \setminus B_\epsilon(0)} K(y) f(x-y) dy \Big| \le$$
-$$M \Big(A \int_{|x| \ge 2a} \dfrac{1}{2^n|a|^n} + |\int_{B_{2a}(0) \setminus B_\epsilon(0)} K(y) dy| \Big) = C(n)A \cdot M + 0 = C(n)A \cdot M$$
-for every $\epsilon > 0$. Thus the integral is absolutetely convergent and the limit exists. Now, since $C_c^\infty(\mathbb{R}^n)$ is dense in $L^p(\mathbb{R}^n)$, we can approximate $g \in L^p(\mathbb{R}^n)$ with a sequence\\ $C_c^\infty(\mathbb{R}^n) \ni g_j \rightarrow g$, with convergence in $L^p$. Thus
+$(c)$ Since $f$ is smooth and has compact support, by the Extreme Value Theorem, $f$ achieves a minimum and a maximum on it's domain. Let $m, M$ be the minimal, and maximal values of $f$, respectively. WLOG, suppose $R \ge a$. Then,
+$$|(K_{\epsilon, R} * f)(x)| = \Big| \int K_{\epsilon, R}(y) f(x-y) dy \Big| = \Big| \int_{|x| \ge a} K_{\epsilon, R}(y) f(x-y) dy + \int_{B_{a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
+$$\Big| \int_{|x| \ge a} K_{\epsilon, R}(y) f(x-y) dy \Big| + \Big| \int_{B_{a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
+$$\int_{|x| \ge a} |K_{\epsilon, R}(y) f(x-y)| dy + \Big| \int_{B_{a}(0) \setminus B_\epsilon(0)} K(y) f(x-y) dy \Big| \le$$
+$$|M| \Big(A \int_{\{|x| \ge a\} \cap B_R(0)} \dfrac{1}{|a|^n} + |\int_{B_{a}(0) \setminus B_\epsilon(0)} K(y) dy| \Big) \le |M| \Big(\mu\{B_R(0)\} \cdot \dfrac{A}{|a|^n} + 0 \Big) = C(n)A \cdot |M|$$
+for every $\epsilon > 0$, and for every $R \ge a$. Thus the integral is absolutetely convergent and the limit exists. Now, since $C_c^\infty(\mathbb{R}^n)$ is dense in $L^p(\mathbb{R}^n)$, we can approximate $g \in L^p(\mathbb{R}^n)$ with a sequence $C_c^\infty(\mathbb{R}^n) \ni g_j \rightarrow g$, with convergence in $L^p$. Thus,
 $$K * g = \lim_{\epsilon \rightarrow 0,\ R,j \rightarrow \infty} K_{\epsilon, R} * g_j$$
-since convolution is a continuouos operator.
 \end{proof}
 
 \end{document}
