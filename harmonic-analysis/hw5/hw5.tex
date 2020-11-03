@@ -1,4 +1,4 @@
-a\documentclass[12pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
@@ -94,8 +94,11 @@ $$|(K_{\epsilon, R} * f)(x)| = \Big| \int K_{\epsilon, R}(y) f(x-y) dy \Big| = \
 $$\Big| \int_{|x| \ge a} K_{\epsilon, R}(y) f(x-y) dy \Big| + \Big| \int_{B_{a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
 $$\int_{|x| \ge a} |K_{\epsilon, R}(y) f(x-y)| dy + \Big| \int_{B_{a}(0) \setminus B_\epsilon(0)} K(y) f(x-y) dy \Big| \le$$
 $$|M| \Big(A \int_{\{|x| \ge a\} \cap B_R(0)} \dfrac{1}{|a|^n} + |\int_{B_{a}(0) \setminus B_\epsilon(0)} K(y) dy| \Big) \le |M| \Big(\mu\{B_R(0)\} \cdot \dfrac{A}{|a|^n} + 0 \Big) = C(n)A \cdot |M|$$
-for every $\epsilon > 0$, and for every $R \ge a$. Thus the integral is absolutetely convergent and the limit exists. Now, since $C_c^\infty(\mathbb{R}^n)$ is dense in $L^p(\mathbb{R}^n)$, we can approximate $g \in L^p(\mathbb{R}^n)$ with a sequence $C_c^\infty(\mathbb{R}^n) \ni g_j \rightarrow g$, with convergence in $L^p$. Thus,
-$$K * g = \lim_{\epsilon \rightarrow 0,\ R,j \rightarrow \infty} K_{\epsilon, R} * g_j$$
+for every $\epsilon > 0$, and for every $R \ge a$. Thus the integral is absolutetely convergent and the limit exists. Now, since $C_c^\infty(\mathbb{R}^n)$ is dense in $L^p(\mathbb{R}^n)$, we can approximate $g \in L^p(\mathbb{R}^n)$ with a sequence $C_c^\infty(\mathbb{R}^n) \ni g_j \rightarrow g$, with convergence in $L^p$. Thus, by the dominated convergence theorem, we have
+$$\|K_{\epsilon, R} * g_j\|_{L^p}^p = \int_{\mathbb{R}^n} |(K_{\epsilon, R} * g_j)(x)|^p = \int_{\mathbb{R}^n} \Big| \int K_{\epsilon, R}(y) g_j(x-y) dy \Big|^p \nearrow$$
+$$\int_{\mathbb{R}^n} \Big| \int K_{\epsilon, R}(y) g(x-y) dy \Big|^p \nearrow \int_{\mathbb{R}^n} \Big| \int K(y) g(x-y) dy \Big|^p =$$
+$$\int_{\mathbb{R}^n} |(K * g)(x)|^p = \|K * g\|_{L^p}^p$$
+as $\epsilon \rightarrow 0,\ R, j \rightarrow \infty$.
 \end{proof}
 
 \end{document}

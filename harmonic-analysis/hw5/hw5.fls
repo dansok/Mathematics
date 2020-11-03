@@ -10,8 +10,6 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
-OUTPUT hw5.pdf
-INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
@@ -105,6 +103,8 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
+OUTPUT hw5.pdf
+INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT hw5.aux
