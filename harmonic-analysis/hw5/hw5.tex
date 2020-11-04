@@ -74,7 +74,9 @@
   $(d)$
   $$\Big| \int_{B_\frac{1}{|\xi|}(0)} K(x-x_\xi)e^{-2 \pi i x \xi} \Big| = \Big| e^{i\pi}\int_{B_\frac{1}{|\xi|}(0)} K(x-x_\xi)e^{-2 \pi i x \xi} \Big| = \Big| \int_{B_\frac{1}{|\xi|}(0)} K(x-x_\xi)e^{-2 \pi i (x-x_{\xi}) \xi} \Big| =$$
   $$\Big| \int_{B_{\frac{1}{|\xi|}}(x_\xi)} K(x)e^{-2 \pi i x \xi} \Big|$$
-  Since $|x_\xi| = \frac{1}{2|\xi|} < \frac{1}{|\xi|}$, we have that $B_{r}(0) \subseteq B_{\frac{1}{|\xi|}}(x_\xi)$ for some $0 < r < \frac{1}{|\xi|}$. Thus, $|\int_{B_r(0)} K(x-x_\xi)e^{-2 \pi i x \xi}| \le |\int_{B_\frac{1}{|\xi|}(0)} K(x-x_\xi)e^{-2 \pi i x \xi}| \le C(n)A$. Now,
+  Since $|x_\xi| = \frac{1}{2|\xi|} < \frac{1}{|\xi|}$, we have that $B_{r}(0) \subseteq B_{\frac{1}{|\xi|}}(x_\xi)$ for some $0 < r < \frac{1}{|\xi|}$. Thus, as in $(c)$,
+  $$|\int_{B_r(0)} K(x-x_\xi)e^{-2 \pi i x \xi}| \le 2\pi r A \int_{B_r(0)} |x|^{-n+1} \le 2\pi|\xi| A \int_{B_\frac{1}{|\xi|}(0)} |x|^{-n+1} = C(n)A$$
+  Now,
   $$\Big| \int_{B_{\frac{1}{|\xi|}}(x_\xi)} K(x)e^{-2 \pi i x \xi} \Big| = \Big| \int_{B_{\frac{1}{|\xi|}}(x_\xi) \setminus B_r(0)} K(x)e^{-2 \pi i x \xi} + \int_{B_r(0)} K(x)e^{-2 \pi i x \xi} \Big| \le$$
   $$\Big| \int_{B_{\frac{1}{|\xi|}}(x_\xi) \setminus B_r(0)} K(x)e^{-2 \pi i x \xi}\Big| + \Big|\int_{B_r(0)} K(x)e^{-2 \pi i x \xi} \Big| \le C + C_1(n)A \le C(n)A$$
   $(e)$
@@ -92,8 +94,8 @@ $$\int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(
 $$\dfrac{2A}{|\epsilon|^n} \cdot \mu \{B_R(0)\} = C(n) A$$\\
 $(iii)$
 $$\int_{B_s(0) \setminus B_r(0)} K = \int_{B_s(0)} K - \int_{B_r(0)} K = 0 - 0 = 0$$
-$(b)$
-$$\|K_{\epsilon, R} * f\|_p^p = \int |K_{\epsilon, R}(x-y) f(y)|^p dy \le \dfrac{A}{|\epsilon|^{np}} \int_{B_R(0) \setminus B_\epsilon(0)} |f|^p \le C(n, p) \|f\|_p^p$$
+$(b)$ We will prove $\|K_{\epsilon, R} * f\|_{L^2} \le \|\hat{K}_{\epsilon, R}\|_{L^{\infty}} \|f\|_{L^2}$. The general inequality $\|K_{\epsilon, R} * f\|_{L^2} \le C(n, p) A \|f\|_{L^p}$ then follows by the Marcinkiewicz Interpolation Theorem, the same way we proved the Calderon-Zygmund estimate. To  that end, by Plancheral's identity, we have -
+$$\|K_{\epsilon, R} * f\|_{L^2} = \|\mathcal{F}(K_{\epsilon, R} * f)\|_{L^2} = \|\hat{K}_{\epsilon, R} \cdot \hat{f}\|_{L^2} \le \|\hat{K}_{\epsilon, R}\|_{L^{\infty}} \cdot \|\hat{f}\|_{L^2} = C(n) A \|\hat{f}\|_{L^2}$$
 $(c)$ Since $f$ is smooth and has compact support, by the Extreme Value Theorem, $f$ achieves a minimum and a maximum on it's domain. Let $m, M$ be the minimal, and maximal values of $f$, respectively. WLOG, suppose $R \ge a$. Then,
 $$|(K_{\epsilon, R} * f)(x)| = \Big| \int K_{\epsilon, R}(y) f(x-y) dy \Big| = \Big| \int_{|x| \ge a} K_{\epsilon, R}(y) f(x-y) dy + \int_{B_{a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
 $$\Big| \int_{|x| \ge a} K_{\epsilon, R}(y) f(x-y) dy \Big| + \Big| \int_{B_{a}(0)} K_{\epsilon, R}(y) f(x-y) dy \Big| \le$$
