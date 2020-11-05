@@ -91,9 +91,18 @@
 
 \begin{proof}
 $(a)$ $(i)$ $|K \mathbf{1}_{B_r \setminus B_\epsilon}(x)| \le |K(x)| \le A|x|^{-n}$\\
-$(ii)$
-$$\int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx \le \int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x)| + |K_{\epsilon, R}(x-z)| dx \le$$
-$$\dfrac{2A}{|\epsilon|^n} \cdot \mu \{B_R(0)\} = C(n) A$$\\
+$(ii)$\\
+If $r < \frac{R}{2}$,  we have
+$$\int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx \le \int_{\mathbb{R}^n \setminus B_{R}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx \le$$
+$$\int_{\mathbb{R}^n \setminus B_{R}(0)} \frac{1}{|x|^n} dx \le A \int_{B_R(0) \setminus B_{\frac{R}{2}}(0)} \frac{1}{|x-z|^n} dx =$$
+$$A \int_{B_R(0) \setminus B_{\frac{R}{2}}(0)} \frac{1}{|x|^n} dx = C_1(n)A$$
+If $\frac{R}{2} \le r \le R$,  we have
+$$\int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx = \int_{\mathbb{R}^n \setminus B_{2r}(0) \cap \{K(x) \ne 0\} \cap \{K(x-z) \ne 0\}} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx \le$$
+$$A \int_{B_{R}(0) \setminus B_{\frac{R}{2}}(0)} \frac{1}{|x|^n} dx + A \Big(\mu\{B_R(0) - B_\frac{R}{2}(0)\}\Big) \le C_2(n) A$$
+If $r > R$,  we have
+$$|x-z| \ge |x| - |z| \ge 2R - R$$
+so that the region of integration falls outside the support of $K(x)$, and $K(x-z)$. Therefore,
+$$\int_{\mathbb{R}^n \setminus B_{2r}(0)} |K_{\epsilon, R}(x) - K_{\epsilon, R}(x-z)| dx = 0$$
 $(iii)$
 $$\int_{B_s(0) \setminus B_r(0)} K = \int_{B_s(0)} K - \int_{B_r(0)} K = 0 - 0 = 0$$
 $(b)$ We will prove $\|K_{\epsilon, R} * f\|_{L^2} \le \|\hat{K}_{\epsilon, R}\|_{L^{\infty}} \|f\|_{L^2}$. The general inequality $\|K_{\epsilon, R} * f\|_{L^2} \le C(n, p) A \|f\|_{L^p}$ then follows by the Marcinkiewicz Interpolation Theorem, the same way we proved the Calderon-Zygmund estimate. To  that end, by Plancheral's identity, we have -
