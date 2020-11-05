@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs, unicode-math}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+% INTERMISSION
+% -----------------------------------------
+% #########################################
+% -----------------------------------------
+
+\begin{document}
+
+\title{Harmonic Analysis}
+\title{Homework #6}
+\author{Dan Sokolsky}
+
+\maketitle
+
+\begin{exercise}{1}
+\end{exercise}
+
+\begin{proof}
+  $(1)\ (a)\ (i)$
+  $$
+    \hat{F}(\xi) =
+    \mathcal{F}(f(\xi) - \Delta f(\xi)) =
+    \mathcal{F}(f(\xi) - \sum_{j=1}^n \partial_i^2 f(\xi)) =
+    \mathcal{F}(f(\xi)) - \mathcal{F}(\sum_{j=1}^n \partial_i^2 f(\xi))) =
+  $$
+  $$\mathcal{F}(f(\xi)) - \sum_{j=1}^n (2 \pi i \xi_j)^2 (\mathcal{F}f)(\xi))) =
+    \hat{f}(\xi)\Big( 1 + 4\pi^2 |\xi|^2 \Big) = C\hat{f}(\xi)
+  $$
+  So  that $f(\xi) = \frac{1}{C} F(\xi) = \frac{1}{1 + 4\pi^2 |\xi|^2} F(\xi)$.\\
+  $(ii)$
+  $$
+    \mathcal{F}^{-1}(m(\xi) \mathcal{F}((1 - \Delta)f)(\xi)) =
+    \mathcal{F}^{-1}(m(\xi) \hat{F}(\xi)) =
+    \mathcal{F}^{-1}(m(\xi) \cdot C\hat{f}(\xi)) =
+    \mathcal{F}^{-1}((2 \pi i)^2 \xi_i \xi_j \hat{f}(\xi))) =
+  $$
+  $$
+    \mathcal{F}^{-1}(-4 \pi^2 \xi_i \xi_j \hat{f}(\xi))) =
+    \mathcal{F}^{-1}\Big( \mathcal{F}\Big( \partial_i \partial_j f(\xi) \Big) \Big) =
+    \partial_i \partial_j f(\xi)
+  $$
+  $(b)$\\
+  $(c)$
+    $$
+      \Big| \int \partial_i \partial_j f(1-\Delta)g \Big| =
+      \Big| \int \partial_i \partial_j g(1-\Delta)f \Big| \le
+      \int |\partial_i \partial_j g| \cdot |(1-\Delta)f| \le
+    $$
+    $$
+      \|(1-\Delta)f\|_{L^1} \cdot \|\partial_i \partial_j   g\|_{L^\infty} =
+      C \|(1-\Delta)f\|_{L^1} \cdot \|\Delta g\|_{L^\infty}
+    $$
+  The second inequality Hölder's inequality.\\
+  $(d)$
+    $$
+      \|D^2 f\|_{L^1} =
+      \|\partial_i \partial_j f\|_{L^1} =
+      \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} \int \partial_i \partial_j f G =
+      \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} \int \partial_i \partial_j f (1-\Delta)g \le
+    $$
+    $$
+      \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} C \|(1-\Delta)f\|_{L^1} \|\Delta g\|_{L^\infty} \le
+      \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} C \|(1-\Delta)f\|_{L^1}\ \cdot\ C_2\|G\|_{L^\infty} \le
+      C \|(1-\Delta)f\|_{L^1}
+    $$
+    Now, by $(a)$, we have $g = \frac{1}{C} G$. So that  $\|g\|_{L^\infty} = \frac{1}{C} \|G\|_{L^\infty} < \infty$. It follows that $|\partial_i^2 g| < \infty$, (else, $\partial_i g$, and hence $g$, explodes at some point). So that $\|\Delta  g\|_{L^{\infty}} = \|\sum_{i=1}^n \partial_i^2 g\|_{L^{\infty}} < \infty$ and $\|\Delta g\|_{L^\infty} \le C_1 \|g\|_{L^\infty} \le C \|G\|_{L^{\infty}}$.
+\end{proof}
+
+\begin{exercise}{2}
+\end{exercise}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{exercise}{3}
+\end{exercise}
+
+\begin{proof}
+
+\end{proof}
+
+\end{document}
