@@ -119,4 +119,103 @@ $$\int_{\mathbb{R}^n} |(K * g)(x)|^p = \|K * g\|_{L^p}^p$$
 as $\epsilon \rightarrow 0,\ R, j \rightarrow \infty$.
 \end{proof}
 
+\begin{exercise}{4}
+\end{exercise}
+
+\begin{proof}
+  $(a)$
+  $$
+    \int_{B_2(0)} \dfrac{\epsilon^2}{(|x|^2+\epsilon^2)^{\frac{n}{2}+1}} dx =
+    \int_0^{2\pi} \int_0^\pi \cdots \int_0^\pi \int_0^2 \dfrac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} \sin\phi_1 \cdots \sin\phi_{n-1} \cdot r^{n-1}\ dr\ d\phi_1 \cdots d\phi_{n-1}
+  $$
+  We will bound $\int_0^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr$. The rest of the integrals are obviously bounded (In particular, $|\sin \phi_i| \le 1$). To this end,
+  $$
+    \int_0^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
+    \int_0^\epsilon \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr +
+    \int_\epsilon^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
+    I_1 + I_2
+  $$
+  We will bound $I_1, I_2$ separately. On $(0, \epsilon)$,
+  \\
+  \\
+  when $r \le \frac{\epsilon}{2}$, we have -
+  $$
+    \dfrac{\epsilon^n}{r^{n-1}} \ge
+    \dfrac{\epsilon^n \cdot 2^{n-1}}{\epsilon^{n-1}} =
+    2^{n-1} \cdot \epsilon
+  $$
+  when $r \ge \frac{\epsilon}{2}$, we have -
+  $$
+    \dfrac{r^3}{\epsilon^2} \ge
+    \dfrac{\epsilon^3}{\epsilon^2 \cdot  2^3} =
+    \dfrac{\epsilon}{8}
+  $$
+  So that
+  $$
+    \dfrac{\epsilon^n}{r^{n-1}} + \dfrac{r^3}{\epsilon^2} \ge
+    \min\{2^{n-1} \cdot \epsilon, \dfrac{\epsilon}{8}\}
+  $$
+  Now, $(r^2+\epsilon^2)^{\frac{n}{2}+1} \ge r^{n+2} + \epsilon^{n+2}$ by the binomial theorem, so -
+  $$
+    I_1 = \BBig\int_0^\epsilon \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
+    \int_0^\epsilon \frac{1}{\dfrac{\epsilon^n}{r^{n-1}} + \dfrac{r^3}{\epsilon^2}}\ dr \le
+  $$
+  $$
+    \epsilon \cdot \max\{ \frac{2^{1-n}}{\epsilon}, \frac{8}{\epsilon} \} =
+    \max\{ 2^{1-n}, 8 \} =
+    8
+  $$
+  On $(\epsilon, 2)$,
+  \\
+  \\
+  when $\epsilon \le r \le \frac{\epsilon+2}{2}$, we have -
+  $$
+    \dfrac{r^3}{\epsilon^2} \ge
+    \dfrac{(\frac{\epsilon+2}{2})^3}{\epsilon^2} \ge
+    \dfrac{(\epsilon+2)^3}{\epsilon^2 \cdot 2^3} \ge
+    \dfrac{\epsilon}{8}
+  $$
+  when $\frac{\epsilon+2}{2} \le r \le 2$, we have -
+  $$
+    \dfrac{\epsilon^n}{r^{n-1}} \ge
+    \dfrac{\epsilon^n \cdot 2^{n-1}}{\epsilon^{n-1}} =
+    2^{n-1} \cdot \epsilon
+  $$
+  So that
+  $$
+    \dfrac{\epsilon^n}{r^{n-1}} + \dfrac{r^3}{\epsilon^2} \ge
+    \min\{2^{n-1} \cdot \epsilon, \dfrac{\epsilon}{8}\}
+  $$
+  Whence,
+  $$
+    I_2 = \BBig\int_\epsilon^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
+    \int_\epsilon^2 \frac{1}{\dfrac{\epsilon^n}{r^{n-1}} + \dfrac{r^3}{\epsilon^2}}\ dr \le
+  $$
+  $$
+    (2 - \epsilon) \cdot \max\{ \frac{2^{1-n}}{\epsilon}, \frac{8}{\epsilon} \} \le
+    2 \cdot 8 =
+    16
+  $$
+  % $$
+  %   r^2 + \epsilon^2 \ge
+  %   \epsilon^2 + \epsilon^2 =
+  %   2\epsilon^2
+  % $$
+  % So that,
+  % $$
+  %   I_2 =
+  %   \int_\epsilon^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr \le
+  %   \int_\epsilon^2 \frac{\epsilon^2}{(2\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
+  % $$
+  % $$
+  %   2^{\frac{n}{2}+1} \cdot \int_\epsilon^2 \frac{\epsilon^2}{\epsilon^{n+2}} \cdot r^{n-1}\ dr =
+  %   \frac{2^{\frac{n}{2}+1}}{\epsilon^n} \int_\epsilon^2 r^{n-1}\ dr =
+  %   \frac{2^{\frac{n}{2}+1}}{n \cdot \epsilon^n} \Big[ r^n \Big]_\epsilon^2 =
+  % $$
+  % $$
+  %   \frac{2^{\frac{n}{2}+1}}{n \cdot \epsilon^n} \cdot \Big( 2^n - \epsilon^n \Big) =
+  %
+  % $$
+\end{proof}
+
 \end{document}
