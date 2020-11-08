@@ -168,54 +168,39 @@ as $\epsilon \rightarrow 0,\ R, j \rightarrow \infty$.
   On $(\epsilon, 2)$,
   \\
   \\
-  when $\epsilon \le r \le \frac{\epsilon+2}{2}$, we have -
   $$
-    \dfrac{r^3}{\epsilon^2} \ge
-    \dfrac{(\frac{\epsilon+2}{2})^3}{\epsilon^2} \ge
-    \dfrac{(\epsilon+2)^3}{\epsilon^2 \cdot 2^3} \ge
-    \dfrac{\epsilon}{8}
+    r^2 + \epsilon^2 \ge
+    r^2
   $$
-  when $\frac{\epsilon+2}{2} \le r \le 2$, we have -
+  So that,
   $$
-    \dfrac{\epsilon^n}{r^{n-1}} \ge
-    \dfrac{\epsilon^n \cdot 2^{n-1}}{\epsilon^{n-1}} =
-    2^{n-1} \cdot \epsilon
-  $$
-  So that
-  $$
-    \dfrac{\epsilon^n}{r^{n-1}} + \dfrac{r^3}{\epsilon^2} \ge
-    \min\{2^{n-1} \cdot \epsilon, \dfrac{\epsilon}{8}\}
-  $$
-  Whence,
-  $$
-    I_2 = \BBig\int_\epsilon^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
-    \int_\epsilon^2 \frac{1}{\dfrac{\epsilon^n}{r^{n-1}} + \dfrac{r^3}{\epsilon^2}}\ dr \le
+    I_2 =
+    \int_\epsilon^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr \le
+    \int_\epsilon^2 \frac{\epsilon^2}{(r^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
   $$
   $$
-    (2 - \epsilon) \cdot \max\{ \frac{2^{1-n}}{\epsilon}, \frac{8}{\epsilon} \} \le
-    2 \cdot 8 =
-    16
+    \int_\epsilon^2 \frac{\epsilon^2}{r^{n+2}} \cdot r^{n-1}\ dr \le
+    \int_\epsilon^2 \frac{r^2}{r^{n+2}} \cdot r^{n-1}\ dr =
+    \int_\epsilon^2 \frac{1}{r}\ dr =
   $$
-  % $$
-  %   r^2 + \epsilon^2 \ge
-  %   \epsilon^2 + \epsilon^2 =
-  %   2\epsilon^2
-  % $$
-  % So that,
-  % $$
-  %   I_2 =
-  %   \int_\epsilon^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr \le
-  %   \int_\epsilon^2 \frac{\epsilon^2}{(2\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr =
-  % $$
-  % $$
-  %   2^{\frac{n}{2}+1} \cdot \int_\epsilon^2 \frac{\epsilon^2}{\epsilon^{n+2}} \cdot r^{n-1}\ dr =
-  %   \frac{2^{\frac{n}{2}+1}}{\epsilon^n} \int_\epsilon^2 r^{n-1}\ dr =
-  %   \frac{2^{\frac{n}{2}+1}}{n \cdot \epsilon^n} \Big[ r^n \Big]_\epsilon^2 =
-  % $$
-  % $$
-  %   \frac{2^{\frac{n}{2}+1}}{n \cdot \epsilon^n} \cdot \Big( 2^n - \epsilon^n \Big) =
-  %
-  % $$
+  $$
+    \ln(2) - \ln(\epsilon) \le
+    \ln(2)
+  $$
+  So that,
+  $$
+    \int_0^2 \frac{\epsilon^2}{(r^2+\epsilon^2)^{\frac{n}{2}+1}} r^{n-1}\ dr \le
+    I_1 + I_2 \le
+    8 + \ln(2)
+  $$
+  It follows that
+  $$
+    \int_{B_2(0)} \dfrac{\epsilon^2}{(|x|^2+\epsilon^2)^{\frac{n}{2}+1}} dx \le
+    C
+  $$
+  % $(b)$\\
+  % $\chi$ achieves a maximum as a smooth function with compact support, by the EVT.\\
+  % Let $M = \max \chi$. So  that $f_\epsilon(x) \le M (|x|^2+\epsilon^2)^{\frac{2-n}{n}}$
 \end{proof}
 
 \end{document}
