@@ -62,7 +62,25 @@
     \mathcal{F}^{-1}\Big( \mathcal{F}\Big( \partial_i \partial_j f(\xi) \Big) \Big) =
     \partial_i \partial_j f(\xi)
   $$
-  $(b)$\\
+  $(b)$ We have,
+  $$
+    \|x^\alpha H(x)\|_\infty \le
+    \|\mathcal{F}(x^\alpha H(x))\|_1 =
+    \|\frac{1}{(-2\pi i)^{|\alpha|}} \partial^\alpha \hat{H}(x)\|_1 =
+  $$
+  $$
+    -\dfrac{(|\alpha|)! \cdot (8\pi^2)^{|\alpha|}}{(-2\pi i)^{|\alpha|}} \int \dfrac{|\xi|^\alpha}{|1 +4\pi^2 |\xi|^2|^{|\alpha|+1}} d \xi <
+    \infty
+  $$
+  for $|\alpha| \ge n-1$. So that $|H(x)| \le \frac{C}{|x|^\alpha}$ which represents an $L^1$ function on $\mathbb{R}^n \setminus \{0\}$, hence everywhere on  $\mathbb{R}^n$. Now,
+  $$
+    |f(x)| =
+    |(H*F)(x)| =
+    |\int H(y) F(x-y) dy| \le
+    \|F\|_\infty |\int H(y)| \le
+    \|H\|_1 \cdot \|F\|_\infty
+  $$
+  So that $\|f\|_\infty \le \|H\|_1 \cdot \|F\|_\infty$.\\
   $(c)$
     $$
       \Big| \int \partial_i \partial_j f(1-\Delta)g \Big| =
@@ -76,7 +94,6 @@
   The second inequality Hölder's inequality.\\
   $(d)$
     $$
-      \|D^2 f\|_{L^1} =
       \|\partial_i \partial_j f\|_{L^1} =
       \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} \int \partial_i \partial_j f G =
       \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} \int \partial_i \partial_j f (1-\Delta)g \le
@@ -86,14 +103,89 @@
       \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} C \|(1-\Delta)f\|_{L^1}\ \cdot\ C_2\|G\|_{L^\infty} \le
       C \|(1-\Delta)f\|_{L^1}
     $$
-    Now, by $(a)$, we have $g = \frac{1}{C} G$. So that  $\|g\|_{L^\infty} = \frac{1}{C} \|G\|_{L^\infty} < \infty$. It follows that $|\partial_i^2 g| < \infty$, (else, $\partial_i g$, and hence $g$, explodes at some point). So that $\|\Delta  g\|_{L^{\infty}} = \|\sum_{i=1}^n \partial_i^2 g\|_{L^{\infty}} < \infty$ and $\|\Delta g\|_{L^\infty} \le C_1 \|g\|_{L^\infty} \le C \|G\|_{L^{\infty}}$.
+    Now, by $(a)$, we have $g = \frac{1}{C} G$. So that  $\|g\|_{L^\infty} = \frac{1}{C} \|G\|_{L^\infty} < \infty$. It follows that $|\partial_i^2 g| < \infty$, (else, $\partial_i g$, and hence $g$, explodes at some point). So that $\|\Delta  g\|_{L^{\infty}} = \|\sum_{i=1}^n \partial_i^2 g\|_{L^{\infty}} < \infty$ and $\|\Delta g\|_{L^\infty} \le C_1 \|g\|_{L^\infty} \le C \|G\|_{L^{\infty}}$.\\
+    $(e)$
+    $$
+      \|(1-\Delta)f\|_1 =
+      \int |f -\Delta f| dx =
+      \int |\frac{1}{\lambda} f(\lambda x) - \frac{1}{\lambda} \sum_{j=1}^n \partial_j^2 f(\lambda x)| dx =
+    $$
+    $$
+      \int |\frac{1}{\lambda} f(\lambda x) - \frac{1}{\lambda} \cdot \lambda^2 \sum_{j=1}^n \partial_j^2 f(\lambda x)| dx =
+      \int |\frac{1}{\lambda} f(\lambda x) - \lambda \sum_{j=1}^n \partial_j^2 f(\lambda x)| dx \ge
+    $$
+    $$
+      \Big| \frac{1}{\lambda} \int |f(\lambda x)| dx - \int |\lambda \sum_{j=1}^n \partial_j^2 f(\lambda x)| dx\ \Big| =
+    $$
+    $$
+      \Big| \frac{1}{\lambda} \int |f(\lambda x)| dx - \|\Delta f\|_1\ \Big| \rightarrow
+      \|0 - \Delta f\|_1 =
+      \|\Delta f\|_1
+    $$
+    Likewise,
+    $$
+      \int |\frac{1}{\lambda} f(\lambda x) - \lambda \sum_{j=1}^n \partial_j^2 f(\lambda x)|\ dx \le
+      \int |\frac{1}{\lambda} f(\lambda x)| + |\lambda \sum_{j=1}^n \partial_j^2 f(\lambda x)|\ dx \le
+    $$
+    $$
+      \int |\frac{1}{\lambda} f(\lambda x)| + \int |\lambda \sum_{j=1}^n \partial_j^2 f(\lambda x)|\ dx =
+      \int |\frac{1}{\lambda} f(\lambda x)| + \|\Delta f\|_1 \rightarrow
+      0 + \|\Delta f\|_1 =
+      \|\Delta f\|_1
+    $$
+    as $\lambda \rightarrow \infty$.
+    Now, by $(d)$,
+    $$
+      \|D^2 f\|_1 \le
+      C \|(1 - \Delta)f\|_1 =
+      C \|\Delta\|_1
+    $$
 \end{proof}
 
 \begin{exercise}{2}
 \end{exercise}
 
 \begin{proof}
+  $(a)$ By continuity of the differential operator,
+  $$
+    \lim_{R \rightarrow \infty} (D^k f_R(x)) =
+    D^k(\lim_{R \rightarrow \infty} f_R(x)) =
+    D^k(\phi(0) \cdot e^{2 \pi i x \xi_0}) =
+    \phi(0)  D^k e^{2 \pi i x \xi_0} =
+  $$
+  $$
+    \phi(0) \Big( \sum \partial_{j_1} \cdots \partial_{j_k}(e^{2 \pi i x \xi_0}) \Big) =
+    \phi(0) \cdot e^{2 \pi i x \xi_0}  \cdot \sum (\xi_0)_{j_1} \cdots (\xi_0)_{j_k} \ne 0
+  $$
+  and
+  $$
+    \lim_{R \rightarrow \infty} L f_R(x) =
+    L(\lim_{R \rightarrow \infty} f_R(x)) =
+    L(\phi(0) \cdot e^{2 \pi i x \xi_0}) =
+    \sum_{|\alpha| \le k}  c_\alpha \partial^\alpha (\phi(0) \cdot e^{2 \pi i x \xi_0}) =
+  $$
+  $$
+    \phi(0) \sum_{|\alpha| \le k}  c_\alpha (2 \pi i x \xi_0)^\alpha e^{2 \pi i x \xi_0}  =
+    \phi(0) \cdot e^{2 \pi i x \xi_0} \sum_{|\alpha| \le k}  c_\alpha (2 \pi i x \xi_0)^\alpha =
+    0
+  $$
+  Suppose by contradiction that $\|D^k f\|_p \le C  \|Lf\|_p$ for some nontrivial $f \in C^\infty_c$, with $\text{support}(f) = K$. Then,
+  $$
+    \|D^k f_R(x)\|_p =
+    |R| \cdot \|D^k f(x)\|_p \le
+    |R| \cdot C \|Lf(x)\|_p =
+    C \|Lf_R(x)\|_p
+  $$
+  for all $R$, so
+  $$
+    \lim_{R \rightarrow \infty} \|D^k f_R\|_p =
+    \mu(K) \cdot \phi(0) \sum (\xi_0)_{j_1} \cdots (\xi_0)_{j_k} >
+    0 =
+    \lim_{R \rightarrow \infty} \|Lf_R\|_p
+  $$
+  is a contradiction.\\
 
+  $(b)$
 \end{proof}
 
 \begin{exercise}{3}
