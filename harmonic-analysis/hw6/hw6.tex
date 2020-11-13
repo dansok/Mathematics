@@ -268,7 +268,55 @@
 \end{exercise}
 
 \begin{proof}
-
+  Let $\mathbf{1}_{R^+} = \mathbf{1}_{(-\infty, a_1) \times \ldots \times (-\infty, a_n)};\ \mathbf{1}_{R^-} = \mathbf{1}_{(-\infty, -a_1) \times \ldots \times (-\infty, -a_n)}$.
+  We have,
+  $$
+    f_R =
+    \mathcal{F}^{-1}(\mathbf{1}_R \hat{f}) =
+    \mathcal{F}^{-1}(\mathbf{1}_{R^+} \hat{f}) - \mathcal{F}^{-1}(\mathbf{1}_{R^-} \hat{f})
+  $$
+  As before, suffices to prove the bound on $\mathbf{1}_{\mathbb{R}^n_{< 0}} = \mathbf{1}_{(-\infty, a_1) \times \ldots \times (-\infty, a_n)}$ since translation leaves the $L^p$ norm invariant.
+  First, observe that $\mathbf{1}_{\mathbb{R}^n_{< 0}}$ is a proper multiplier - it is bounded, and any derivative vanishes a.e. So that by Hörmander-Mikhlin,
+  $$
+    \|\mathcal{F}^{-1}( \mathbf{1}_{\mathbb{R}^n_{< 0}} \cdot \hat{f})\|_{L^p} \le
+    C \|f\|_{L^p}
+  $$
+  $$
+    \mathcal{F}^{-1}(\mathbf{1}_{R^+} \cdot \hat{f}) =
+    \mathcal{F}^{-1}(\tau_t (\mathbf{1}_{\mathbb{R}^n_{< 0}} \cdot \tau_{-t}\hat{f})) =
+    e^{-2\pi i t x} \cdot \mathcal{F}^{-1}( (\mathbf{1}_{\mathbb{R}^n_{< 0}} \cdot \tau_{-t}\hat{f}) =
+  $$
+  $$
+    e^{-2\pi i t x} \cdot \mathcal{F}^{-1}( (\mathbf{1}_{\mathbb{R}^n_{< 0}} \cdot \mathcal{F}(e^{2\pi i t x}f)))
+  $$
+  where $t = \begin{pmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+  \end{pmatrix}$. So that,
+  $$
+    \|\mathcal{F}^{-1}(\mathbf{1}_{R^+} \cdot \hat{f})\|_{L^p} =
+    \|e^{-2\pi i t x} \cdot \mathcal{F}^{-1}( (\mathbf{1}_{\mathbb{R}^n_{< 0}} \cdot \mathcal{F}(e^{2\pi i t x}f)))\|_{L^p} =
+  $$
+  $$
+    \|\mathcal{F}^{-1}( (\mathbf{1}_{\mathbb{R}^n_{< 0}} \cdot \mathcal{F}(e^{2\pi i t x}f)))\|_{L^p} \le
+    C \|\mathcal{F}(e^{2\pi i t x}f)\|_{L^p} =
+    C \|e^{2\pi i t x} \cdot \hat{f}\|_{L^p} =
+    C \|\hat{f}\|_{L^p}
+  $$
+  Likewise,
+  $$
+    \|\mathcal{F}^{-1}(\mathbf{1}_{R^-} \cdot \hat{f})\|_{L^p} \le
+    C \|\hat{f}\|_{L^p}
+  $$
+  and therefore,
+  $$
+    \|f_R\|_{L^p} =
+    \|\mathcal{F}^{-1}(\mathbf{1}_R \hat{f})\|_{L^p} \le
+    \|\mathcal{F}^{-1}(\mathbf{1}_{R^+} \hat{f})\|_{L^p} + \|\mathcal{F}^{-1}(\mathbf{1}_{R^-} \hat{f})\|_{L^p} \le
+    C \|f\|_{L^p}
+  $$
+  This holds for every $f \in \mathcal{S}$, with $\hat{f} \in C^\infty_c$, a dense set in $L^p$. By the addendum note, it follows that $f_R = \mathcal{F}^{-1}(\mathbf{1}_R \hat{f}) \rightarrow f$ in $L^p$, extends continuously to all $f \in L^p$.
 \end{proof}
 
 \end{document}
