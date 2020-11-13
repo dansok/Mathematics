@@ -226,6 +226,42 @@
     \frac{\lambda^\ell c_\alpha \xi^{\alpha}}{\lambda^i \cdot \xi{j_1} \cdots \xi{j_i}} =
     \lambda^{\ell - i} \cdot p_\ell(\xi)
   $$
+  Therefore, take $\lambda = \dfrac{1}{|\xi|^{\frac{|\beta| + \ell -i}{|\beta|}}}$. We have,
+  $$
+    \partial^\beta p(\xi) =
+    \partial^\beta(\lambda^{\ell - i} \cdot p_\ell(\lambda \xi)) =
+    \lambda^{|\beta| + \ell -i} \cdot \partial^\beta p_\ell(\lambda \xi)  =
+  $$
+  $$
+    |\xi|^{-|\beta|} \cdot \partial^\beta p \Bigg( \frac{\xi}{|\xi|^{\frac{|\beta| + \ell -i}{|\beta|}}} \Bigg) \le
+    c_\beta |\xi|^{-|\beta|}
+  $$
+  since $\mathbb{S}^{n-1}$ is compact $\Big(\frac{\xi}{|\xi|^{\frac{|\beta| + \ell -i}{|\beta|}}}$ takes values on a sphere, albeit not of radius $1 \Big)$.\\
+  This means
+  $$
+    |\partial^\alpha p(\xi)| =
+    |\sum_{\ell \le k} \sum_{|\alpha| = l} \partial^\alpha p_\ell(\xi)| \le
+    \sum_{\ell \le k} \sum_{|\alpha| = l} |\partial^\alpha p_\ell(\xi)| \le
+    c_\alpha |\xi|^{-|\alpha|}
+  $$
+  Finally,
+  $$
+    \partial^\alpha p(\xi) =
+    \partial^\alpha \Big( \frac{1}{m(\xi)} \Big) =
+    -\dfrac{\partial^\alpha m(\xi)}{m(\xi)^2} \iff
+  $$
+  $$
+    |\partial^\alpha m(\xi)| =
+    |\partial^\alpha p(\xi)| \cdot |m(\xi)|^2 \le
+    c_\alpha |\xi|^{-|\alpha|} \cdot C \le
+    c_\alpha |\xi|^{-|\alpha|}
+  $$
+  since $m$ is bounded. Now, by Hörmander-Mikhlin, it follows that
+  $$
+    \|\partial_{j_1} \cdots \partial_{j_i} f\|_{L^p} \le
+    C \|Lf\|_{L^p}
+  $$
+  for every $0 \le i \le k$, as required.
 \end{proof}
 
 \begin{exercise}{3}
