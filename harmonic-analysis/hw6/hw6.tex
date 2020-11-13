@@ -81,17 +81,39 @@
     \|H\|_1 \cdot \|F\|_\infty
   $$
   So that $\|f\|_\infty \le \|H\|_1 \cdot \|F\|_\infty$.\\
-  $(c)$
+  $(c)$\\
+    Letting $m(\xi) = -\frac{4 \pi^2 \xi_i \xi_j}{1 + 4\pi^2 |\xi|^2}$ as before, we see $m$ is symmetric. I.e., $m(\xi) = m(-\xi)$. By $(a)$,
     $$
-      \Big| \int \partial_i \partial_j f(1-\Delta)g \Big| =
+      \partial_i \partial_j f(\xi) =
+      \mathcal{F}^{-1}(m(\xi) \mathcal{F}((1 - \Delta)f)(\xi)) =
+      (\check{m} * (1 - \Delta)f)(\xi)
+    $$
+    Keeping with the convention $\check{m}^{\#} (\xi) = \check{m} (-\xi)$, recall that $\check{m}^{\#}$ has the same properties as $\check{m}$, and in particular is also a proper multiplier. Now,
+    $$
+      |\partial_i \partial_j f  \cdot (1 - \Delta) g| =
+      |\check{m} * (1-\Delta)f \cdot (1 - \Delta) g| =
+    $$
+    $$
+      \Big|\int \int \check{m}(x-y) ((1 - \Delta) f)(y)\ dy\ ((1 - \Delta) g)(x)\ dx \Big| =
+    $$
+    $$
+      \Big|\int \int \check{m}^{\#}(y-x) ((1 - \Delta) g)(x)\ dx\ ((1 - \Delta) f)(y)\ dy \Big| =
+    $$
+    $$
+      \Big| \int \mathcal{F}(m(-y) \cdot \mathcal{F}((1 - \Delta) g)(y))\ ((1 - \Delta) f)(y)\ dy \Big| =
+    $$
+    $$
+      \Big| \int \mathcal{F}(m(y) \cdot \mathcal{F}((1 - \Delta) g)(y))\ ((1 - \Delta) f)(y)\ dy \Big| =
+    $$
+    $$
       \Big| \int \partial_i \partial_j g(1-\Delta)f \Big| \le
       \int |\partial_i \partial_j g| \cdot |(1-\Delta)f| \le
+      \|(1-\Delta)f\|_{L^1} \cdot \|\partial_i \partial_j   g\|_{L^\infty} \le
     $$
     $$
-      \|(1-\Delta)f\|_{L^1} \cdot \|\partial_i \partial_j   g\|_{L^\infty} =
-      C \|(1-\Delta)f\|_{L^1} \cdot \|\Delta g\|_{L^\infty}
+      C \|(1 - \Delta)f\|_{L^1} \cdot \|\Delta g\|_{L^\infty}
     $$
-  The second inequality Hölder's inequality.\\
+  The second inequality is Hölder's inequality.\\
   $(d)$
     $$
       \|\partial_i \partial_j f\|_{L^1} =
@@ -183,9 +205,14 @@
     0 =
     \lim_{R \rightarrow \infty} \|Lf_R\|_p
   $$
-  is a contradiction.\\
-
-  $(b)$
+  is a contradiction.\\\\
+  $(b)$\\
+  For  $i \le k$,
+  $$
+    \partial_{j_1} \cdots \partial_{j_i} f =
+    \mathcal{F}^{-1}\Big( \dfrac{\xi{j_1} \cdots \xi{j_i}}{\sum_{|\alpha| \le k} c_\alpha \xi^{|\alpha|}} \cdot \mathcal{F}(Lf) \Big)
+  $$
+  where $m(\xi) = \frac{\xi{j_1} \cdots \xi{j_i}}{\sum_{|\alpha| \le k}} c_\alpha \xi^{|\alpha|}$.
 \end{proof}
 
 \begin{exercise}{3}
