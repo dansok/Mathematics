@@ -212,7 +212,20 @@
     \partial_{j_1} \cdots \partial_{j_i} f =
     \mathcal{F}^{-1}\Big( \dfrac{\xi{j_1} \cdots \xi{j_i}}{\sum_{|\alpha| \le k} c_\alpha \xi^{|\alpha|}} \cdot \mathcal{F}(Lf) \Big)
   $$
-  where $m(\xi) = \frac{\xi{j_1} \cdots \xi{j_i}}{\sum_{|\alpha| \le k}} c_\alpha \xi^{|\alpha|}$.
+  where $m(\xi) = \frac{\xi{j_1} \cdots \xi{j_i}}{\sum_{|\alpha| \le k}c_\alpha \xi^{\alpha}}$. First, observe that $m \in L^\infty$. Let $p(\xi) = \frac{1}{m(\xi)}$. Then,
+  $$
+    p(\xi) =
+    \frac{\sum_{|\alpha| \le k}c_\alpha \xi^{\alpha}}{\xi{j_1} \cdots \xi{j_i}} =
+    \sum_{\ell \le k} \sum_{|\alpha| = \ell} \frac{c_\alpha \xi^{\alpha}}{\xi{j_1} \cdots \xi{j_i}} =
+    \sum_{\ell \le k} \sum_{|\alpha| = l} p_\ell(\xi)
+  $$
+  where $p_\ell(\xi) = \frac{c_\alpha \xi^{\alpha}}{\xi{j_1} \cdots \xi{j_i}}$.
+  Now,
+  $$
+    p_\ell(\lambda \cdot \xi) =
+    \frac{\lambda^\ell c_\alpha \xi^{\alpha}}{\lambda^i \cdot \xi{j_1} \cdots \xi{j_i}} =
+    \lambda^{\ell - i} \cdot p_\ell(\xi)
+  $$
 \end{proof}
 
 \begin{exercise}{3}
