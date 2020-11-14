@@ -113,8 +113,9 @@
     $$
       C \|(1 - \Delta)f\|_{L^1} \cdot \|\Delta g\|_{L^\infty}
     $$
-  The second inequality is Hölder's inequality.\\
-  $(d)$
+  The second inequality is Hölder's inequality.\\\\
+  $(d)$\\
+    Suffices to prove the bound on the partials. The bound on $D^2$ follows by the triangle inequality.
     $$
       \|\partial_i \partial_j f\|_{L^1} =
       \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} \int \partial_i \partial_j f G =
@@ -125,7 +126,13 @@
       \sup_{G \in \mathcal{S}:\ \|G\|_{L^\infty} \le 1} C \|(1-\Delta)f\|_{L^1}\ \cdot\ C_2\|G\|_{L^\infty} \le
       C \|(1-\Delta)f\|_{L^1}
     $$
-    Now, by $(a)$, we have $g = \frac{1}{C} G$. So that  $\|g\|_{L^\infty} = \frac{1}{C} \|G\|_{L^\infty} < \infty$. It follows that $|\partial_i^2 g| < \infty$, (else, $\partial_i g$, and hence $g$, explodes at some point). So that $\|\Delta  g\|_{L^{\infty}} = \|\sum_{i=1}^n \partial_i^2 g\|_{L^{\infty}} < \infty$ and $\|\Delta g\|_{L^\infty} \le C_1 \|g\|_{L^\infty} \le C \|G\|_{L^{\infty}}$.\\
+    Now, by $(a)$, we have $g = \frac{1}{C} G$. So that  $\|g\|_{L^\infty} = \frac{1}{C} \|G\|_{L^\infty} < \infty$. It follows that $|\partial_i^2 g| < \infty$, (else, $\partial_i g$, and hence $g$, explodes at some point). So that $\|\Delta  g\|_{L^{\infty}} = \|\sum_{i=1}^n \partial_i^2 g\|_{L^{\infty}} < \infty$ and $\|\Delta g\|_{L^\infty} \le C_1 \|g\|_{L^\infty} \le C \|G\|_{L^{\infty}}$. Now,
+    $$
+      \|D^2f\|_{L^1} =
+      \|\sum \partial_i \partial_j f\|_{L^1} \le
+      \sum \|\partial_i \partial_j f\|_{L^1} \le
+      C \|(1-\Delta)f\|_{L^1}
+    $$
     $(e)$
     $$
       \|(1-\Delta)f\|_1 =
