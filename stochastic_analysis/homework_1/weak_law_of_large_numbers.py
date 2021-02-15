@@ -33,6 +33,7 @@ def main():
     plt.xlabel('Number of flips')
     plt.ylabel('Probability of error deviating by a quantity greater than epsilon')
     plt.plot(probabilities, color='b', linestyle='dotted')
+    # theoretical upper bounds
     plt.plot(upper_bounds, color='r', linestyle='dotted')
     plt.show()
 
