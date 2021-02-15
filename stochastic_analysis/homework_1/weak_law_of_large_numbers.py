@@ -7,38 +7,30 @@ def flip_coin():
 
 
 def main():
-    successes = 0
-    num_runs = 1000000
+    num_flips = 10000
     epsilon = 0.1
     bound = 1 / (4 * (epsilon ** 2))
     mu = 0.5
+    sim_runs = 100
+    successes = np.array([[0] * sim_runs] * num_flips)
+    upper_bounds = [bound / i for i in range(1, num_flips + 1)]
 
-    xs = [flip_coin() for _ in range(num_runs)]
-    averages = [xs[0]]
-    if np.abs(averages[-1] - mu) > epsilon:
-        successes += 1
+    last_average = 0
+    for j in range(sim_runs):
+        for i in range(num_flips):
+            x = flip_coin()
+            # we may compute the averages vector using dynamic programming
+            average = (i * last_average + x) / (i + 1)
+            last_average = average
+            successes[i][j] = 0. if np.abs(average - mu) > epsilon else 1.
 
-    probabilities = [averages[0]]
-    upper_bounds = [bound]
-    for i, x in enumerate(xs[1:], start=1):
-        # we may compute the averages vector using dynamic programming
-        average = (i * averages[-1] + x) / (i + 1)
-        averages.append(average)
-        probabilities.append(average / (i + 1))
-        upper_bounds.append(bound / (i + 1))
-
-        if np.abs(average - mu) > epsilon:
-            successes += 1
-
+    probabilities = successes.sum(axis=0) / num_flips
     plt.xlabel('Number of flips')
     plt.ylabel('Probability of error deviating by a quantity greater than epsilon')
     plt.plot(probabilities, color='b', linestyle='dotted')
     # theoretical upper bounds
     plt.plot(upper_bounds, color='r', linestyle='dotted')
     plt.show()
-
-    # print(f'probabilities: {probabilities[:100]}')
-    print(f'empirical probability = {successes / num_runs}')
 
 
 if __name__ == '__main__':
