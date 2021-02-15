@@ -12,13 +12,11 @@ def get_sample_uniform():
 
 
 def main():
-    results = []
     counts = [0] * (upper + 1)
     for _ in range(trials_size):
         sample = [np.random.uniform(0, upper) for _ in range(sample_size)]
         x = int(np.round(np.average(sample)))
         counts[x] += 1
-        results.append(np.average(sample))
     probabilities = [x / trials_size for x in counts]
     xaxisvals = np.arange(upper + 1)
     plt.xlabel('Sampling')
