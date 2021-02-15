@@ -13,7 +13,7 @@ def get_sample_uniform():
 
 def main():
     results = []
-    counts = [0 for _ in range(upper + 1)]
+    counts = [0] * (upper + 1)
     for _ in range(trials_size):
         sample = [np.random.uniform(0, upper) for _ in range(sample_size)]
         x = int(np.round(np.average(sample)))
