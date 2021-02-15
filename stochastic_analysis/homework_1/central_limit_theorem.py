@@ -14,15 +14,14 @@ def get_sample_uniform():
 def main():
     counts = [0] * (upper + 1)
     for _ in range(trials_size):
-        sample = [np.random.uniform(0, upper) for _ in range(sample_size)]
+        sample = get_sample_uniform()
         x = int(np.round(np.average(sample)))
         counts[x] += 1
     probabilities = [x / trials_size for x in counts]
-    xaxisvals = np.arange(upper + 1)
+    xaxis_vals = np.arange(upper + 1)
     plt.xlabel('Sampling')
     plt.ylabel('Probability')
-    plt.scatter(xaxisvals, probabilities)
-    # plt.hist(probablities, 10)
+    plt.scatter(xaxis_vals, probabilities)
 
     plot_normal_distribution()
     plt.show()
@@ -30,8 +29,8 @@ def main():
 
 def plot_normal_distribution():
     # for the uniform distribution 
-    # variance = 1/12 * (b - a) ** 2 = 8.333333
-    # sigma = sqrt(var)
+    # variance = 1/12 * (b - a) ** 2, in our case b = upper, a = 0
+    # sigma = sqrt(variance)
     # standard deviation = sigma / sqrt(sample_size)
 
     variance = 1 / 12 * (upper ** 2)
