@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 
 upper = 30
-trials_size =10000
+trials_size = 10000
 sample_size = 20
 
-def get_sample_uniform(): 
-    return  [np.random.uniform(0, upper) for _ in range(sample_size)]
 
+def get_sample_uniform():
+    return [np.random.uniform(0, upper) for _ in range(sample_size)]
 
 
 def main():
@@ -19,8 +19,8 @@ def main():
         x = int(np.round(np.average(sample)))
         counts[x] += 1
         results.append(np.average(sample))
-    probabilities = [x / trials_size for x in counts]  
-    xaxisvals = np.arange(upper+1)  
+    probabilities = [x / trials_size for x in counts]
+    xaxisvals = np.arange(upper + 1)
     plt.xlabel('Sampling')
     plt.ylabel('Probability')
     plt.scatter(xaxisvals, probabilities)
@@ -42,6 +42,7 @@ def plot_normal_distribution():
     mean = upper / 2
     x_axis = np.arange(0, upper, 0.01)
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd), color='r')
+
 
 if __name__ == '__main__':
     main()
