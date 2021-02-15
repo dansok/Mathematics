@@ -1,18 +1,10 @@
-import random
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-epsilon = 0.1
-variance = 0.25  # coin flip is Bernoulli distribution
-sigma = np.sqrt(variance)
-sg1 = (sigma / epsilon) ** 2
-
-epochsPerNumber = 100 
-step = 50
-
 def flip_coin():
-    return random.randint(0,1)
+    return np.random.randint(0, 1)
+
 
 def main():
     successes = 0
@@ -21,25 +13,25 @@ def main():
     bound = 1 / (4 * (epsilon ** 2))
     mu = 0.5
 
-
     xs = [flip_coin() for _ in range(num_runs)]
     averages = [xs[0]]
     if np.abs(averages[-1] - mu) > epsilon:
-            successes += 1
+        successes += 1
 
-    probabilities = [averages[-1]]
+    probabilities = [averages[0]]
     upper_bounds = [bound]
     for i, x in enumerate(xs[1:], start=1):
-        average = (i * averages[-1] + x) / (i+1)
+        # we may compute the averages vector using dynamic programming
+        average = (i * averages[-1] + x) / (i + 1)
         averages.append(average)
         probabilities.append(average / (i + 1))
-        upper_bounds.append(bound / (i+1))
+        upper_bounds.append(bound / (i + 1))
 
-        if np.abs(averages[-1] - mu) > epsilon:
+        if np.abs(average - mu) > epsilon:
             successes += 1
 
     plt.xlabel('Number of flips')
-    plt.ylabel('Probability of error being out of range')
+    plt.ylabel('Probability of error deviating by a quantity greater than epsilon')
     plt.plot(probabilities, color='b', linestyle='dotted')
     plt.plot(upper_bounds, color='r', linestyle='dotted')
     plt.show()
@@ -50,4 +42,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
