@@ -9,10 +9,9 @@ def flip_coin():
 def main():
     num_flips = 300
     epsilon = 0.1
-    bound = 1 / (4 * (epsilon ** 2))
     mu = 0.5
     sim_runs = 1000
-    upper_bounds = [bound / i for i in range(1, num_flips + 1)]
+    upper_bounds = [1 / (4 * i * (epsilon ** 2)) for i in range(1, num_flips + 1)]
     deviations = np.array([0] * num_flips)
 
     last_average = 0
