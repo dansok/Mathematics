@@ -21,9 +21,9 @@ def main():
     xaxis_vals = np.arange(upper + 1)
     plt.xlabel('Sampling')
     plt.ylabel('Probability')
-    plt.scatter(xaxis_vals, probabilities)
-
+    plt.scatter(xaxis_vals, probabilities, label='Actual results')
     plot_normal_distribution()
+    plt.legend()
     plt.show()
 
 
@@ -38,7 +38,7 @@ def plot_normal_distribution():
     sd = sigma / np.sqrt(sample_size)
     mean = upper / 2
     x_axis = np.arange(0, upper, 0.01)
-    plt.plot(x_axis, norm.pdf(x_axis, mean, sd), color='r')
+    plt.plot(x_axis, norm.pdf(x_axis, mean, sd), color='r', label='Normal distribution')
 
 
 if __name__ == '__main__':
