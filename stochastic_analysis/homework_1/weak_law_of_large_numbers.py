@@ -3,17 +3,17 @@ import matplotlib.pyplot as plt
 
 
 def flip_coin():
-    return np.random.randint(0, 1)
+    return np.random.randint(0, 2)
 
 
 def main():
-    num_flips = 100
+    num_flips = 300
     epsilon = 0.1
     bound = 1 / (4 * (epsilon ** 2))
     mu = 0.5
     sim_runs = 1000
-    successes = np.array([[0] * sim_runs] * num_flips)
     upper_bounds = [bound / i for i in range(1, num_flips + 1)]
+    deviations = [0] * num_flips
 
     last_average = 0
     for j in range(sim_runs):
@@ -22,18 +22,19 @@ def main():
             # we may compute the averages vector using dynamic programming
             average = (i * last_average + x) / (i + 1)
             last_average = average
-            successes[i][j] = 1. if np.abs(average - mu) > epsilon else 0.
+            if np.abs(average - mu) > epsilon:
+                deviations[i] += 1. 
 
-    probabilities = successes.sum(axis=0) / num_flips
-    m, n = successes.shape
-    print(f'm, n: {m, n}')
-    print(f'probabilities: {successes[5000:5005, 50:55]}')
     plt.xlabel('Number of flips')
     plt.ylabel('Probability of error deviating by a quantity greater than epsilon')
-    plt.plot(probabilities, color='b', linestyle='dotted')
+    probabilities = [x / num_flips for x in deviations]
+    xaxis_vals = np.arange(num_flips, step=10)
+    yaxis_vals = [probabilities[i] for i in xaxis_vals]
+    plt.scatter(xaxis_vals, yaxis_vals, color='b', label='Actual results')
     # theoretical upper bounds
-    plt.plot(upper_bounds, color='r', linestyle='dotted')
-    # plt.show()
+    plt.plot(upper_bounds, color='r', label='Theoretical upper bound')
+    plt.legend()
+    plt.show()
 
 
 if __name__ == '__main__':
