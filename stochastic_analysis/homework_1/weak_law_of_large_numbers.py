@@ -16,7 +16,7 @@ def main():
     deviations = np.array([0] * num_flips)
 
     last_average = 0
-    for j in range(sim_runs):
+    for _ in range(sim_runs):
         for i in range(num_flips):
             x = flip_coin()
             # we may compute the averages vector using dynamic programming
