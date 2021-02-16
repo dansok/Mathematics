@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def flip_coin():
@@ -13,7 +13,7 @@ def main():
     mu = 0.5
     sim_runs = 1000
     upper_bounds = [bound / i for i in range(1, num_flips + 1)]
-    deviations = [0] * num_flips
+    deviations = np.array([0] * num_flips)
 
     last_average = 0
     for j in range(sim_runs):
@@ -23,11 +23,11 @@ def main():
             average = (i * last_average + x) / (i + 1)
             last_average = average
             if np.abs(average - mu) > epsilon:
-                deviations[i] += 1. 
+                deviations[i] += 1.
 
     plt.xlabel('Number of flips')
     plt.ylabel('Probability of error deviating by a quantity greater than epsilon')
-    probabilities = [x / num_flips for x in deviations]
+    probabilities = deviations / sim_runs
     xaxis_vals = np.arange(num_flips, step=10)
     yaxis_vals = [probabilities[i] for i in xaxis_vals]
     plt.scatter(xaxis_vals, yaxis_vals, color='b', label='Actual results')
