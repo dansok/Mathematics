@@ -23,4 +23,5 @@ The resulting plot for the central limit theorem is under plots/
 
 (4)
 The resulting plot for the large deviations principle / concentration inequality in under plots/
-We show that 1/N * the log probabilities -> constant(epsilon)
+We show that 1/N * the log probabilities -> -constant(epsilon). Note that the constant is negative,
+since log(0,1) = (-\infty, 0)

@@ -5,6 +5,7 @@ import numpy as np
 def flip_coin():
     return np.random.randint(0, 2)
 
+
 def get_log_probs(epsilon):
     num_flips = 300
     mu = 0.5
@@ -21,18 +22,19 @@ def get_log_probs(epsilon):
             if np.abs(average - mu) > epsilon:
                 deviations[i] += 1.
     probabilities = deviations / sim_runs
-    log_probs = [-1 / i * np.log(probabilities[i]) for i in range(1, num_flips)]
+    log_probs = [(1 / i) * np.log(probability) for i, probability in enumerate(probabilities, start=1)]
     return log_probs
+
 
 def main():
     plt.xlabel('Number of flips')
     plt.ylabel('Log probabilities scaled by 1 / number of flips')
-    log_probs = get_log_probs(0.1)
-    plt.plot(log_probs, label='Epsilon = 0.1')
-    log_probs1 = get_log_probs(0.05)
-    plt.plot(log_probs1, label='Epsilon = 0.05')
-    log_probs2 = get_log_probs(0.01)
-    plt.plot(log_probs2, label='Epsilon = 0.01')
+    log_probs_1 = get_log_probs(0.1)
+    plt.plot(log_probs_1, label='Epsilon = 0.1')
+    log_probs_2 = get_log_probs(0.05)
+    plt.plot(log_probs_2, label='Epsilon = 0.05')
+    log_probs_3 = get_log_probs(0.01)
+    plt.plot(log_probs_3, label='Epsilon = 0.01')
     plt.legend()
     plt.show()
 
