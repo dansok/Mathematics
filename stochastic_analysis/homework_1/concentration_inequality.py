@@ -21,7 +21,7 @@ def get_log_probs(epsilon):
             if np.abs(average - mu) > epsilon:
                 deviations[i] += 1.
     probabilities = deviations / sim_runs
-    log_probs = [-1 / i * np.log(probabilities[i]) for i in range(1, num_flips)]
+    log_probs = [1 / i * np.log(probabilities[i]) for i in range(1, num_flips)]
     return log_probs
 
 def main():
