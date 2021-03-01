@@ -47,13 +47,13 @@ def main():
     plt.show()
 
 
-def get_mvn(dimensions, mean, sigma ):
+def get_mvn(dimensions, mean, sigma):
     cov = (sigma ** 2) * np.array(np.identity(dimensions))
     mvn = multivariate_normal(mean, cov)
     return mvn
 
 
-def plot_normal_distribution_by_distance(dimensions, mean, sigma ):
+def plot_normal_distribution_by_distance(dimensions, mean, sigma):
     cov = (sigma ** 2) * np.array(np.identity(dimensions))
     distances = []
     for _ in range(100000):
