@@ -1,8 +1,10 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy.stats import multivariate_normal
 
-histogram_bins = np.arange(0,5,0.25)
+
+histogram_bins = np.arange(0, 5, 0.25)
+
 
 def get_uniform_sample():
     return np.random.uniform(0, 1)
@@ -40,14 +42,16 @@ def main():
     plot_normal_distribution_by_distance(dimensions, invariant_mean, invariant_sigma)
     plt.xlabel('Distance from mean')
     plt.ylabel('Probability')
-    plt.title('Probability by distance from mean\n' + 'Number of dimensions: ' + str(dimensions))
+    plt.title(f'Probability by distance from mean\nNumber of dimensions: {dimensions}')
     plt.legend()
     plt.show()
+
 
 def get_mvn(dimensions, mean, sigma ):
     cov = (sigma ** 2) * np.array(np.identity(dimensions))
     mvn = multivariate_normal(mean, cov)
     return mvn
+
 
 def plot_normal_distribution_by_distance(dimensions, mean, sigma ):
     cov = (sigma ** 2) * np.array(np.identity(dimensions))
@@ -57,6 +61,7 @@ def plot_normal_distribution_by_distance(dimensions, mean, sigma ):
         distance = np.linalg.norm(x - mean)
         distances.append(distance)
     plt.hist(distances, bins=histogram_bins, density=True, histtype='step', label='Normal distribution')
+
 
 if __name__ == '__main__':
     main()
