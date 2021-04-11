@@ -8,6 +8,7 @@ histogram_bins = np.arange(0, 5, 0.25)
 
 def get_uniform_sample():
     return np.random.uniform(0, 1)
+np.random.normal()
 
 
 def main():
