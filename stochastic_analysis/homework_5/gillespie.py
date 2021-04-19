@@ -5,7 +5,7 @@ displacements = []
 t_max = 10
 
 
-def calc_intensities(X, k):
+def get_intensities(X, k):
     # species G, M, P, D, B
     lambda_0 = k[0] * X[0]  # G -> G + M
     lambda_1 = k[1] * X[1]  # M -> M + P
@@ -18,7 +18,7 @@ def calc_intensities(X, k):
     return [lambda_0, lambda_1, lambda_2, lambda_3, lambda_4, lambda_5, lambda_6, lambda_7]
 
 
-def calc_l_star(intensities):
+def get_l_star(intensities):
     total_intensities = sum(intensities)
     uniform_sample = np.random.uniform(0, total_intensities)
     running_total = 0
@@ -37,11 +37,11 @@ def gillespie(initial_x, k):
     for value in X:
         x_vals.append([value])
     while t < t_max:
-        intensities = calc_intensities(X, k)
+        intensities = get_intensities(X, k)
         total_intensities = sum(intensities)
         r = np.random.exponential(1 / total_intensities)
         t += r
-        l_star = calc_l_star(intensities)
+        l_star = get_l_star(intensities)
         X += disp[l_star]
         x_ticks.append(t)
         for index, value in enumerate(X):
@@ -56,7 +56,7 @@ def gillespie(initial_x, k):
     plt.show()
 
 
-def set_displacements():
+def compute_displacements():
     # species G, M, P, D, B
     displacements.append([0, 1, 0, 0, 0])  # G -> G + M
     displacements.append([0, 0, 1, 0, 0])  # M -> M + P
@@ -69,7 +69,8 @@ def set_displacements():
 
 
 def main():
-    set_displacements()
+    compute_displacements()
+
     gillespie([1, 10, 50, 10, 0], [200, 10, 25, 1, 0.01, 1, 0, 0])
     gillespie([1, 10, 50, 10, 0], [200, 10, 25, 1, 0.01, 1, 2, 0.1])
 
