@@ -76,7 +76,7 @@ def next_reaction(X_0, S_0, T_1, tau_0, k):
 
         X += displacements[l_star]
 
-        T[l_star] -= np.log(np.random.uniform())
+        T[l_star] -= np.log(np.random.uniform(low=0.0, high=1.0))
 
         x_axis.append(s)
         for i, value in enumerate(X):
