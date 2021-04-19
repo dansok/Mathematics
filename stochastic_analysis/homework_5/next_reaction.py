@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 displacements = []
 t_max = 10
 
@@ -29,8 +28,8 @@ def get_l_star(intensities):
             return i
 
 
-def gillespie(X_0, k):
-    X = np.array(X_0)
+def gillespie(initial_x, k):
+    X = np.array(initial_x)
     disp = np.array(displacements)
     t = 0
     x_vals = []
@@ -72,8 +71,8 @@ def compute_displacements():
 def main():
     compute_displacements()
 
-    gillespie(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0])
-    gillespie(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1])
+    gillespie([1, 10, 50, 10, 0], [200, 10, 25, 1, 0.01, 1, 0, 0])
+    gillespie([1, 10, 50, 10, 0], [200, 10, 25, 1, 0.01, 1, 2, 0.1])
 
 
 if __name__ == '__main__':
