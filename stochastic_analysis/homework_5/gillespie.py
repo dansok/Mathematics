@@ -20,8 +20,7 @@ def get_intensities(X, k):
 
 
 def get_l_star(intensities):
-    total_intensities = sum(intensities)
-    u = np.random.uniform(0, total_intensities)
+    u = np.random.uniform(0, sum(intensities))
     running_total = 0
     for i, intensity in enumerate(intensities):
         running_total += intensity
@@ -31,28 +30,30 @@ def get_l_star(intensities):
 
 def gillespie(X_0, k):
     X = np.array(X_0)
-    disp = np.array(displacements)
     t = 0
-    x_vals = []
-    x_ticks = [0]
+
+    x_axis = []
+    y_axis = [0]
     for value in X:
-        x_vals.append([value])
+        x_axis.append([value])
+
     while t < t_max:
         intensities = get_intensities(X, k)
-        total_intensities = sum(intensities)
-        r = np.random.exponential(1 / total_intensities)
+        r = np.random.exponential(1 / sum(intensities))
         t += r
         l_star = get_l_star(intensities)
-        X += disp[l_star]
-        x_ticks.append(t)
-        for index, value in enumerate(X):
-            x_vals[index].append(value)
+        X += displacements[l_star]
+
+        y_axis.append(t)
+        for i, value in enumerate(X):
+            x_axis[i].append(value)
+
     print(t, X)
-    plt.plot(x_ticks, x_vals[0], label='G')
-    plt.plot(x_ticks, x_vals[1], label='M')
-    plt.plot(x_ticks, x_vals[2], label='P')
-    plt.plot(x_ticks, x_vals[3], label='D')
-    plt.plot(x_ticks, x_vals[4], label='B')
+    plt.plot(y_axis, x_axis[0], label='G')
+    plt.plot(y_axis, x_axis[1], label='M')
+    plt.plot(y_axis, x_axis[2], label='P')
+    plt.plot(y_axis, x_axis[3], label='D')
+    plt.plot(y_axis, x_axis[4], label='B')
     plt.legend()
     plt.show()
 
