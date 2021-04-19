@@ -21,11 +21,11 @@ def get_intensities(X, k):
 
 def get_l_star(intensities):
     total_intensities = sum(intensities)
-    uniform_sample = np.random.uniform(0, total_intensities)
+    u = np.random.uniform(0, total_intensities)
     running_total = 0
     for i, intensity in enumerate(intensities):
         running_total += intensity
-        if uniform_sample < running_total:
+        if u < running_total:
             return i
 
 
