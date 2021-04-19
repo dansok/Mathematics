@@ -56,8 +56,8 @@ def next_reaction(X_0, S_0, T_1, tau_0, k):
 
     x_axis = [0]
     y_axis = []
-    for value in X:
-        y_axis.append([value])
+    for x in X:
+        y_axis.append([x])
 
     while s < t_max:
         S = [G_inverse(l=l, r=T[l] - tau[l], s=s, X=X, k=k) for l in range(NUM_REACTIONS)]
@@ -79,8 +79,8 @@ def next_reaction(X_0, S_0, T_1, tau_0, k):
         T[l_star] -= np.log(np.random.uniform(low=0.0, high=1.0))
 
         x_axis.append(s)
-        for i, value in enumerate(X):
-            y_axis[i].append(value)
+        for i, x in enumerate(X):
+            y_axis[i].append(x)
 
     print(s, X)
     plt.plot(x_axis, y_axis[0], label='G')
