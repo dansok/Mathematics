@@ -7,15 +7,15 @@ t_max = 10
 
 def calc_intensities(X, k):
     # species G, M, P, D, B
-    lmbd0 = k[0] * X[0]  # G -> G + M
-    lmbd1 = k[1] * X[1]  # M -> M + P
-    lmbd2 = k[2] * X[1]  # M -> {}
-    lmbd3 = k[3] * X[2]  # P -> {}
-    lmbd4 = k[4] * X[2] * (X[2] - 1)  # 2P -> D
-    lmbd5 = k[5] * X[3]  # D -> {}
-    lmbd6 = k[6] * X[0] * X[3]  # G + D -> B
-    lmbd7 = k[7] * X[4]  # B -> G + D
-    return [lmbd0, lmbd1, lmbd2, lmbd3, lmbd4, lmbd5, lmbd6, lmbd7]
+    lambda_0 = k[0] * X[0]  # G -> G + M
+    lambda_1 = k[1] * X[1]  # M -> M + P
+    lambda_2 = k[2] * X[1]  # M -> {}
+    lambda_3 = k[3] * X[2]  # P -> {}
+    lambda_4 = k[4] * X[2] * (X[2] - 1)  # 2P -> D
+    lambda_5 = k[5] * X[3]  # D -> {}
+    lambda_6 = k[6] * X[0] * X[3]  # G + D -> B
+    lambda_7 = k[7] * X[4]  # B -> G + D
+    return [lambda_0, lambda_1, lambda_2, lambda_3, lambda_4, lambda_5, lambda_6, lambda_7]
 
 
 def calc_l_star(intensities):
