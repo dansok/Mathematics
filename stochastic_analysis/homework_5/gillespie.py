@@ -20,13 +20,12 @@ def calc_intensities(X, k):
 
 def calc_l_star(intensities):
     total_intensities = sum(intensities)
-    u = np.random.uniform(0, total_intensities)
-    running_tot = 0
-    for idx, intensity in enumerate(intensities):
-        running_tot += intensity
-        if u < running_tot:
-            break
-    return idx
+    uniform_sample = np.random.uniform(0, total_intensities)
+    running_total = 0
+    for i, intensity in enumerate(intensities):
+        running_total += intensity
+        if uniform_sample < running_total:
+            return i
 
 
 def gillespie(initial_x, k):
