@@ -55,9 +55,7 @@ def next_reaction(X_0, S_0, T_1, tau_0, k):
     s = S[l_star]
 
     x_axis = [0]
-    y_axis = []
-    for x in X:
-        y_axis.append([x])
+    y_axis = [[x] for x in X]
 
     while s < t_max:
         S = [G_inverse(l=l, r=T[l] - tau[l], s=s, X=X, k=k) for l in range(NUM_REACTIONS)]

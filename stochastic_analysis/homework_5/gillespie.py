@@ -33,9 +33,7 @@ def gillespie(X_0, k):
     t = 0
 
     x_axis = [0]
-    y_axis = []
-    for x in X:
-        y_axis.append([x])
+    y_axis = [[x] for x in X]
 
     while t < t_max:
         intensities = get_intensities(X, k)

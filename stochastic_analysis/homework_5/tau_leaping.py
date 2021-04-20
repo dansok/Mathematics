@@ -6,6 +6,10 @@ displacements = []
 t_max = 10
 
 
+class PoissonProcess:
+
+
+
 def get_intensities(X, k):
     # species G, M, P, D, B
     lambda_0 = k[0] * X[0]  # G -> G + M
@@ -32,10 +36,8 @@ def tau_leaping(X_0, k):
     X = np.array(X_0)
     t = 0
 
-    x_axis = []
-    y_axis = [0]
-    for value in X:
-        x_axis.append([value])
+    x_axis = [0]
+    y_axis = [[x] for x in X]
 
     while t < t_max:
         intensities = get_intensities(X, k)
@@ -44,16 +46,16 @@ def tau_leaping(X_0, k):
         l_star = get_l_star(intensities)
         X += displacements[l_star]
 
-        y_axis.append(t)
-        for i, value in enumerate(X):
-            x_axis[i].append(value)
+        x_axis.append(t)
+        for i, x in enumerate(X):
+            y_axis[i].append(x)
 
     print(t, X)
-    plt.plot(y_axis, x_axis[0], label='G')
-    plt.plot(y_axis, x_axis[1], label='M')
-    plt.plot(y_axis, x_axis[2], label='P')
-    plt.plot(y_axis, x_axis[3], label='D')
-    plt.plot(y_axis, x_axis[4], label='B')
+    plt.plot(x_axis, y_axis[0], label='G')
+    plt.plot(x_axis, y_axis[1], label='M')
+    plt.plot(x_axis, y_axis[2], label='P')
+    plt.plot(x_axis, y_axis[3], label='D')
+    plt.plot(x_axis, y_axis[4], label='B')
     plt.legend()
     plt.show()
 
