@@ -1,5 +1,3 @@
-from functools import cache
-
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -20,7 +18,6 @@ def G_inverse(l, r, s, X, k):
     return s + (r / intensity)
 
 
-# @cache
 def get_intensities(X, k):
     # species G, M, P, D, B
     lambda_0 = k[0] * X[0]  # G -> G + M

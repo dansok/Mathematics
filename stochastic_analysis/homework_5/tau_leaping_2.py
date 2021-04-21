@@ -1,20 +1,12 @@
-from time import perf_counter
-
 import matplotlib.pyplot as plt
 import numpy as np
-from decorator import contextmanager
+
 
 NUM_PARTICLES = 5
 NUM_REACTIONS = 8
 
 displacements = []
 t_max = 10
-
-
-@contextmanager
-def catch_time() -> float:
-    start = perf_counter()
-    yield lambda: perf_counter() - start
 
 
 def get_intensities(X, k):
@@ -27,12 +19,12 @@ def get_intensities(X, k):
     lambda_5 = k[5] * X[3]  # D -> {}
     lambda_6 = k[6] * X[0] * X[3]  # G + D -> B
     lambda_7 = k[7] * X[4]  # B -> G + D
-    return np.array([lambda_0, lambda_1, lambda_2, lambda_3, lambda_4, lambda_5, lambda_6, lambda_7], dtype=np.float64)
+    return [lambda_0, lambda_1, lambda_2, lambda_3, lambda_4, lambda_5, lambda_6, lambda_7]
 
 
 def tau_leaping(X_0, k, h):
     X = np.array(X_0)
-    previous_X = X.copy()
+    Xs = []
     taus = np.zeros(NUM_REACTIONS)
 
     x_axis = []
@@ -40,28 +32,30 @@ def tau_leaping(X_0, k, h):
     num_intervals = int(t_max / h)
 
     Y = np.zeros(NUM_PARTICLES)
-    cumulative_taus = np.zeros(NUM_REACTIONS)
 
     for n in range(num_intervals):
         x_axis.append(n)
         for i, x in enumerate(X):
             y_axis[i].append(x)
 
+        Xs.append(X)
+
         previous_taus = taus.copy()
 
-        cumulative_taus += get_intensities(X=previous_X, k=k)
+        # print(f'Xs: {Xs}')
+        for l in range(NUM_REACTIONS):
+            taus[l] = 0
+            for j in range(n):
+                # print(f'get_intensities(X=Xs[{j}], k=k): {get_intensities(X=Xs[j], k=k)}')
+                taus[l] += (get_intensities(X=Xs[j], k=k)[l])
+            taus[l] += (h * get_intensities(X=Xs[n], k=k)[l])
+            taus[l] *= h
 
-        taus = h * (cumulative_taus + (h * get_intensities(X=X, k=k)))
+            jump_probability = 1 - np.exp(-(taus[l] - previous_taus[l]))
+            expected_jump = h * jump_probability * displacements[l]
 
-        jump_probabilities = [1 - np.exp(-(tau - previous_tau)) for tau, previous_tau in zip(taus, previous_taus)]
+            Y += expected_jump
 
-        jumps = [jump_probability * displacements[i] for i, jump_probability in enumerate(jump_probabilities)]
-
-        expected_jumps = h * np.sum(jumps, axis=0)
-
-        Y += expected_jumps
-
-        previous_X = X
         X = X + Y
 
     plt.plot(x_axis, y_axis[0], label='G')
@@ -88,11 +82,8 @@ def compute_displacements():
 def main():
     compute_displacements()
 
-    with catch_time() as time:
-        tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0], h=0.000001)
-        # tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1], h=0.5)
-
-        print(f'time: {time():.4f} seconds')
+    tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0], h=0.001)
+    # tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1], h=0.5)
 
 
 if __name__ == '__main__':
