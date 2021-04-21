@@ -34,16 +34,6 @@ def get_intensities(X, k):
     return np.array([lambda_0, lambda_1, lambda_2, lambda_3, lambda_4, lambda_5, lambda_6, lambda_7])
 
 
-def get_l_star(intensities):
-    total_intensities = sum(intensities)
-    uniform_sample = np.random.uniform(0, total_intensities)
-    running_total = 0
-    for i, intensity in enumerate(intensities):
-        running_total += intensity
-        if uniform_sample < running_total:
-            return i
-
-
 def next_reaction(X_0, S_0, T_1, tau_0, k):
     X = np.array(X_0)
     S = np.array(S_0)

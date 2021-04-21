@@ -2,12 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+NUM_PARTICLES = 5
+NUM_REACTIONS = 8
+
 displacements = []
 t_max = 10
-
-
-class PoissonProcess:
-
 
 
 def get_intensities(X, k):
@@ -23,34 +22,42 @@ def get_intensities(X, k):
     return [lambda_0, lambda_1, lambda_2, lambda_3, lambda_4, lambda_5, lambda_6, lambda_7]
 
 
-def get_l_star(intensities):
-    u = np.random.uniform(0, sum(intensities))
-    running_total = 0
-    for i, intensity in enumerate(intensities):
-        running_total += intensity
-        if u < running_total:
-            return i
-
-
-def tau_leaping(X_0, k):
+def tau_leaping(X_0, k, h):
     X = np.array(X_0)
-    t = 0
+    Xs = []
+    taus = np.zeros(NUM_REACTIONS)
 
-    x_axis = [0]
-    y_axis = [[x] for x in X]
+    x_axis = []
+    y_axis = [[] for _ in X]
+    num_intervals = int(t_max / h)
 
-    while t < t_max:
-        intensities = get_intensities(X, k)
-        r = np.random.exponential(1 / sum(intensities))
-        t += r
-        l_star = get_l_star(intensities)
-        X += displacements[l_star]
+    Y = np.zeros(NUM_PARTICLES)
 
-        x_axis.append(t)
+    for n in range(num_intervals):
+        x_axis.append(n)
         for i, x in enumerate(X):
             y_axis[i].append(x)
 
-    print(t, X)
+        Xs.append(X)
+
+        previous_taus = taus.copy()
+
+        print(f'Xs: {Xs}')
+        for l in range(NUM_REACTIONS):
+            taus[l] = 0
+            for j in range(n):
+                print(f'get_intensities(X=Xs[{j}], k=k): {get_intensities(X=Xs[j], k=k)}')
+                taus[l] += (get_intensities(X=Xs[j], k=k)[l])
+            taus[l] += (h * get_intensities(X=Xs[n], k=k)[l])
+            taus[l] *= h
+
+            jump_probability = 1 - np.exp(-(taus[l] - previous_taus[l]))
+            expected_jump = h * jump_probability * displacements[l]
+
+            Y += expected_jump
+
+        X = X + Y
+
     plt.plot(x_axis, y_axis[0], label='G')
     plt.plot(x_axis, y_axis[1], label='M')
     plt.plot(x_axis, y_axis[2], label='P')
@@ -62,21 +69,21 @@ def tau_leaping(X_0, k):
 
 def compute_displacements():
     # species G, M, P, D, B
-    displacements.append([0, 1, 0, 0, 0])  # G -> G + M
-    displacements.append([0, 0, 1, 0, 0])  # M -> M + P
-    displacements.append([0, -1, 0, 0, 0])  # M -> {}
-    displacements.append([0, 0, -1, 0, 0])  # P -> {}
-    displacements.append([0, 0, -2, 1, 0])  # 2P -> D
-    displacements.append([0, 0, 0, -1, 0])  # D -> {}
-    displacements.append([-1, 0, 0, -1, 1])  # G + D -> B
-    displacements.append([1, 0, 0, 1, -1])  # B -> G + D
+    displacements.append(np.array([0, 1, 0, 0, 0]))  # G -> G + M
+    displacements.append(np.array([0, 0, 1, 0, 0]))  # M -> M + P
+    displacements.append(np.array([0, -1, 0, 0, 0]))  # M -> {}
+    displacements.append(np.array([0, 0, -1, 0, 0]))  # P -> {}
+    displacements.append(np.array([0, 0, -2, 1, 0]))  # 2P -> D
+    displacements.append(np.array([0, 0, 0, -1, 0]))  # D -> {}
+    displacements.append(np.array([-1, 0, 0, -1, 1]))  # G + D -> B
+    displacements.append(np.array([1, 0, 0, 1, -1]))  # B -> G + D
 
 
 def main():
     compute_displacements()
 
-    tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0])
-    tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1])
+    tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0], h=0.01)
+    # tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1], h=0.5)
 
 
 if __name__ == '__main__':
