@@ -49,7 +49,12 @@ def tau_leaping(X_0, k, h):
     num_intervals = int(t_max / h)
 
     # Y = np.zeros(NUM_PARTICLES)
-    # cumulative_taus = np.zeros(NUM_REACTIONS)
+
+    # offset by X_0
+    cumulative_jumps = X.copy()
+
+    # offset by taus_0
+    cumulative_intensities = taus.copy()
 
     for n in range(num_intervals):
         x_axis.append(n)
@@ -58,22 +63,28 @@ def tau_leaping(X_0, k, h):
 
         # previous_taus = taus.copy()
 
-        # cumulative_taus += get_intensities(X=X, k=k)
+        intensity = get_intensities(X=X, k=k)
+        taus = h * cumulative_intensities + (h / 2) * intensity
 
-        taus += h * get_intensities(X=X, k=k)
+        cumulative_intensities += intensity
+
+        # taus = h * get_intensities(X=X, k=k)
 
         # jump_probabilities = [1 - np.exp(-(tau - previous_tau)) for tau, previous_tau in zip(taus, previous_taus)]
 
         # jumps = [jump_probability * displacements[i] for i, jump_probability in enumerate(jump_probabilities)]
-        jumps = [np.random.poisson(taus[l]) * displacements[l] for l in range(NUM_REACTIONS)]
+        jumps = [np.random.poisson(lam=taus[l]) * displacements[l] for l in range(NUM_REACTIONS)]
 
-        total_jump = h * np.sum(jumps, axis=0)
+        total_jump = np.sum(jumps, axis=0)
 
         # Y += total_jumps
 
         # previous_X = X
-        X = X + total_jump
+        X = h * cumulative_jumps + (h / 2) * total_jump
         X = np.where(X < 0, 0, X)
+
+        cumulative_jumps += total_jump
+        # cumulative_jumps = np.where(cumulative_jumps < 0, 0, cumulative_jumps)
 
     plt.plot(x_axis, y_axis[0], label='G')
     plt.plot(x_axis, y_axis[1], label='M')
