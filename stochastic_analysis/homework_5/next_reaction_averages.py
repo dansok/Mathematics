@@ -32,42 +32,54 @@ def get_intensities(X, k):
 
 
 def next_reaction(X_0, S_0, T_1, tau_0, k):
-    X = np.array(X_0)
-    S = np.array(S_0)
-    T = np.array(T_1)
-    tau = np.array(tau_0)
+    NUM_ITERATIONS = 2
+    Xs = [[] for _ in range(NUM_ITERATIONS)]
+    x_axis = []
+    for i in range(NUM_ITERATIONS):
+        X = np.array(X_0)
+        Xs[i].append(X)
+        S = np.array(S_0)
+        T = np.array(T_1)
+        tau = np.array(tau_0)
 
-    # Since S_0 == [0] * NUM_PARTICLES anyway, l_star could be any index to start out with.
-    l_star = 0
-    s = S[l_star]
-
-    x_axis = [0]
-    y_axis = [[x] for x in X]
-
-    while s < t_max:
-        S = [G_inverse(l=l, r=T[l] - tau[l], s=s, X=X, k=k) for l in range(NUM_REACTIONS)]
-
-        l_star = np.argmin(S)
-        previous_s = s
+        # Since S_0 == [0] * NUM_PARTICLES anyway, l_star could be any index to start out with.
+        l_star = 0
         s = S[l_star]
 
-        # Observe that $$\tau_{\ell}^{S_j} = \int_0^{S_j} \lambda_{\ell} (X_s) ds =
-        # \sum_{m=0}^{j-1} (S_{m+1} - S_m) \lambda_{\ell}(X_m)$$ since $\{S_i\}$ are the jump times of $X_t$.
-        # Hence $\tau$ accumulates in piece-wise sums, as an integral over a step function.
-        # We may program this dynamically in the following way -
-        # (Note that the expression tau += get_intensities(X=X, k=k) * (s - previous_s) throws a type error here in
-        # > python 3.9)
-        tau = tau + get_intensities(X=X, k=k) * (s - previous_s)
+        # x_axis = [0]
+        # y_axis = [[x] for x in X]
 
-        X += displacements[l_star]
+        while s < t_max:
+            if i == 0:
+                x_axis.append(s)
 
-        T[l_star] -= np.log(np.random.uniform(low=0.0, high=1.0))
+            S = [G_inverse(l=l, r=T[l] - tau[l], s=s, X=X, k=k) for l in range(NUM_REACTIONS)]
 
-        x_axis.append(s)
-        for i, x in enumerate(X):
-            y_axis[i].append(x)
+            l_star = np.argmin(S)
+            previous_s = s
+            s = S[l_star]
 
-    print(s, X)
+            # Observe that $$\tau_{\ell}^{S_j} = \int_0^{S_j} \lambda_{\ell} (X_s) ds =
+            # \sum_{m=0}^{j-1} (S_{m+1} - S_m) \lambda_{\ell}(X_m)$$ since $\{S_i\}$ are the jump times of $X_t$.
+            # Hence $\tau$ accumulates in piece-wise sums, as an integral over a step function.
+            # We may program this dynamically in the following way -
+            # (Note that the expression tau += get_intensities(X=X, k=k) * (s - previous_s) throws a type error here in
+            # > python 3.9)
+            tau = tau + get_intensities(X=X, k=k) * (s - previous_s)
+
+            X += displacements[l_star]
+            Xs[i].append(X)
+
+            T[l_star] -= np.log(np.random.uniform(low=0.0, high=1.0))
+
+    y_axis = []
+    for i in range(NUM_ITERATIONS):
+        acc = np.zeros(len(Xs[0][0]))
+        for j in range(len(Xs[0])):
+            acc = acc + Xs[i][j]
+
+        y_axis.append(acc)
+
     plt.plot(x_axis, y_axis[0], label='G')
     plt.plot(x_axis, y_axis[1], label='M')
     plt.plot(x_axis, y_axis[2], label='P')
