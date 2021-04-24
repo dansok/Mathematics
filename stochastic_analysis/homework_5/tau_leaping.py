@@ -11,6 +11,15 @@ displacements = []
 t_max = 10
 
 
+def flip_coin(probability):
+    u = np.random.uniform(low=0, high=1)
+
+    if probability <= u:
+        return 0
+
+    return 1
+
+
 @contextmanager
 def catch_time() -> float:
     start = perf_counter()
@@ -32,37 +41,39 @@ def get_intensities(X, k):
 
 def tau_leaping(X_0, k, h):
     X = np.array(X_0)
-    previous_X = X.copy()
+    # previous_X = X.copy()
     taus = np.zeros(NUM_REACTIONS)
 
     x_axis = []
     y_axis = [[] for _ in X]
     num_intervals = int(t_max / h)
 
-    Y = np.zeros(NUM_PARTICLES)
-    cumulative_taus = np.zeros(NUM_REACTIONS)
+    # Y = np.zeros(NUM_PARTICLES)
+    # cumulative_taus = np.zeros(NUM_REACTIONS)
 
     for n in range(num_intervals):
         x_axis.append(n)
         for i, x in enumerate(X):
             y_axis[i].append(x)
 
-        previous_taus = taus.copy()
+        # previous_taus = taus.copy()
 
-        cumulative_taus += get_intensities(X=previous_X, k=k)
+        # cumulative_taus += get_intensities(X=X, k=k)
 
-        taus = h * (cumulative_taus + (h * get_intensities(X=X, k=k)))
+        taus += h * get_intensities(X=X, k=k)
 
-        jump_probabilities = [1 - np.exp(-(tau - previous_tau)) for tau, previous_tau in zip(taus, previous_taus)]
+        # jump_probabilities = [1 - np.exp(-(tau - previous_tau)) for tau, previous_tau in zip(taus, previous_taus)]
 
-        jumps = [jump_probability * displacements[i] for i, jump_probability in enumerate(jump_probabilities)]
+        # jumps = [jump_probability * displacements[i] for i, jump_probability in enumerate(jump_probabilities)]
+        jumps = [np.random.poisson(taus[l]) * displacements[l] for l in range(NUM_REACTIONS)]
 
-        expected_jumps = h * np.sum(jumps, axis=0)
+        total_jump = h * np.sum(jumps, axis=0)
 
-        Y += expected_jumps
+        # Y += total_jumps
 
-        previous_X = X
-        X = X + Y
+        # previous_X = X
+        X = X + total_jump
+        X = np.where(X < 0, 0, X)
 
     plt.plot(x_axis, y_axis[0], label='G')
     plt.plot(x_axis, y_axis[1], label='M')
@@ -89,8 +100,8 @@ def main():
     compute_displacements()
 
     with catch_time() as time:
-        tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0], h=0.000001)
-        # tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1], h=0.5)
+        tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 0, 0], h=0.01)
+        # tau_leaping(X_0=[1, 10, 50, 10, 0], k=[200, 10, 25, 1, 0.01, 1, 2, 0.1], h=0.01)
 
         print(f'time: {time():.4f} seconds')
 
